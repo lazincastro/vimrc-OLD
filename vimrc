@@ -414,3 +414,19 @@ let g:airline#extensions#whitespace#enabled = 0
 "let g:airline_symbols.branch = '⭠'
 "let g:airline_symbols.readonly = '⭤'
 "let g:airline_symbols.linenr = '⭡'
+
+" Aliases
+cab W w
+cab Q q
+cab Wq wq
+cab wQ wq
+cab WQ wq
+cab t tab drop
+cab T tab drop
+cab tabe tab drop
+cab Tabe tab drop
+cab E e
+ 
+" Adding quotes
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
