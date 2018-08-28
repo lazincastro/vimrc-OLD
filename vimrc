@@ -33,8 +33,6 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins from github repos:
 
-" Auto close parentheses and repeat
-Plug 'cohama/lexima.vim'
 " Gruvbox colorscheme
 Plug 'morhetz/gruvbox'
 " Override configs by directory 
@@ -135,7 +133,6 @@ endif
 " no vi-compatible
 set nocompatible
 
-
 " allow plugins by file type (required for plugins!)
 filetype plugin on
 filetype indent on
@@ -163,11 +160,9 @@ set hlsearch
 syntax on
 
 " show line numbers
-set number
+set nu
 set relativenumber
 
-" mouse habilite
-set mouse=a
 " tab navigation mappings
 map tn :tabn<CR>
 map tp :tabp<CR>
@@ -252,7 +247,6 @@ endif
 " Plugins settings and mappings
 " Edit them as you wish.
 
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif 
 " Tagbar ----------------------------- 
 
 " toggle tagbar display
@@ -261,20 +255,16 @@ map <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 " NERDTree ----------------------------- 
-" Show hidden files in NERDTREE
-" let NERDTreeShowHidden=1
-" let NERDTreeQuitOnOpen = 0
-nnoremap <Leader>d :let NERDTreeQuitOnOpen = 1<bar>NERDTreeToggle<CR>
-nnoremap <Leader>D :let NERDTreeQuitOnOpen = 0<bar>NERDTreeToggle<CR>
+
 " toggle nerdtree display
 map <F3> :NERDTreeToggle<CR>
-"" open nerdtree with the current file selected
+" open nerdtree with the current file selected
 nmap ,t :NERDTreeFind<CR>
 " don;t show these file types
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
-"
-"
-"" Tasklist ------------------------------
+
+
+" Tasklist ------------------------------
 
 " show pending tasks list
 map <F2> :TaskList<CR>
@@ -324,10 +314,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 0
 " custom icons (enable them if you use a patched font, and enable the previous 
 " setting)
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
+"let g:syntastic_error_symbol = '✗'
+"let g:syntastic_warning_symbol = '⚠'
+"let g:syntastic_style_error_symbol = '✗'
+"let g:syntastic_style_warning_symbol = '⚠'
 
 " Jedi-vim ------------------------------
 
@@ -414,29 +404,13 @@ let g:airline#extensions#whitespace#enabled = 0
 
 " to use fancy symbols for airline, uncomment the following lines and use a
 " patched font (more info on the README.rst)
-if !exists('g:airline_symbols')
-   let g:airline_symbols = {}
-endif
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_symbols.branch = '⭠'
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr = '⭡'
-
-" ======================== Aliases ===================== 
-cab W w
-cab Q q
-cab Wq wq
-cab wQ wq
-cab WQ wq
-cab t tab drop
-cab T tab drop
-cab tabe tab drop
-cab Tabe tab drop
-cab E e
- 
-" Adding quotes
-nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
-nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+"if !exists('g:airline_symbols')
+"   let g:airline_symbols = {}
+"endif
+"let g:airline_left_sep = '⮀'
+"let g:airline_left_alt_sep = '⮁'
+"let g:airline_right_sep = '⮂'
+"let g:airline_right_alt_sep = '⮃'
+"let g:airline_symbols.branch = '⭠'
+"let g:airline_symbols.readonly = '⭤'
+"let g:airline_symbols.linenr = '⭡'
