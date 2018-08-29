@@ -1,4 +1,7 @@
-" Fisa-vim-config
+" Lazaro's vimrc config
+" http://github.com/lazarocastro/vimrcpython
+" 
+" Based from Fisa-vim-config
 " http://fisadev.github.io/fisa-vim-config/
 " version: 8.3.1
 
@@ -130,6 +133,23 @@ endif
 " Vim settings and mappings
 " You can edit them as you wish
 
+" Vim folding settings ---------------------- {{{
+set foldmethod=indent
+
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+" }}}
+
+" This makes vim act like all other editors, buffers can
+" exist in the background without being in a window.
+" http://items.sjbach.com/319/configuring-vim-right
+set hidden
+
 " no vi-compatible
 set nocompatible
 
@@ -151,10 +171,11 @@ autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
 " always show status bar
 set ls=2
 
-" incremental search
-set incsearch
-" highlighted search results
-set hlsearch
+" ================ Search ===========================
+set incsearch   " incremental search
+set hlsearch    " highlighted search results
+set ignorecase  " Ignore case when searching...
+set smartcase   " ...unless we type a capital
 
 " syntax highlight on
 syntax on
@@ -215,8 +236,11 @@ if has('gui_running')
     colorscheme gruvbox
 endif
 
-" when scrolling, keep cursor 3 lines away from screen border
-set scrolloff=3
+" ================ Scrolling ========================
+
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
 
 " autocompletion of files and commands behaves like shell
 " (complete only the common part, list the options that match)
