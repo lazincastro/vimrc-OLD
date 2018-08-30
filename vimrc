@@ -134,15 +134,15 @@ endif
 " You can edit them as you wish
 
 " Vim folding settings ---------------------- {{{
-set foldmethod=indent
-
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
-
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-vnoremap <Space> zf
+" set foldmethod=indent
+" 
+" augroup filetype_vim
+"     autocmd!
+"     autocmd FileType vim setlocal foldmethod=marker
+" augroup END
+" 
+" nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+" vnoremap <Space> zf
 " }}}
 
 " This makes vim act like all other editors, buffers can
