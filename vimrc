@@ -113,8 +113,6 @@ endif
 Plug 'vim-scripts/IndexedSearch'
 " XML/HTML tags navigation
 Plug 'vim-scripts/matchit.zip'
-" Gvim colorscheme
-Plug 'vim-scripts/Wombat'
 " Yank history navigation
 Plug 'vim-scripts/YankRing.vim'
 
@@ -232,8 +230,8 @@ endif
 
 " colors for gvim
 if has('gui_running')
-    " colorscheme wombat
     colorscheme gruvbox
+    set background=dark
 endif
 
 " ================ Scrolling ========================
