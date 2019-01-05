@@ -1,5 +1,5 @@
 " Lazaro's vimrc config
-" http://github.com/lazarocastro/vimrcpython
+" http://github.com/lazarocastro/vimrc
 " 
 " Based from Fisa-vim-config
 " http://fisadev.github.io/fisa-vim-config/
@@ -113,6 +113,8 @@ endif
 Plug 'vim-scripts/IndexedSearch'
 " XML/HTML tags navigation
 Plug 'vim-scripts/matchit.zip'
+" Gvim colorscheme
+Plug 'vim-scripts/Wombat'
 " Yank history navigation
 Plug 'vim-scripts/YankRing.vim'
 
@@ -131,22 +133,25 @@ endif
 " Vim settings and mappings
 " You can edit them as you wish
 
-" Vim folding settings ---------------------- {{{
-" set foldmethod=indent
-" 
-" augroup filetype_vim
-"     autocmd!
-"     autocmd FileType vim setlocal foldmethod=marker
-" augroup END
-" 
-" nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-" vnoremap <Space> zf
-" }}}
-
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
 " http://items.sjbach.com/319/configuring-vim-right
 set hidden
+
+" Foldmark
+" You can create a fold on your code inclunding a comment like that:
+" html: 
+" <!-- HTML foldmark {{{ --> 
+"   CODE 
+" <!-- }}} -->
+" bash, python, ruby: 
+" # BASH foldmark {{{
+"   CODE              
+" # }}}
+" Them you press 'zc' to close fold and 'zo' to open and 'zi' to
+" disable/enable fold.
+set fdm=marker
+set foldmarker={{{,}}}
 
 " no vi-compatible
 set nocompatible
@@ -155,11 +160,24 @@ set nocompatible
 filetype plugin on
 filetype indent on
 
+" leader key
+let mapleader = ","
+
+" Window 
+" set winwidth=84
+" set winheight=5
+" set winminheight=5
+" set winheight=999
+
+
 " tabs and spaces handling
 set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+
+" slow way of never break syntax highlight from html files
+autocmd FileType html syntax sync fromstart
 
 " tab length exceptions on some file types
 autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4
@@ -221,7 +239,6 @@ nmap ,wr :Ack <cword><CR>
 " use 256 colors when possible
 if (&term =~? 'mlterm\|xterm\|xterm-256\|screen-256') || has('nvim')
 	let &t_Co = 256
-    " colorscheme fisa
     colorscheme gruvbox
     set background=dark
 else
@@ -230,6 +247,7 @@ endif
 
 " colors for gvim
 if has('gui_running')
+    " colorscheme wombat
     colorscheme gruvbox
     set background=dark
 endif
@@ -271,9 +289,9 @@ endif
 
 " Quicker method to run Python code inside Vim
 " For default Python2 common in Linux
-map <F5> <Esc>:w<CR>:!clear;python %<CR>
+"map <F5> <Esc>:w<CR>:!clear;python %<CR>
 " For Python 3
-map <F6> <Esc>:w<CR>:!clear;python3 %<CR>
+"map <F6> <Esc>:w<CR>:!clear;python3 %<CR>
 
 " Tagbar ----------------------------- 
 
@@ -342,15 +360,13 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 0
 " custom icons (enable them if you use a patched font, and enable the previous 
 " setting)
-"let g:syntastic_error_symbol = '✗'
-"let g:syntastic_warning_symbol = '⚠'
-"let g:syntastic_style_error_symbol = '✗'
-"let g:syntastic_style_warning_symbol = '⚠'
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_style_warning_symbol = '⚠'
 
 " Jedi-vim ------------------------------
 
-" All these mappings work only for python code:
-" Go to definition
 let g:jedi#goto_command = ',d'
 " Find ocurrences
 let g:jedi#usages_command = ',o'
@@ -458,3 +474,4 @@ cab E e
 " Adding quotes
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+
