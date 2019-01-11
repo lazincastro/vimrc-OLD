@@ -6,7 +6,7 @@ The lines to put into your terminal for ensuring you have the requirements are p
 ```sh
 sudo apt-get update
 sudo apt-get install vim
-sudo apt-get install curl vim exuberant-ctags git ack-grep python-pip python-fontforge terminator zsh zsh-syntax-highlighting zsh-theme-powerlevel9k powerline fonts-powerline golang tree"
+sudo apt-get install curl vim exuberant-ctags git ack-grep python-pip python-fontforge terminator zsh zsh-syntax-highlighting zsh-theme-powerlevel9k powerline fonts-powerline golang tree
 sudo pip install pep8 flake8 pyflakes isort yapf
 ```
 ## Oh My Zsh, Autosuggestions and Syntax-Highlighting
