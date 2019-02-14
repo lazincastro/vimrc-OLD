@@ -35,7 +35,12 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Plugins from github repos:
-
+" Improved nginx vim plugin
+Plug 'chr4/nginx.vim'
+" This plugin highlights code by indentation level instead of language syntax.
+Plug 'thiagoalessio/rainbow_levels.vim'
+"Vim syntax file & snippets for Docker's Dockerfile
+Plug 'ekalinin/Dockerfile.vim'
 " Gruvbox colorscheme
 Plug 'morhetz/gruvbox'
 " Override configs by directory 
@@ -138,6 +143,11 @@ endif
 " http://items.sjbach.com/319/configuring-vim-right
 set hidden
 
+" Disabled arrows
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 " Foldmark
 " You can create a fold on your code inclunding a comment like that:
 " html: 
@@ -183,6 +193,9 @@ autocmd FileType html syntax sync fromstart
 autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType shellscript setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " always show status bar
 set ls=2
@@ -212,14 +225,14 @@ map <C-S-Left> :tabp<CR>
 imap <C-S-Left> <ESC>:tabp<CR>
 
 " navigate windows with meta+arrows
-map <M-Right> <c-w>l
-map <M-Left> <c-w>h
-map <M-Up> <c-w>k
-map <M-Down> <c-w>j
-imap <M-Right> <ESC><c-w>l
-imap <M-Left> <ESC><c-w>h
-imap <M-Up> <ESC><c-w>k
-imap <M-Down> <ESC><c-w>j
+" map <M-Right> <c-w>l
+" map <M-Left> <c-w>h
+" map <M-Up> <c-w>k
+" map <M-Down> <c-w>j
+" imap <M-Right> <ESC><c-w>l
+" imap <M-Left> <ESC><c-w>h
+" imap <M-Up> <ESC><c-w>k
+" imap <M-Down> <ESC><c-w>j
 
 " old autocomplete keyboard shortcut
 imap <C-J> <C-X><C-O>
@@ -252,11 +265,24 @@ if has('gui_running')
     set background=dark
 endif
 
+" Gvim settings
+set vb t_vb=
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+" TODO
+" Verify if F1, F2 and F3 are avaiable to use
+"nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
+"nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
+"nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
+
 " ================ Scrolling ========================
 
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
+set mouse=a
 
 " autocompletion of files and commands behaves like shell
 " (complete only the common part, list the options that match)
@@ -287,13 +313,18 @@ endif
 " Plugins settings and mappings
 " Edit them as you wish.
 
+" Rainbow levels------------------------
+
+" Creating a mapping to turn it on and off:
+map <leader>l :RainbowLevelsToggle<cr>
+
 " Quicker method to run Python code inside Vim
 " For default Python2 common in Linux
 "map <F5> <Esc>:w<CR>:!clear;python %<CR>
 " For Python 3
 "map <F6> <Esc>:w<CR>:!clear;python3 %<CR>
 
-" Tagbar ----------------------------- 
+" Tagbar ------------------------------- 
 
 " toggle tagbar display
 map <F4> :TagbarToggle<CR>
@@ -305,7 +336,7 @@ let g:tagbar_autofocus = 1
 " toggle nerdtree display
 map <F3> :NERDTreeToggle<CR>
 " open nerdtree with the current file selected
-nmap ,t :NERDTreeFind<CR>
+"nmap ,t :NERDTreeFind<CR>
 " don;t show these file types
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
@@ -334,6 +365,10 @@ function! CtrlPWithSearchText(search_text, ctrlp_command_end)
     execute ':CtrlP' . a:ctrlp_command_end
     call feedkeys(a:search_text)
 endfunction
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+    \ 'AcceptSelection("t")': ['<cr>'],
+    \ }
 " same as previous mappings, but calling with current word as default text
 nmap ,wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
 nmap ,wG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
@@ -454,7 +489,6 @@ endif
 let g:airline_left_sep = '⮀'
 let g:airline_left_alt_sep = '⮁'
 let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
 let g:airline_symbols.branch = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
@@ -474,4 +508,5 @@ cab E e
 " Adding quotes
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+
 
