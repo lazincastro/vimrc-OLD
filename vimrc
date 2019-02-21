@@ -576,3 +576,8 @@ cab E e
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 " ============================================================================
+
+" Jenkinsfile VIM syntax highlighting
+" ============================================================================
+au BufNewFile,BufRead Jenkinsfile setf groovy
+" ============================================================================
