@@ -39,6 +39,8 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins From Github Repos
 " ============================================================================
+" Always highlight enclosing tags
+Plug 'Valloric/MatchTagAlways'
 " Improved nginx vim plugin
 Plug 'chr4/nginx.vim'
 " This plugin highlights code by indentation level instead of language syntax.
@@ -188,20 +190,28 @@ filetype indent on
 let mapleader = ","
 " ============================================================================
 
+" Basic Settings
+" ============================================================================
+syntax on           " Syntax Highlight On
+set incsearch       " incremental search
+set hlsearch        " highlighted search results
+set ignorecase      " Ignore case when searching...
+set smartcase       " ...unless we type a capital
+set nu              " Show Line Numbers
+set relativenumber  " Show Relative Numbers
+set ls=2            " Always Show Status Bar
+set expandtab       " Tabs and Spaces Handling
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+" ============================================================================
+
 " Window 
 " ============================================================================
 " set winwidth=84
 " set winheight=5
 " set winminheight=5
 " set winheight=999
-" ============================================================================
-
-" Tabs and Spaces Handling
-" ============================================================================
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
 " ============================================================================
 
 " Slow Way of Never Break Syntax Highlight From HTML Files
@@ -211,36 +221,12 @@ autocmd FileType html syntax sync fromstart
 
 " Tab Length Exceptions On Some File Types
 " ============================================================================
-autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType shellscript setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
-" ============================================================================
-
-" Always Show Status Bar
-" ============================================================================
-set ls=2
-" ============================================================================
-
-" Search
-" ============================================================================
-set incsearch   " incremental search
-set hlsearch    " highlighted search results
-set ignorecase  " Ignore case when searching...
-set smartcase   " ...unless we type a capital
-" ============================================================================
-
-" Syntax Highlight On
-" ============================================================================
-syntax on
-" ============================================================================
-
-" Show Line Numbers
-" ============================================================================
-set nu
-set relativenumber
 " ============================================================================
 
 " Tab Navigation Mappings
@@ -300,7 +286,6 @@ if (&term =~? 'mlterm\|xterm\|xterm-256\|screen-256') || has('nvim')
 else
     colorscheme delek
 endif
-
 " colors for gvim
 if has('gui_running')
     " colorscheme wombat
@@ -316,11 +301,6 @@ set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
-" TODO
-" Verify if F1, F2 and F3 are avaiable to use
-"nnoremap <C-F1> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
-"nnoremap <C-F2> :if &go=~#'T'<Bar>set go-=T<Bar>else<Bar>set go+=T<Bar>endif<CR>
-"nnoremap <C-F3> :if &go=~#'r'<Bar>set go-=r<Bar>else<Bar>set go+=r<Bar>endif<CR>
 " ============================================================================
 
 " Scrolling
@@ -339,18 +319,14 @@ set wildmode=list:longest
 
 " Better Backup, Swap and Undos Storage
 " ============================================================================
-set directory=~/.vim/dirs/tmp     " directory to place swap files in
-set backup                        " make backup files
-set backupdir=~/.vim/dirs/backups " where to put backup files
-set undofile                      " persistent undos - undo after you re-open the file
-set undodir=~/.vim/dirs/undos
+set directory=~/.vim/dirs/tmp               " directory to place swap files in
+set backup                                  " make backup files
+set backupdir=~/.vim/dirs/backups           " where to put backup files
+set undofile                                " persistent undos
+set undodir=~/.vim/dirs/undos               " undo after you re-open the file
 set viminfo+=n~/.vim/dirs/viminfo
-" store yankring history file there too
-let g:yankring_history_dir = '~/.vim/dirs/'
-" ============================================================================
-
+let g:yankring_history_dir = '~/.vim/dirs/' " store yankring history file
 " Create Needed Directories if They Don't Exist
-" ============================================================================
 if !isdirectory(&backupdir)
     call mkdir(&backupdir, "p")
 endif
@@ -386,11 +362,13 @@ let g:tagbar_autofocus = 1
 
 " NERDTree
 " ============================================================================
+" Uncomment if you want to Open a NERDTree automatically when vim starts up
+" if no files were specified.
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " toggle nerdtree display
 map <F3> :NERDTreeToggle<CR>
-" open nerdtree with the current file selected
-"nmap ,t :NERDTreeFind<CR>
-" don;t show these file types
+" don't show these file types
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 " ============================================================================
 
@@ -576,3 +554,24 @@ cab E e
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 " ============================================================================
+
+" Jenkinsfile VIM syntax highlighting
+" ============================================================================
+au BufNewFile,BufRead Jenkinsfile setf groovy
+" ============================================================================
+
+" MatchTagAlways
+" ============================================================================
+" This option holds all the filetypes for which this plugin will try to find
+" and highlight enclosing tags. You can find out what the current file's
+" filetype is in Vim with :set ft?. Don't forget that question mark at the
+" end!
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'php' : 1,
+    \}
+" Jumps to the enclosing tag if the tag is visible.
+nnoremap <leader>% :MtaJumpToOtherTag<cr>
