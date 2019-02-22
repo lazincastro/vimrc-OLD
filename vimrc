@@ -107,6 +107,11 @@ set shiftwidth=4
 let mapleader = ","     " Leader Key
 " ============================================================================
 
+" Set to show invisibles (tabs & trailing spaces) & their highlight color
+" ============================================================================
+"set list listchars=tab:»\ ,trail:·
+set showbreak=↪\ 
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 " Disabled Arrows
 " ============================================================================
 noremap <Up> <NOP>
