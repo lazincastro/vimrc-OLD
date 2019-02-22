@@ -7,8 +7,7 @@
 " ============================================================================
 
 " Vim-Plug Initialization
-" \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-" /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+" >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Avoid modify this section, unless you are very sure of what you are doing
 let vim_plug_just_installed = 0
 let vim_plug_path = expand('~/.vim/autoload/plug.vim')
@@ -26,110 +25,55 @@ if vim_plug_just_installed
 endif
 
 " Obscure hacks done, you can now modify the rest of the .vimrc as you wish :)
-" /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-" \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-" Active Plugins
-" ============================================================================
-" You can disable or add new ones here:
-" this needs to be here, so vim-plug knows we are declaring the plugins we
-" want to use
-call plug#begin('~/.vim/plugged')
-" ============================================================================
-
-" Plugins From Github Repos
-" ============================================================================
-" Always highlight enclosing tags
-Plug 'Valloric/MatchTagAlways'
-" Improved nginx vim plugin
-Plug 'chr4/nginx.vim'
-" This plugin highlights code by indentation level instead of language syntax.
-Plug 'thiagoalessio/rainbow_levels.vim'
-"Vim syntax file & snippets for Docker's Dockerfile
-Plug 'ekalinin/Dockerfile.vim'
-" Gruvbox colorscheme
-Plug 'morhetz/gruvbox'
-" Override configs by directory 
-Plug 'arielrossanigo/dir-configs-override.vim'
-" Better file browser
-Plug 'scrooloose/nerdtree'
-" Code commenter
-Plug 'scrooloose/nerdcommenter'
-" Class/module browser
-Plug 'majutsushi/tagbar'
-" Code and files fuzzy finder
-Plug 'ctrlpvim/ctrlp.vim'
-" Extension to ctrlp, for fuzzy command finder
-Plug 'fisadev/vim-ctrlp-cmdpalette'
-" Zen coding
-Plug 'mattn/emmet-vim'
-" Git integration
-Plug 'motemen/git-vim'
-" Tab list panel
-Plug 'kien/tabman.vim'
-" Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" Terminal Vim with 256 colors colorscheme
-Plug 'fisadev/fisa-vim-colorscheme'
-" Consoles as buffers
-Plug 'rosenfeld/conque-term'
-" Pending tasks list
-Plug 'fisadev/FixedTaskList.vim'
-" Surround
-Plug 'tpope/vim-surround'
-" Autoclose
-Plug 'Townk/vim-autoclose'
-" Indent text object
-Plug 'michaeljsmith/vim-indent-object'
-" Indentation based movements
-Plug 'jeetsukumaran/vim-indentwise'
-" Python autocompletion, go to definition.
-Plug 'davidhalter/jedi-vim'
-" Better autocompletion
-Plug 'Shougo/neocomplcache.vim'
-" Snippets manager (SnipMate), dependencies, and snippets repo
-Plug 'MarcWeber/vim-addon-mw-utils'
+" Plugins From Github and Vim-scripts Repos
+" ================================================================================================
+call plug#begin('~/.vim/plugged')               " Active Plugins
+Plug 'Valloric/MatchTagAlways'                  " Always highlight enclosing tags
+Plug 'chr4/nginx.vim'                           " Improved nginx vim plugin
+Plug 'thiagoalessio/rainbow_levels.vim'         " highlights code by indentation level
+Plug 'ekalinin/Dockerfile.vim'                  " Dockerfile syntax file & snippets
+Plug 'morhetz/gruvbox'                          " Gruvbox colorscheme
+Plug 'arielrossanigo/dir-configs-override.vim'  " Override configs by directory 
+Plug 'scrooloose/nerdtree'                      " Better file browser
+Plug 'scrooloose/nerdcommenter'                 " Code commenter
+Plug 'majutsushi/tagbar'                        " Class/module browser
+Plug 'ctrlpvim/ctrlp.vim'                       " Code and files fuzzy finder
+Plug 'fisadev/vim-ctrlp-cmdpalette'             " Extension to ctrlp, for fuzzy command finder
+Plug 'mattn/emmet-vim'                          " Zen coding
+Plug 'motemen/git-vim'                          " Git integration
+Plug 'kien/tabman.vim'                          " Tab list panel
+Plug 'vim-airline/vim-airline'                  " Airline
+Plug 'vim-airline/vim-airline-themes'           " Airline themes
+Plug 'fisadev/fisa-vim-colorscheme'             " Terminal Vim with 256 colors colorscheme
+Plug 'rosenfeld/conque-term'                    " Consoles as buffers
+Plug 'fisadev/FixedTaskList.vim'                " Pending tasks list
+Plug 'tpope/vim-surround'                       " Surround
+Plug 'Townk/vim-autoclose'                      " Autoclose
+Plug 'michaeljsmith/vim-indent-object'          " Indent text object
+Plug 'jeetsukumaran/vim-indentwise'             " Indentation based movements
+Plug 'davidhalter/jedi-vim'                     " Python autocompletion, go to definition.
+Plug 'Shougo/neocomplcache.vim'                 " Better autocompletion
+Plug 'MarcWeber/vim-addon-mw-utils'             " TODO 
 Plug 'tomtom/tlib_vim'
 Plug 'honza/vim-snippets'
 Plug 'garbas/vim-snipmate'
-" Git/mercurial/others diff icons on the side of the file lines
-Plug 'mhinz/vim-signify'
-" Automatically sort python imports
-Plug 'fisadev/vim-isort'
-" Drag visual blocks arround
-Plug 'fisadev/dragvisuals.vim'
-" Window chooser
-Plug 't9md/vim-choosewin'
-" Python and other languages code checker
-Plug 'scrooloose/syntastic'
-" Paint css colors with the real color
-Plug 'lilydjwg/colorizer'
-" Ack code search (requires ack installed in the system)
-Plug 'mileszs/ack.vim'
+Plug 'mhinz/vim-signify'                        " Git/mercurial/others diff icons of the file lines
+Plug 'fisadev/vim-isort'                        " Automatically sort python imports
+Plug 'fisadev/dragvisuals.vim'                  " Drag visual blocks arround
+Plug 't9md/vim-choosewin'                       " Window chooser
+Plug 'scrooloose/syntastic'                     " Python and other languages code checker
+Plug 'lilydjwg/colorizer'                       " Paint css colors with the real color
+Plug 'vim-scripts/IndexedSearch'                " Search results counter
+Plug 'vim-scripts/matchit.zip'                  " XML/HTML tags navigation
+Plug 'vim-scripts/YankRing.vim'                 " Yank history navigation
+Plug 'mileszs/ack.vim'                          " Ack code search (requires ack was installed in the OS)
 if has('python')
-    " YAPF formatter for Python
-    Plug 'pignacio/vim-yapf-format'
+    Plug 'pignacio/vim-yapf-format'             " YAPF formatter for Python
 endif
-" Relative numbering of lines (0 is the current line)
-" (disabled by default because is very intrusive and can't be easily toggled
-" on/off. When the plugin is present, will always activate the relative 
-" numbering every time you go to normal mode. Author refuses to add a setting 
-" to avoid that)
-" Plug 'myusuf3/numbers.vim'
-
-" Plugins from vim-scripts repos:
-" Search results counter
-Plug 'vim-scripts/IndexedSearch'
-" XML/HTML tags navigation
-Plug 'vim-scripts/matchit.zip'
-" Gvim colorscheme
-Plug 'vim-scripts/Wombat'
-" Yank history navigation
-Plug 'vim-scripts/YankRing.vim'
-" Tell vim-plug we finished declaring plugins, so it can load them
-call plug#end()
-" ============================================================================
+call plug#end()                                 " Tell vim-plug we finished declaring plugins
+" ================================================================================================
 
 " Install Plugins The First Time Vim Runs
 " ============================================================================
@@ -139,14 +83,28 @@ if vim_plug_just_installed
 endif
 " ============================================================================
 
-" Vim Settings and Mappings
+" Basic Settings
 " ============================================================================
-" You can edit them as you wish
-
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
 " http://items.sjbach.com/319/configuring-vim-right
 set hidden
+set nocompatible
+filetype plugin on      " Allow Plugins By File Type (required for plugins!)
+filetype indent on      " Allow Plugins By File Type (required for plugins!)
+syntax on               " Syntax Highlight On
+set incsearch           " incremental search
+set hlsearch            " highlighted search results
+set ignorecase          " Ignore case when searching...
+set smartcase           " ...unless we type a capital
+set nu                  " Show Line Numbers
+set relativenumber      " Show Relative Numbers
+set ls=2                " Always Show Status Bar
+set expandtab           " Tabs and Spaces Handling
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+let mapleader = ","     " Leader Key
 " ============================================================================
 
 " Disabled Arrows
@@ -172,38 +130,6 @@ noremap <Right> <NOP>
 " disable/enable fold.
 set fdm=marker
 set foldmarker={{{,}}}
-" ============================================================================
-
-" No Vi-Compatible
-" ============================================================================
-set nocompatible
-" ============================================================================
-
-" Allow Plugins By File Type (required for plugins!)
-" ============================================================================
-filetype plugin on
-filetype indent on
-" ============================================================================
-
-" Leader Key
-" ============================================================================
-let mapleader = ","
-" ============================================================================
-
-" Basic Settings
-" ============================================================================
-syntax on           " Syntax Highlight On
-set incsearch       " incremental search
-set hlsearch        " highlighted search results
-set ignorecase      " Ignore case when searching...
-set smartcase       " ...unless we type a capital
-set nu              " Show Line Numbers
-set relativenumber  " Show Relative Numbers
-set ls=2            " Always Show Status Bar
-set expandtab       " Tabs and Spaces Handling
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
 " ============================================================================
 
 " Window 
@@ -242,18 +168,6 @@ map <C-S-Left> :tabp<CR>
 imap <C-S-Left> <ESC>:tabp<CR>
 " ============================================================================
 
-" Navigate Windows With Meta+Arrows
-" ============================================================================
-" map <M-Right> <c-w>l
-" map <M-Left> <c-w>h
-" map <M-Up> <c-w>k
-" map <M-Down> <c-w>j
-" imap <M-Right> <ESC><c-w>l
-" imap <M-Left> <ESC><c-w>h
-" imap <M-Up> <ESC><c-w>k
-" imap <M-Down> <ESC><c-w>j
-" ============================================================================
-
 " Old Autocomplete Keyboard Shortcut
 " ============================================================================
 imap <C-J> <C-X><C-O>
@@ -288,7 +202,6 @@ else
 endif
 " colors for gvim
 if has('gui_running')
-    " colorscheme wombat
     colorscheme gruvbox
     set background=dark
 endif
@@ -296,11 +209,11 @@ endif
 
 " Gvim Settings
 " ============================================================================
-set vb t_vb=
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
-set guioptions-=L  "remove left-hand scroll bar
+set vb t_vb=        " Disable beeping
+set guioptions-=m   " Remove menu bar
+set guioptions-=T   " Remove toolbar
+set guioptions-=r   " Remove right-hand scroll bar
+set guioptions-=L   " Remove left-hand scroll bar
 " ============================================================================
 
 " Scrolling
@@ -362,10 +275,6 @@ let g:tagbar_autofocus = 1
 
 " NERDTree
 " ============================================================================
-" Uncomment if you want to Open a NERDTree automatically when vim starts up
-" if no files were specified.
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " toggle nerdtree display
 map <F3> :NERDTreeToggle<CR>
 " don't show these file types
