@@ -559,7 +559,6 @@ nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 " ============================================================================
 au BufNewFile,BufRead Jenkinsfile setf groovy
 " ============================================================================
-<<<<<<< HEAD
 
 " MatchTagAlways
 " ============================================================================
@@ -576,5 +575,4 @@ let g:mta_filetypes = {
     \}
 " Jumps to the enclosing tag if the tag is visible.
 nnoremap <leader>% :MtaJumpToOtherTag<cr>
-=======
->>>>>>> c8b56bd920898597446526579a9aeacc8d8a84e8
+" ============================================================================
