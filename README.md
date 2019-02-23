@@ -1,4 +1,4 @@
-# Vimrc for Python
+# My personal .vimrc and some settings.
 
 ## Main Installations
 The lines to put into your terminal for ensuring you have the requirements are provided below:
