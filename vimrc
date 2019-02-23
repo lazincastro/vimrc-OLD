@@ -35,7 +35,7 @@ Plug 'chr4/nginx.vim'                           " Improved nginx vim plugin
 Plug 'thiagoalessio/rainbow_levels.vim'         " highlights code by indentation level
 Plug 'ekalinin/Dockerfile.vim'                  " Dockerfile syntax file & snippets
 Plug 'morhetz/gruvbox'                          " Gruvbox colorscheme
-Plug 'arielrossanigo/dir-configs-override.vim'  " Override configs by directory 
+Plug 'arielrossanigo/dir-configs-override.vim'  " Override configs by directory
 Plug 'scrooloose/nerdtree'                      " Better file browser
 Plug 'scrooloose/nerdcommenter'                 " Code commenter
 Plug 'majutsushi/tagbar'                        " Class/module browser
@@ -55,7 +55,7 @@ Plug 'michaeljsmith/vim-indent-object'          " Indent text object
 Plug 'jeetsukumaran/vim-indentwise'             " Indentation based movements
 Plug 'davidhalter/jedi-vim'                     " Python autocompletion, go to definition.
 Plug 'Shougo/neocomplcache.vim'                 " Better autocompletion
-Plug 'MarcWeber/vim-addon-mw-utils'             " TODO 
+Plug 'MarcWeber/vim-addon-mw-utils'             " TODO
 Plug 'tomtom/tlib_vim'
 Plug 'honza/vim-snippets'
 Plug 'garbas/vim-snipmate'
@@ -81,7 +81,6 @@ if vim_plug_just_installed
     echo "Installing Bundles, please ignore key map error messages"
     :PlugInstall
 endif
-" ============================================================================
 
 " Basic Settings
 " ============================================================================
@@ -97,104 +96,97 @@ set incsearch           " incremental search
 set hlsearch            " highlighted search results
 set ignorecase          " Ignore case when searching...
 set smartcase           " ...unless we type a capital
-set nu                  " Show Line Numbers
+set number              " Show Line Numbers
 set relativenumber      " Show Relative Numbers
-set ls=2                " Always Show Status Bar
+set laststatus=2        " Always Show Status Bar
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab           " Tabs and Spaces Handling
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
 let mapleader = ","     " Leader Key
-" ============================================================================
 
 " Set to show invisibles (tabs & trailing spaces) & their highlight color
 " ============================================================================
 "set list listchars=tab:»\ ,trail:·
-set showbreak=↪\ 
-set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+set showbreak=↪\
+set list listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+
+" Toggle highlighting of search results
+" ============================================================================
+
+nnoremap <leader><space> :nohlsearch<cr>
+
 " Disabled Arrows
 " ============================================================================
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-" ============================================================================
 
 " Foldmark
 " ============================================================================
 " You can create a fold on your code inclunding a comment like that:
-" html: 
-" <!-- HTML foldmark {{{ --> 
-"   CODE 
+" html:
+" <!-- HTML foldmark {{{ -->
+"   CODE
 " <!-- }}} -->
-" bash, python, ruby: 
+" bash, python, ruby:
 " # BASH foldmark {{{
-"   CODE              
+"   CODE
 " # }}}
 " Them you press 'zc' to close fold and 'zo' to open and 'zi' to
 " disable/enable fold.
 set fdm=marker
 set foldmarker={{{,}}}
-" ============================================================================
 
-" Window 
+" Window
 " ============================================================================
 " set winwidth=84
 " set winheight=5
 " set winminheight=5
 " set winheight=999
-" ============================================================================
-
-" Slow Way of Never Break Syntax Highlight From HTML Files
-" ============================================================================
-autocmd FileType html syntax sync fromstart
-" ============================================================================
 
 " Tab Length Exceptions On Some File Types
 " ============================================================================
+autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html syntax sync fromstart
 autocmd FileType htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType shellscript setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
-" ============================================================================
 
 " Tab Navigation Mappings
 " ============================================================================
 map tn :tabn<CR>
 map tp :tabp<CR>
-map tm :tabm 
-map tt :tabnew 
+map tm :tabm
+map tt :tabnew
 map ts :tab split<CR>
 map <C-S-Right> :tabn<CR>
 imap <C-S-Right> <ESC>:tabn<CR>
 map <C-S-Left> :tabp<CR>
 imap <C-S-Left> <ESC>:tabp<CR>
-" ============================================================================
 
 " Old Autocomplete Keyboard Shortcut
 " ============================================================================
 imap <C-J> <C-X><C-O>
-" ============================================================================
 
 " Comment This Line To Enable Autocompletion Preview Window
 " ============================================================================
 " (displays documentation related to the selected completion option)
 " Disabled by default because preview makes the window flicker
 set completeopt-=preview
-" ============================================================================
 
 " Save As Sudo
 " ============================================================================
 ca w!! w !sudo tee "%"
-" ============================================================================
 
 " Simple Recursive Grep
 " ============================================================================
-nmap ,r :Ack 
+nmap ,r :Ack
 nmap ,wr :Ack <cword><CR>
-" ============================================================================
 
 " Use 256 Colors When Possible
 " ============================================================================
@@ -210,7 +202,6 @@ if has('gui_running')
     colorscheme gruvbox
     set background=dark
 endif
-" ============================================================================
 
 " Gvim Settings
 " ============================================================================
@@ -219,7 +210,6 @@ set guioptions-=m   " Remove menu bar
 set guioptions-=T   " Remove toolbar
 set guioptions-=r   " Remove right-hand scroll bar
 set guioptions-=L   " Remove left-hand scroll bar
-" ============================================================================
 
 " Scrolling
 " ============================================================================
@@ -227,13 +217,11 @@ set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 set mouse=a
-" ============================================================================
 
 " Autocompletion of Files and Commands Behaves Like Shell
 " ============================================================================
 " (complete only the common part, list the options that match)
 set wildmode=list:longest
-" ============================================================================
 
 " Better Backup, Swap and Undos Storage
 " ============================================================================
@@ -254,13 +242,11 @@ endif
 if !isdirectory(&undodir)
     call mkdir(&undodir, "p")
 endif
-" ============================================================================
 
 " Rainbow Levels
 " ============================================================================
 " Creating a mapping to turn it on and off:
 map <leader>l :RainbowLevelsToggle<cr>
-" ============================================================================
 
 " Quicker Method to Run Python Code Inside Vim
 " ============================================================================
@@ -268,7 +254,6 @@ map <leader>l :RainbowLevelsToggle<cr>
 "map <F5> <Esc>:w<CR>:!clear;python %<CR>
 " For Python 3
 "map <F6> <Esc>:w<CR>:!clear;python3 %<CR>
-" ============================================================================
 
 " Tagbar
 " ============================================================================
@@ -276,7 +261,6 @@ map <leader>l :RainbowLevelsToggle<cr>
 map <F4> :TagbarToggle<CR>
 " autofocus on tagbar open
 let g:tagbar_autofocus = 1
-" ============================================================================
 
 " NERDTree
 " ============================================================================
@@ -284,13 +268,11 @@ let g:tagbar_autofocus = 1
 map <F3> :NERDTreeToggle<CR>
 " don't show these file types
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
-" ============================================================================
 
 " Tasklist
 " ============================================================================
 " show pending tasks list
 map <F2> :TaskList<CR>
-" ============================================================================
 
 " CtrlP
 " ============================================================================
@@ -330,7 +312,6 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
   \ 'file': '\.pyc$\|\.pyo$',
   \ }
-" ============================================================================
 
 " Syntastic
 " ============================================================================
@@ -340,13 +321,12 @@ let g:ctrlp_custom_ignore = {
 let g:syntastic_check_on_open = 1
 " don't put icons on the sign column (it hides the vcs status icons of signify)
 let g:syntastic_enable_signs = 0
-" custom icons (enable them if you use a patched font, and enable the previous 
+" custom icons (enable them if you use a patched font, and enable the previous
 " setting)
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
-" ============================================================================
 
 " Jedi-Vim
 " ============================================================================
@@ -357,12 +337,11 @@ let g:jedi#usages_command = ',o'
 let g:jedi#goto_assignments_command = ',a'
 " Go to definition in new tab
 nmap ,D :tab split<CR>:call jedi#goto()<CR>
-" ============================================================================
 
 " NeoComplCache
 " ============================================================================
 " most of them not documented because I'm not sure how they work
-" (docs aren't good, had to do a lot of trial and error to make 
+" (docs aren't good, had to do a lot of trial and error to make
 " it play nice)
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_ignore_case = 1
@@ -379,20 +358,17 @@ let g:neocomplcache_min_syntax_length = 1
 " complete with workds from any opened file
 let g:neocomplcache_same_filetype_lists = {}
 let g:neocomplcache_same_filetype_lists._ = '_'
-" ============================================================================
 
 " TabMan
 " ============================================================================
 " mappings to toggle display, and to focus on it
 let g:tabman_toggle = 'tl'
 let g:tabman_focus  = 'tf'
-" ============================================================================
 
 " Autoclose
 " ============================================================================
 " Fix to let ESC work as espected with Autoclose plugin
 let g:AutoClosePumvisible = {"ENTER": "\<C-Y>", "ESC": "\<ESC>"}
-" ============================================================================
 
 " DragVisuals
 " ============================================================================
@@ -403,7 +379,6 @@ vmap <expr> <S-M-DOWN> DVB_Drag('down')
 vmap <expr> <S-M-UP> DVB_Drag('up')
 " mapping to duplicate block
 vmap <expr> D DVB_Duplicate()
-" ============================================================================
 
 " Signify
 " ============================================================================
@@ -420,7 +395,6 @@ highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
 highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
 highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
-" ============================================================================
 
 " Window Chooser
 " ============================================================================
@@ -428,7 +402,6 @@ highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
 nmap  -  <Plug>(choosewin)
 " show big letters
 let g:choosewin_overlay_enable = 1
-" ============================================================================
 
 " Airline
 " ============================================================================
@@ -447,7 +420,6 @@ let g:airline_right_sep = '⮂'
 let g:airline_symbols.branch = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
-" ============================================================================
 
 " Aliases
 " ============================================================================
@@ -461,18 +433,15 @@ cab T tab drop
 cab tabe tab drop
 cab Tabe tab drop
 cab E e
-" ============================================================================
- 
+
 " Adding Quotes Manually
 " ============================================================================
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
-" ============================================================================
 
 " Jenkinsfile VIM syntax highlighting
 " ============================================================================
 au BufNewFile,BufRead Jenkinsfile setf groovy
-" ============================================================================
 
 " MatchTagAlways
 " ============================================================================
@@ -489,4 +458,3 @@ let g:mta_filetypes = {
     \}
 " Jumps to the enclosing tag if the tag is visible.
 nnoremap <leader>% :MtaJumpToOtherTag<cr>
-" ============================================================================
