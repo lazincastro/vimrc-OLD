@@ -18,7 +18,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugi
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 ```
 
-nano ~/.zshrc find plugins=(git)
+vim ~/.zshrc and find "plugins=(git)" session
 Append zsh-autosuggestions & zsh-syntax-highlighting to plugins() like this
 ```
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
@@ -36,6 +36,8 @@ cd fonts
 cd ..
 rm -rf fonts
 ```
+## If you had a trouble to donfigure I recommend to access the link below:
+[How can I install and use powerline plugin?](https://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin)
 
 
 
