@@ -63,7 +63,6 @@ Plug 'rosenfeld/conque-term'                    "Consoles as buffers
 Plug 'scrooloose/nerdcommenter'                 "Code commenter
 Plug 'scrooloose/nerdtree'                      "Better file browser
 Plug 'scrooloose/syntastic'                     "Python and other languages code checker
-"Plug 't9md/vim-choosewin'                       "Window chooser
 Plug 'thiagoalessio/rainbow_levels.vim'         "highlights code by indentation level
 Plug 'tomtom/tlib_vim'                          "SnipMate dependence
 Plug 'tpope/vim-surround'                       "Surround
@@ -93,7 +92,6 @@ syntax enable                   "Syntax Highlight On
 filetype plugin indent on       "Allow Plugins By File Type (required for plugins!)
 set backspace=indent,eol,start  "Make backspace behave like every other editor.
 let mapleader = ','             "The default leader is \, but a comma is much better.
-"set nowrap
 set hidden
 set number                      "Let's activate line numbers.
 set relativenumber              "Show Relative Numbers
@@ -102,14 +100,12 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab                   "Tabs and Spaces Handling
-set cursorline                  "Cursor Line
-set cursorcolumn                "Cursor Column
 
 "-------------Search-------------"
 set incsearch           "incremental search
 set hlsearch            "highlighted search results
 set ignorecase          "Ignore case when searching...
-set smartcase           "...unless we type a capital
+set smartcase           " ...unless we type a capital
 
 "-------------Tab Length Exceptions On Some File Types-------------"
 autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
@@ -144,18 +140,18 @@ endif
 "-------------Visuals-------------"
 colorscheme gruvbox
 set bg=dark
-set t_CO=256
-set guioptions-=l
-set guioptions-=L
-set guioptions-=r
-set guioptions-=R
+set t_Co=256
+set guioptions-=l               "Disable left-hand scrollbar
+set guioptions-=L               "Disable left-hand scrollbar vertically
+set guioptions-=r               "Disable right-hand scrollbar
+set guioptions-=R               "Disable right-hand scrollbar vertically
+set cursorline                  "Cursor Line
+set cursorcolumn                "Cursor Column
 
 "-------------Airline-------------"
 let g:airline_powerline_fonts = 0
 let g:airline_theme = 'gruvbox'
 let g:airline#extensions#whitespace#enabled = 0
-"to use fancy symbols for airline, uncomment the following liShougo/neocomplcache.vimnes and use a
-"patched font (more info on the README.rst)
 if !exists('g:airline_symbols')
    let g:airline_symbols = {}
 endif
