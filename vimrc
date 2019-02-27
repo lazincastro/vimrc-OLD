@@ -34,7 +34,7 @@ endif
 
 "-------------Plugins From Github and Vim-scripts Repos-------------"
 call plug#begin('~/.vim/plugged')               "Active Plugins
-Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'MarcWeber/vim-addon-mw-utils'             "SnipMate dependence
 Plug 'Shougo/neocomplcache.vim'                 "Better autocompletion
 Plug 'Townk/vim-autoclose'                      "Autoclose
 Plug 'Valloric/MatchTagAlways'                  "Always highlight enclosing tags
@@ -47,8 +47,8 @@ Plug 'fisadev/FixedTaskList.vim'                "Pending tasks list
 Plug 'fisadev/dragvisuals.vim'                  "Drag visual blocks arround
 Plug 'fisadev/vim-ctrlp-cmdpalette'             "Extension to ctrlp, for fuzzy command finder
 Plug 'fisadev/vim-isort'                        "Automatically sort python imports
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
+Plug 'garbas/vim-snipmate'                      "SnipMate aims to provide support for textual snippets
+Plug 'honza/vim-snippets'                       "Snippets files for various programming languages.
 Plug 'jeetsukumaran/vim-indentwise'             "Indentation based movements
 Plug 'kien/tabman.vim'                          "Tab list panel
 Plug 'lilydjwg/colorizer'                       "Paint css colors with the real color
@@ -65,7 +65,7 @@ Plug 'scrooloose/nerdtree'                      "Better file browser
 Plug 'scrooloose/syntastic'                     "Python and other languages code checker
 "Plug 't9md/vim-choosewin'                       "Window chooser
 Plug 'thiagoalessio/rainbow_levels.vim'         "highlights code by indentation level
-Plug 'tomtom/tlib_vim'
+Plug 'tomtom/tlib_vim'                          "SnipMate dependence
 Plug 'tpope/vim-surround'                       "Surround
 Plug 'tpope/vim-vinegar'                        "Simple file browser
 Plug 'vim-airline/vim-airline'                  "Airline
