@@ -1,7 +1,18 @@
+""""""""""""""""""""""""""""""""""""""""
 " ==================================== "
-" Lazaro's vimrc config 2019           "
+" Lazaro's .vimrc config 2019          "
 " http://github.com/lazarocastro/vimrc "
 " ==================================== "
+"                                      "
+""""""""""""""""""""""""""""""""""""""""
+" ♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
+" ♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙
+" □ ■ □ ■ □ ■ □ ■
+" ■ □ ■ □ ■ □ ■ □
+" □ ■ □ ■ □ ■ □ ■
+" ■ □ ■ □ ■ □ ■ □
+" ♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
+" ♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
 
 "-------------Vim-Plug Initialization-------------"
 " Avoid modify this section, unless you are very sure of what you are doing
@@ -34,7 +45,7 @@ Plug 'davidhalter/jedi-vim'                     "Python autocompletion, go to de
 Plug 'ekalinin/Dockerfile.vim'                  "Dockerfile syntax file & snippets
 Plug 'fisadev/FixedTaskList.vim'                "Pending tasks list
 Plug 'fisadev/dragvisuals.vim'                  "Drag visual blocks arround
-"Plug 'fisadev/vim-ctrlp-cmdpalette'             "Extension to ctrlp, for fuzzy command finder
+Plug 'fisadev/vim-ctrlp-cmdpalette'             "Extension to ctrlp, for fuzzy command finder
 Plug 'fisadev/vim-isort'                        "Automatically sort python imports
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
@@ -82,7 +93,7 @@ syntax enable                   "Syntax Highlight On
 filetype plugin indent on       "Allow Plugins By File Type (required for plugins!)
 set backspace=indent,eol,start  "Make backspace behave like every other editor.
 let mapleader = ','             "The default leader is \, but a comma is much better.
-set nowrap
+"set nowrap
 set hidden
 set number                      "Let's activate line numbers.
 set relativenumber              "Show Relative Numbers
@@ -91,6 +102,8 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab                   "Tabs and Spaces Handling
+set cursorline                  "Cursor Line
+set cursorcolumn                "Cursor Column
 
 "-------------Search-------------"
 set incsearch           "incremental search
@@ -164,6 +177,7 @@ cab T tab drop
 cab tabe tab drop
 cab Tabe tab drop
 cab E e
+
 "-------------Tabs & Trailing Spaces-------------"
 set showbreak=↪\
 set list listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
@@ -180,7 +194,6 @@ set guioptions-=T   "Disable toolbar
 set guioptions-=r   "Disable right-hand scroll bar
 set guioptions-=L   "Disable left-hand scroll bar
 set guioptions-=e   "Disable gui tabs
-"set linespace=12
 
 "-------------Split Management-------------"
 set splitbelow
@@ -191,6 +204,8 @@ nmap <C-H> <C-W><C-H>
 nmap <C-L> <C-W><C-L>
 
 "-------------Mappings-------------"
+"Open all Buffer in Tab
+map <F10> :tab sball<cr>
 "Make it easy to edit the Vimrc file."
 nmap <Leader>ev :tabedit ~/.vimrc<cr>
 "Add simple highlight removal.
@@ -262,7 +277,7 @@ let g:tagbar_autofocus = 1
 set wildmode=list:longest
 
 "-------------Simple Recursive Grep-------------"
-nmap ,r :Ack
+nmap ,r :Ack<space>
 nmap ,wr :Ack <cword><CR>
 
 "-------------CtrlP-------------"
@@ -283,10 +298,11 @@ function! CtrlPWithSearchText(search_text, ctrlp_command_end)
     execute ':CtrlP' . a:ctrlp_command_end
     call feedkeys(a:search_text)
 endfunction
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
-    \ 'AcceptSelection("t")': ['<cr>'],
-    \ }
+"Open search on a new tab
+"let g:ctrlp_prompt_mappings = {
+"    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+"    \ 'AcceptSelection("t")': ['<cr>'],
+"    \ }
 " same as previous mappings, but calling with current word as default text
 nmap ,wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
 nmap ,wG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
@@ -326,3 +342,18 @@ let g:jedi#goto_assignments_command = ',a'
 " Go to definition in new tab
 nmap ,D :tab split<CR>:call jedi#goto()<CR>
 
+" Signify
+" ============================================================================
+" this first setting decides in which order try to guess your current vcs
+" UPDATE it to reflect your preferences, it will speed up opening files
+let g:signify_vcs_list = [ 'git', 'hg' ]
+" mappings to jump to changed blocks
+nmap <leader>sn <plug>(signify-next-hunk)
+nmap <leader>sp <plug>(signify-prev-hunk)
+" nicer colors
+highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
+highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
+highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
+highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
+highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
+highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
