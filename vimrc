@@ -148,6 +148,10 @@ set guioptions-=R               "Disable right-hand scrollbar vertically
 set cursorline                  "Cursor Line
 set cursorcolumn                "Cursor Column
 
+"-------------Tabs & Trailing Spaces-------------"
+set showbreak=↪\
+"set list listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+
 "-------------Airline-------------"
 let g:airline_powerline_fonts = 0
 let g:airline_theme = 'gruvbox'
@@ -173,10 +177,6 @@ cab T tab drop
 cab tabe tab drop
 cab Tabe tab drop
 cab E e
-
-"-------------Tabs & Trailing Spaces-------------"
-set showbreak=↪\
-set list listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
 "-------------Scrolling-------------"
 set scrolloff=8 
