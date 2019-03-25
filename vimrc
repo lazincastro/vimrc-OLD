@@ -1,10 +1,7 @@
-""""""""""""""""""""""""""""""""""""""""
 " ==================================== "
 " Lazaro's .vimrc config 2019          "
 " http://github.com/lazarocastro/vimrc "
 " ==================================== "
-"                                      "
-""""""""""""""""""""""""""""""""""""""""
 
 "-------------Vim-Plug Initialization-------------"
 " Avoid modify this section, unless you are very sure of what you are doing
@@ -26,6 +23,7 @@ endif
 
 "-------------Plugins From Github and Vim-scripts Repos-------------"
 call plug#begin('~/.vim/plugged')               "Active Plugins
+Plug 'fatih/vim-go'                             "Vim Go Plugin
 Plug 'MarcWeber/vim-addon-mw-utils'             "SnipMate dependence
 Plug 'Shougo/neocomplcache.vim'                 "Better autocompletion
 Plug 'Townk/vim-autoclose'                      "Autoclose
@@ -76,22 +74,23 @@ if vim_plug_just_installed
 endif
 
 "-------------Basic Settings-------------"
-"This makes vim act like all other editors, buffers can
-"exist in the background without being in a window.
-"http://items.sjbach.com/319/configuring-vim-right
+"This makes vim act like all other editors, buffers can exist in the background without being in a
+"window. http://items.sjbach.com/319/configuring-vim-right
 set nocompatible                "We want the latest Vim settings/options.
 syntax enable                   "Syntax Highlight On
 filetype plugin indent on       "Allow Plugins By File Type (required for plugins!)
 set backspace=indent,eol,start  "Make backspace behave like every other editor.
 let mapleader = ','             "The default leader is \, but a comma is much better.
-set hidden
+set hidden                      "Allow Vim to manage multiple buffers effectively
 set number                      "Let's activate line numbers.
 set relativenumber              "Show Relative Numbers
 set laststatus=2                "Always Show Status Bar
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=2                   "Number of space that <TAB>
+set shiftwidth=2                "Number of space on (auto)ident"
+set softtabstop=2               "Number of space that <TAB>
 set expandtab                   "Tabs and Spaces Handling
+set nowrap                      "Disable long line wrap
+set title                       "Let vim set the title
 
 "-------------Search-------------"
 set incsearch           "incremental search
@@ -131,18 +130,22 @@ endif
 
 "-------------Visuals-------------"
 colorscheme gruvbox
-set bg=dark
-set t_Co=256
-set guioptions-=l               "Disable left-hand scrollbar
-set guioptions-=L               "Disable left-hand scrollbar vertically
-set guioptions-=r               "Disable right-hand scrollbar
-set guioptions-=R               "Disable right-hand scrollbar vertically
-set cursorline                  "Cursor Line
-set cursorcolumn                "Cursor Column
+set bg=dark           "background used for highlight color
+set t_Co=256          "Enable 256 colors in Vim
+set guioptions-=l     "Disable left-hand scrollbar
+set guioptions-=L     "Disable left-hand scrollbar vertically
+set guioptions-=r     "Disable right-hand scrollbar
+set guioptions-=R     "Disable right-hand scrollbar vertically
+set cursorline        "Cursor Line
+set cursorcolumn      "Cursor Column
+set colorcolumn=100   "Screen columns that are highlight
 
 "-------------Tabs & Trailing Spaces-------------"
-set showbreak=↪\
-"set list listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+"set showbreak=↪\
+set list listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+"set listchars=tab:>-,trail:·,eol:$
+"set list listchars=tab:»·,trail:·,eol:$
+nmap <silent> <leader>s :set nolist!<CR>
 
 "-------------Airline-------------"
 let g:airline_powerline_fonts = 0
@@ -201,7 +204,7 @@ nmap <leader><space> :nohlsearch<cr>
 "Make NERDTree easier to toggle.
 nmap <F3> :NERDTreeToggle<cr>
 let NERDTreeHijackNetrw = 0
-" Save As Sudo
+"Save As Sudo
 ca w!! w !sudo tee "%"
 
 "-------------Auto-Commands-------------"
@@ -215,10 +218,9 @@ augroup END
 au BufNewFile,BufRead Jenkinsfile setf groovy
 
 "-------------MatchTagAlways-------------"
-"This option holds all the filetypes for which this plugin will try to find
-"and highlight enclosing tags. You can find out what the current file's
-"filetype is in Vim with :set ft?. Don't forget that question mark at the
-"end!
+"This option holds all the filetypes for which this plugin will try to find and highlight enclosing
+"tags. You can find out what the current file's filetype is in Vim with :set ft?. Don't forget that
+"question mark at the end!
 let g:mta_filetypes = {
     \ 'html' : 1,
     \ 'xhtml' : 1,
@@ -226,13 +228,12 @@ let g:mta_filetypes = {
     \ 'jinja' : 1,
     \ 'php' : 1,
     \}
-" Jumps to the enclosing tag if the tag is visible.
+"Jumps to the enclosing tag if the tag is visible.
 nnoremap <leader>% :MtaJumpToOtherTag<cr>
 
 "-------------NeoComplCache-------------"
-"most of them not documented because I'm not sure how they work
-"(docs aren't good, had to do a lot of trial and error to make
-"it play nice)
+"most of them not documented because I'm not sure how they work (docs aren't good, had to do a lot
+"of trial and error to make it play nice)
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_ignore_case = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -245,7 +246,7 @@ let g:neocomplcache_auto_completion_start_length = 1
 let g:neocomplcache_manual_completion_start_length = 1
 let g:neocomplcache_min_keyword_length = 1
 let g:neocomplcache_min_syntax_length = 1
-" complete with workds from any opened file
+"complete with workds from any opened file
 let g:neocomplcache_same_filetype_lists = {}
 let g:neocomplcache_same_filetype_lists._ = '_'
 
@@ -260,8 +261,7 @@ map <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 "-------------Autocompletion-------------"
-"Files and Commands Behaves Like Shell
-"(complete only the common part, list the options that match)
+"Files and Commands Behaves Like Shell (complete only the common part, list the options that match)
 set wildmode=list:longest
 
 "-------------Simple Recursive Grep-------------"
@@ -269,19 +269,19 @@ nmap ,r :Ack<space>
 nmap ,wr :Ack <cword><CR>
 
 "-------------CtrlP-------------"
-" file finder mapping
+"file finder mapping
 let g:ctrlp_map = ',e'
-" tags (symbols) in current file finder mapping
+"tags (symbols) in current file finder mapping
 nmap ,g :CtrlPBufTag<CR>
-" tags (symbols) in all files finder mapping
+"tags (symbols) in all files finder mapping
 nmap ,G :CtrlPBufTagAll<CR>
-" general code finder in all files mapping
+"general code finder in all files mapping
 nmap ,f :CtrlPLine<CR>
-" recent files finder mapping
+"recent files finder mapping
 nmap ,m :CtrlPMRUFiles<CR>
-" commands finder mapping
+"commands finder mapping
 nmap ,c :CtrlPCmdPalette<CR>
-" to be able to call CtrlP with default search text
+"to be able to call CtrlP with default search text
 function! CtrlPWithSearchText(search_text, ctrlp_command_end)
     execute ':CtrlP' . a:ctrlp_command_end
     call feedkeys(a:search_text)
@@ -291,7 +291,7 @@ endfunction
 "    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
 "    \ 'AcceptSelection("t")': ['<cr>'],
 "    \ }
-" same as previous mappings, but calling with current word as default text
+"same as previous mappings, but calling with current word as default text
 nmap ,wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
 nmap ,wG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
 nmap ,wf :call CtrlPWithSearchText(expand('<cword>'), 'Line')<CR>
@@ -299,23 +299,22 @@ nmap ,we :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
 nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
 nmap ,wm :call CtrlPWithSearchText(expand('<cword>'), 'MRUFiles')<CR>
 nmap ,wc :call CtrlPWithSearchText(expand('<cword>'), 'CmdPalette')<CR>
-" don't change working directory
+"don't change working directory
 let g:ctrlp_working_path_mode = 0
-" ignore these files and folders on file finder
+"ignore these files and folders on file finder
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
   \ 'file': '\.pyc$\|\.pyo$',
   \ }
 
 "-------------Syntastic-------------"
-" show list of errors and warnings on the current file
-" nmap <leader>e :Errors<CR>
-" check also when just opened the file
+"show list of errors and warnings on the current file
+"nmap <leader>e :Errors<CR>
+"check also when just opened the file
 let g:syntastic_check_on_open = 1
-" don't put icons on the sign column (it hides the vcs status icons of signify)
+"don't put icons on the sign column (it hides the vcs status icons of signify)
 let g:syntastic_enable_signs = 0
-" custom icons (enable them if you use a patched font, and enable the previous
-" setting)
+"custom icons (enable them if you use a patched font, and enable the previous setting)
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_style_error_symbol = '✗'
@@ -323,22 +322,21 @@ let g:syntastic_style_warning_symbol = '⚠'
 
 "-------------Jedi-Vim-------------"
 let g:jedi#goto_command = ',d'
-" Find ocurrences
+"Find ocurrences
 let g:jedi#usages_command = ',o'
-" Find assignments
+"Find assignments
 let g:jedi#goto_assignments_command = ',a'
-" Go to definition in new tab
+"Go to definition in new tab
 nmap ,D :tab split<CR>:call jedi#goto()<CR>
 
-" Signify
-" ============================================================================
-" this first setting decides in which order try to guess your current vcs
-" UPDATE it to reflect your preferences, it will speed up opening files
+"-------------Signify-------------"
+"This first setting decides in which order try to guess your current vcs UPDATE it to reflect your
+"preferences, it will speed up opening files
 let g:signify_vcs_list = [ 'git', 'hg' ]
-" mappings to jump to changed blocks
+"mappings to jump to changed blocks
 nmap <leader>sn <plug>(signify-next-hunk)
 nmap <leader>sp <plug>(signify-prev-hunk)
-" nicer colors
+"nicer colors
 highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
 highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
 highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
