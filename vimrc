@@ -86,7 +86,7 @@ set number                      "Let's activate line numbers.
 set relativenumber              "Show Relative Numbers
 set laststatus=2                "Always Show Status Bar
 set tabstop=2                   "Number of space that <TAB>
-set shiftwidth=2                "Number of space on (auto)ident"
+set shiftwidth=2                "Number of space on (auto)ident
 set softtabstop=2               "Number of space that <TAB>
 set expandtab                   "Tabs and Spaces Handling
 set nowrap                      "Disable long line wrap
