@@ -22,50 +22,51 @@ endif
 " Obscure hacks done, you can now modify the rest of the .vimrc as you wish :)
 
 "-------------Plugins From Github and Vim-scripts Repos-------------"
-call plug#begin('~/.vim/plugged')               "Active Plugins
-Plug 'fatih/vim-go'                             "Vim Go Plugin
-Plug 'MarcWeber/vim-addon-mw-utils'             "SnipMate dependence
-Plug 'Shougo/neocomplcache.vim'                 "Better autocompletion
-Plug 'Townk/vim-autoclose'                      "Autoclose
-Plug 'Valloric/MatchTagAlways'                  "Always highlight enclosing tags
-Plug 'arielrossanigo/dir-configs-override.vim'  "Override configs by directory
-Plug 'chr4/nginx.vim'                           "Improved nginx vim plugin
-Plug 'ctrlpvim/ctrlp.vim'                       "Code and files fuzzy finder
-Plug 'davidhalter/jedi-vim'                     "Python autocompletion, go to definition.
-Plug 'ekalinin/Dockerfile.vim'                  "Dockerfile syntax file & snippets
-Plug 'fisadev/FixedTaskList.vim'                "Pending tasks list
-Plug 'fisadev/dragvisuals.vim'                  "Drag visual blocks arround
-Plug 'fisadev/vim-ctrlp-cmdpalette'             "Extension to ctrlp, for fuzzy command finder
-Plug 'fisadev/vim-isort'                        "Automatically sort python imports
-Plug 'garbas/vim-snipmate'                      "SnipMate aims to provide support for textual snippets
-Plug 'honza/vim-snippets'                       "Snippets files for various programming languages.
-Plug 'jeetsukumaran/vim-indentwise'             "Indentation based movements
-Plug 'kien/tabman.vim'                          "Tab list panel
-Plug 'lilydjwg/colorizer'                       "Paint css colors with the real color
-Plug 'majutsushi/tagbar'                        "Class/module browser
-Plug 'mattn/emmet-vim'                          "Zen coding
-Plug 'mhinz/vim-signify'                        "Git/mercurial/others diff icons of the file lines
-Plug 'michaeljsmith/vim-indent-object'          "Indent text object
-Plug 'mileszs/ack.vim'                          "Ack code search (requires ack was installed in the OS)
-Plug 'morhetz/gruvbox'                          "Gruvbox colorscheme
-Plug 'motemen/git-vim'                          "Git integration
-Plug 'rosenfeld/conque-term'                    "Consoles as buffers
-Plug 'scrooloose/nerdcommenter'                 "Code commenter
-Plug 'scrooloose/nerdtree'                      "Better file browser
-Plug 'scrooloose/syntastic'                     "Python and other languages code checker
-Plug 'thiagoalessio/rainbow_levels.vim'         "highlights code by indentation level
-Plug 'tomtom/tlib_vim'                          "SnipMate dependence
-Plug 'tpope/vim-surround'                       "Surround
-Plug 'tpope/vim-vinegar'                        "Simple file browser
-Plug 'vim-airline/vim-airline'                  "Airline
-Plug 'vim-airline/vim-airline-themes'           "Airline themes
-Plug 'vim-scripts/IndexedSearch'                "Search results counter
-Plug 'vim-scripts/YankRing.vim'                 "Yank history navigation
-Plug 'vim-scripts/matchit.zip'                  "XML/HTML tags navigation
+call plug#begin('~/.vim/plugged')              "Active Plugins
+Plug 'Yggdroot/indentLine'                     "Displaying thin vertical lines at each indentation
+Plug 'fatih/vim-go'                            "Vim Go Plugin
+Plug 'MarcWeber/vim-addon-mw-utils'            "SnipMate dependence
+Plug 'Shougo/neocomplcache.vim'                "Better autocompletion
+Plug 'Townk/vim-autoclose'                     "Autoclose
+Plug 'Valloric/MatchTagAlways'                 "Always highlight enclosing tags
+Plug 'arielrossanigo/dir-configs-override.vim' "Override configs by directory
+Plug 'chr4/nginx.vim'                          "Improved nginx vim plugin
+Plug 'ctrlpvim/ctrlp.vim'                      "Code and files fuzzy finder
+Plug 'davidhalter/jedi-vim'                    "Python autocompletion, go to definition.
+Plug 'ekalinin/Dockerfile.vim'                 "Dockerfile syntax file & snippets
+Plug 'fisadev/FixedTaskList.vim'               "Pending tasks list
+Plug 'fisadev/dragvisuals.vim'                 "Drag visual blocks arround
+Plug 'fisadev/vim-ctrlp-cmdpalette'            "Extension to ctrlp, for fuzzy command finder
+Plug 'fisadev/vim-isort'                       "Automatically sort python imports
+Plug 'garbas/vim-snipmate'                     "SnipMate aims to provide support for textual snippets
+Plug 'honza/vim-snippets'                      "Snippets files for various programming languages.
+Plug 'jeetsukumaran/vim-indentwise'            "Indentation based movements
+Plug 'kien/tabman.vim'                         "Tab list panel
+Plug 'lilydjwg/colorizer'                      "Paint css colors with the real color
+Plug 'majutsushi/tagbar'                       "Class/module browser
+Plug 'mattn/emmet-vim'                         "Zen coding
+Plug 'mhinz/vim-signify'                       "Git/mercurial/others diff icons of the file lines
+Plug 'michaeljsmith/vim-indent-object'         "Indent text object
+Plug 'mileszs/ack.vim'                         "Ack code search (requires ack was installed in the OS)
+Plug 'morhetz/gruvbox'                         "Gruvbox colorscheme
+Plug 'motemen/git-vim'                         "Git integration
+Plug 'rosenfeld/conque-term'                   "Consoles as buffers
+Plug 'scrooloose/nerdcommenter'                "Code commenter
+Plug 'scrooloose/nerdtree'                     "Better file browser
+Plug 'scrooloose/syntastic'                    "Python and other languages code checker
+Plug 'thiagoalessio/rainbow_levels.vim'        "highlights code by indentation level
+Plug 'tomtom/tlib_vim'                         "SnipMate dependence
+Plug 'tpope/vim-surround'                      "Surround
+Plug 'tpope/vim-vinegar'                       "Simple file browser
+Plug 'vim-airline/vim-airline'                 "Airline
+Plug 'vim-airline/vim-airline-themes'          "Airline themes
+Plug 'vim-scripts/IndexedSearch'               "Search results counter
+Plug 'vim-scripts/YankRing.vim'                "Yank history navigation
+Plug 'vim-scripts/matchit.zip'                 "XML/HTML tags navigation
 if has('python')
-    Plug 'pignacio/vim-yapf-format'             "YAPF formatter for Python
+    Plug 'pignacio/vim-yapf-format'            "YAPF formatter for Python
 endif
-call plug#end()                                 "Tell vim-plug we finished declaring plugins
+call plug#end()                                "Tell vim-plug we finished declaring plugins
 
 "-------------Install Plugins The First Time Vim Runs-------------"
 if vim_plug_just_installed
