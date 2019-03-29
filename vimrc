@@ -23,6 +23,7 @@ endif
 
 "-------------Plugins From Github and Vim-scripts Repos-------------"
 call plug#begin('~/.vim/plugged')              "Active Plugins
+Plug 'jiangmiao/auto-pairs'                    "Insert or delete brackets, parens, quotes in pair
 Plug 'Yggdroot/indentLine'                     "Displaying thin vertical lines at each indentation
 Plug 'fatih/vim-go'                            "Vim Go Plugin
 Plug 'MarcWeber/vim-addon-mw-utils'            "SnipMate dependence
@@ -198,6 +199,8 @@ nmap <C-L> <C-W><C-L>
 "-------------Mappings-------------"
 "Open all Buffer in Tab
 map <F10> :tab sball<cr>
+"Open all Buffer in Vertical Split
+map <F9> :vert sball<cr>
 "Make it easy to edit the Vimrc file."
 nmap <Leader>ev :tabedit ~/.vimrc<cr>
 "Add simple highlight removal.
@@ -207,6 +210,23 @@ nmap <F3> :NERDTreeToggle<cr>
 let NERDTreeHijackNetrw = 0
 "Save As Sudo
 ca w!! w !sudo tee "%"
+"jk is escape
+inoremap jk <esc>
+"kj is escape
+inoremap kj <esc>
+
+"-------------Rename current file-------------"
+function! RenameFile()
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'))
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfunction
+map <leader>n :call RenameFile()<cr>
+
 
 "-------------Auto-Commands-------------"
 "Automatically source the Vimrc file on save."
