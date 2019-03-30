@@ -23,8 +23,8 @@ endif
 
 "-------------Plugins From Github and Vim-scripts Repos-------------"
 call plug#begin('~/.vim/plugged')              "Active Plugins
-Plug 'jiangmiao/auto-pairs'                    "Insert or delete brackets, parens, quotes in pair
-Plug 'Yggdroot/indentLine'                     "Displaying thin vertical lines at each indentation
+Plug 'jiangmiao/auto-pairs'                    "brackets parens quotes in pair
+Plug 'Yggdroot/indentLine'                     "vertical lines at indentation
 Plug 'fatih/vim-go'                            "Vim Go Plugin
 Plug 'MarcWeber/vim-addon-mw-utils'            "SnipMate dependence
 Plug 'Shougo/neocomplcache.vim'                "Better autocompletion
@@ -33,29 +33,29 @@ Plug 'Valloric/MatchTagAlways'                 "Always highlight enclosing tags
 Plug 'arielrossanigo/dir-configs-override.vim' "Override configs by directory
 Plug 'chr4/nginx.vim'                          "Improved nginx vim plugin
 Plug 'ctrlpvim/ctrlp.vim'                      "Code and files fuzzy finder
-Plug 'davidhalter/jedi-vim'                    "Python autocompletion, go to definition.
-Plug 'ekalinin/Dockerfile.vim'                 "Dockerfile syntax file & snippets
+Plug 'davidhalter/jedi-vim'                    "Python autocompletion
+Plug 'ekalinin/Dockerfile.vim'                 "Dockerfile syntax & snippets
 Plug 'fisadev/FixedTaskList.vim'               "Pending tasks list
 Plug 'fisadev/dragvisuals.vim'                 "Drag visual blocks arround
-Plug 'fisadev/vim-ctrlp-cmdpalette'            "Extension to ctrlp, for fuzzy command finder
-Plug 'fisadev/vim-isort'                       "Automatically sort python imports
-Plug 'garbas/vim-snipmate'                     "SnipMate aims to provide support for textual snippets
-Plug 'honza/vim-snippets'                      "Snippets files for various programming languages.
+Plug 'fisadev/vim-ctrlp-cmdpalette'            "Ctrlp extension for fuzzy
+Plug 'fisadev/vim-isort'                       "Auto sort python imports
+Plug 'garbas/vim-snipmate'                     "SnipMate support snippets
+Plug 'honza/vim-snippets'                      "Snippets for many languages.
 Plug 'jeetsukumaran/vim-indentwise'            "Indentation based movements
 Plug 'kien/tabman.vim'                         "Tab list panel
-Plug 'lilydjwg/colorizer'                      "Paint css colors with the real color
+Plug 'lilydjwg/colorizer'                      "Paint css colors
 Plug 'majutsushi/tagbar'                       "Class/module browser
 Plug 'mattn/emmet-vim'                         "Zen coding
-Plug 'mhinz/vim-signify'                       "Git/mercurial/others diff icons of the file lines
+Plug 'mhinz/vim-signify'                       "Git diff icons
 Plug 'michaeljsmith/vim-indent-object'         "Indent text object
-Plug 'mileszs/ack.vim'                         "Ack code search (requires ack was installed in the OS)
+Plug 'mileszs/ack.vim'                         "Ack code search
 Plug 'morhetz/gruvbox'                         "Gruvbox colorscheme
 Plug 'motemen/git-vim'                         "Git integration
 Plug 'rosenfeld/conque-term'                   "Consoles as buffers
 Plug 'scrooloose/nerdcommenter'                "Code commenter
 Plug 'scrooloose/nerdtree'                     "Better file browser
-Plug 'scrooloose/syntastic'                    "Python and other languages code checker
-Plug 'thiagoalessio/rainbow_levels.vim'        "highlights code by indentation level
+Plug 'scrooloose/syntastic'                    "Languages code checker
+Plug 'thiagoalessio/rainbow_levels.vim'        "highlights indentation level
 Plug 'tomtom/tlib_vim'                         "SnipMate dependence
 Plug 'tpope/vim-surround'                      "Surround
 Plug 'tpope/vim-vinegar'                       "Simple file browser
@@ -67,7 +67,7 @@ Plug 'vim-scripts/matchit.zip'                 "XML/HTML tags navigation
 if has('python')
     Plug 'pignacio/vim-yapf-format'            "YAPF formatter for Python
 endif
-call plug#end()                                "Tell vim-plug we finished declaring plugins
+call plug#end()                                "Vim-plug finished declaring
 
 "-------------Install Plugins The First Time Vim Runs-------------"
 if vim_plug_just_installed
@@ -76,14 +76,14 @@ if vim_plug_just_installed
 endif
 
 "-------------Basic Settings-------------"
-"This makes vim act like all other editors, buffers can exist in the background without being in a
-"window. http://items.sjbach.com/319/configuring-vim-right
+"This makes vim act like all other editors, buffers can exist in the background
+"without being in a window. http://items.sjbach.com/319/configuring-vim-right
 set nocompatible                "We want the latest Vim settings/options.
 syntax enable                   "Syntax Highlight On
-filetype plugin indent on       "Allow Plugins By File Type (required for plugins!)
-set backspace=indent,eol,start  "Make backspace behave like every other editor.
-let mapleader = ','             "The default leader is \, but a comma is much better.
-set hidden                      "Allow Vim to manage multiple buffers effectively
+filetype plugin indent on       "Allow Plugins By File Type (plugins required!)
+set backspace=indent,eol,start  "Make backspace behave like every other editor
+let mapleader = ','             "The default leader is \
+set hidden                      "Allow Vim to manage multiple buffers
 set number                      "Let's activate line numbers.
 set relativenumber              "Show Relative Numbers
 set laststatus=2                "Always Show Status Bar
@@ -140,7 +140,7 @@ set guioptions-=r     "Disable right-hand scrollbar
 set guioptions-=R     "Disable right-hand scrollbar vertically
 set cursorline        "Cursor Line
 set cursorcolumn      "Cursor Column
-set colorcolumn=100   "Screen columns that are highlight
+set colorcolumn=80    "Screen columns that are highlight
 
 "-------------Tabs & Trailing Spaces-------------"
 "set showbreak=↪\
@@ -239,9 +239,9 @@ augroup END
 au BufNewFile,BufRead Jenkinsfile setf groovy
 
 "-------------MatchTagAlways-------------"
-"This option holds all the filetypes for which this plugin will try to find and highlight enclosing
-"tags. You can find out what the current file's filetype is in Vim with :set ft?. Don't forget that
-"question mark at the end!
+"This option holds all the filetypes for which this plugin will try to find and
+"highlight enclosing tags. You can find out what the current file's filetype is
+"in Vim with :set ft?. Don't forget that question mark at the end!
 let g:mta_filetypes = {
     \ 'html' : 1,
     \ 'xhtml' : 1,
@@ -253,8 +253,8 @@ let g:mta_filetypes = {
 nnoremap <leader>% :MtaJumpToOtherTag<cr>
 
 "-------------NeoComplCache-------------"
-"most of them not documented because I'm not sure how they work (docs aren't good, had to do a lot
-"of trial and error to make it play nice)
+"most of them not documented because I'm not sure how they work (docs aren't
+"good, had to do a lot of trial and error to make it play nice)
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_ignore_case = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -282,7 +282,8 @@ map <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 "-------------Autocompletion-------------"
-"Files and Commands Behaves Like Shell (complete only the common part, list the options that match)
+"Files and Commands Behaves Like Shell (complete only the common part, list the
+"options that match)
 set wildmode=list:longest
 
 "-------------Simple Recursive Grep-------------"
@@ -335,7 +336,7 @@ let g:ctrlp_custom_ignore = {
 let g:syntastic_check_on_open = 1
 "don't put icons on the sign column (it hides the vcs status icons of signify)
 let g:syntastic_enable_signs = 0
-"custom icons (enable them if you use a patched font, and enable the previous setting)
+"custom icons (enable them if you use a patched font)
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_style_error_symbol = '✗'
@@ -351,8 +352,8 @@ let g:jedi#goto_assignments_command = ',a'
 nmap ,D :tab split<CR>:call jedi#goto()<CR>
 
 "-------------Signify-------------"
-"This first setting decides in which order try to guess your current vcs UPDATE it to reflect your
-"preferences, it will speed up opening files
+"This first setting decides in which order try to guess your current vcs UPDATE
+"it to reflect your preferences, it will speed up opening files
 let g:signify_vcs_list = [ 'git', 'hg' ]
 "mappings to jump to changed blocks
 nmap <leader>sn <plug>(signify-next-hunk)
