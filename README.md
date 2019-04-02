@@ -1,12 +1,11 @@
 # My personal .vimrc and some settings.
 
 ## Main Installations
-These lines to put into your terminal for ensuring you have the requirements are provided below:
+Copy and Paste these lines into your terminal for ensuring you have the requirements are provided below:
 
 ```sh
 sudo apt-get update
 sudo apt-get install vim # Install if you don't have.
-
 # To work propely, I recomend to you install these programns below:
 # OBS.: The first 6 programs are required, the rest of them are cosmetic issue.
 sudo apt-get install \
@@ -24,11 +23,11 @@ zsh-syntax-highlighting \
 zsh-theme-powerlevel9k \
 powerline \
 fonts-powerline
-
 # You'll need of these to work with python scripts/programns.
 sudo pip install pep8 flake8 pyflakes isort yapf
-
+# Download vimrc
 curl https://raw.githubusercontent.com/lazarocastro/vimrc/master/vimrc -o ~/.vimrc
+vim
 ```
 
 # Installation and Configuration of Oh My Zsh
