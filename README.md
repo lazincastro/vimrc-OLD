@@ -16,15 +16,14 @@ git \
 ack-grep \
 ripgrep \
 python-pip \
-python-fontforge \
+tree \
 terminator \
+python-fontforge \
 zsh \
 zsh-syntax-highlighting \
 zsh-theme-powerlevel9k \
 powerline \
-fonts-powerline \
-golang \
-tree
+fonts-powerline
 
 # You'll need of these to work with python scripts/programns.
 sudo pip install pep8 flake8 pyflakes isort yapf
@@ -39,8 +38,8 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugi
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 ```
 
-vim ~/.zshrc and find "plugins=(git)" session
-Append zsh-autosuggestions & zsh-syntax-highlighting to plugins() like this
+Execute that command "vim +/plugins=\( ~/.zshrc" to find "plugins=(git)" session and 
+append zsh-autosuggestions & zsh-syntax-highlighting to plugins() like this
 ```
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 ```
