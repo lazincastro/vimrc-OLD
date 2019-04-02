@@ -13,7 +13,6 @@ sudo apt-get -qq update
 sudo apt-get install vim 
 # To work propely, I recomend to you install these programns below:
 # OBS.: The first 6 programs are required, the rest of them are cosmetic issue.
-echo "Install all programns requireds..."
 sudo apt-get -qq install \
 curl \
 exuberant-ctags \
@@ -34,7 +33,9 @@ sudo pip -q install pep8 flake8 pyflakes isort yapf
 echo "Install Python requireds. Done"
 echo "Download vimrc..."
 # Download vimrc
-curl https://raw.githubusercontent.com/lazarocastro/vimrc/master/vimrc -o ~/.vimrc
+curl -s https://raw.githubusercontent.com/lazarocastro/vimrc/master/vimrc -o ~/.vimrc
 vim +qa
 clear
 echo "Installation Completed!"
+rm wget-log
+rm install.sh
