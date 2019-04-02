@@ -1,7 +1,14 @@
 # My personal .vimrc and some settings.
 
 ## Main Installations
-Copy and Paste these lines into your terminal for ensuring you have the requirements are provided below:
+
+Use the **install.sh** script 
+
+```sh
+curl -s https://raw.githubusercontent.com/lazarocastro/vimrc/master/install.sh | sh
+```
+
+Or **copy** and **paste** these lines into your terminal for ensuring you have the requirements are provided below:
 
 ```sh
 sudo apt-get update
