@@ -27,7 +27,8 @@ fonts-powerline
 sudo pip install pep8 flake8 pyflakes isort yapf
 # Download vimrc
 curl https://raw.githubusercontent.com/lazarocastro/vimrc/master/vimrc -o ~/.vimrc
-vim
+vim +qa
+clear
 ```
 
 # Installation and Configuration of Oh My Zsh
