@@ -24,7 +24,7 @@ endif
 "-------------Plugins From Github and Vim-scripts Repos-------------"
 call plug#begin('~/.vim/plugged')              "Active Plugins
 Plug 'jiangmiao/auto-pairs'                    "brackets parens quotes in pair
-Plug 'Yggdroot/indentLine'                     "vertical lines at indentation
+Plug 'Yggdroot/indentLine'                     "Vertical lines at indentation
 Plug 'fatih/vim-go'                            "Vim Go Plugin
 Plug 'MarcWeber/vim-addon-mw-utils'            "SnipMate dependence
 Plug 'Shougo/neocomplcache.vim'                "Better autocompletion
@@ -145,10 +145,8 @@ set cursorcolumn      "Cursor Column
 set colorcolumn=80    "Screen columns that are highlight
 
 "-------------Tabs & Trailing Spaces-------------"
-"set showbreak=↪\
 set list listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 "set listchars=tab:>-,trail:·,eol:$
-nmap <silent> <leader>s :set nolist!<CR>
 
 "-------------Airline-------------"
 let g:airline_powerline_fonts = 0
@@ -220,6 +218,8 @@ nnoremap <leader>t :bo term<cr><C-w>:exe "resize " . (winheight(0) * 1/3)<CR>
 nnoremap <leader>tt <Esc>:close!<cr>
 " FZF Fuzzy Finder
 nnoremap <C-p> :<C-u>FZF<CR>
+" Silent Indent Lines, Tabs and trailing
+nmap <silent> <leader>s :IndentLinesToggle<CR><Esc>:set nolist!<CR>
 
 "-------------Rename current file-------------"
 function! RenameFile()
