@@ -32,13 +32,8 @@ Plug 'Townk/vim-autoclose'                     "Autoclose
 Plug 'Valloric/MatchTagAlways'                 "Always highlight enclosing tags
 Plug 'arielrossanigo/dir-configs-override.vim' "Override configs by directory
 Plug 'chr4/nginx.vim'                          "Improved nginx vim plugin
-Plug 'ctrlpvim/ctrlp.vim'                      "Code and files fuzzy finder
 Plug 'davidhalter/jedi-vim'                    "Python autocompletion
 Plug 'ekalinin/Dockerfile.vim'                 "Dockerfile syntax & snippets
-Plug 'fisadev/FixedTaskList.vim'               "Pending tasks list
-Plug 'fisadev/dragvisuals.vim'                 "Drag visual blocks arround
-Plug 'fisadev/vim-ctrlp-cmdpalette'            "Ctrlp extension for fuzzy
-Plug 'fisadev/vim-isort'                       "Auto sort python imports
 Plug 'garbas/vim-snipmate'                     "SnipMate support snippets
 Plug 'honza/vim-snippets'                      "Snippets for many languages.
 Plug 'jeetsukumaran/vim-indentwise'            "Indentation based movements
@@ -57,13 +52,20 @@ Plug 'scrooloose/nerdtree'                     "Better file browser
 Plug 'scrooloose/syntastic'                    "Languages code checker
 Plug 'thiagoalessio/rainbow_levels.vim'        "highlights indentation level
 Plug 'tomtom/tlib_vim'                         "SnipMate dependence
+Plug 'fisadev/FixedTaskList.vim'               "Pending tasks list
+Plug 'fisadev/dragvisuals.vim'                 "Drag visual blocks arround
+Plug 'fisadev/vim-isort'                       "Auto sort python imports
+Plug 'tpope/vim-unimpaired'                    "Pairs of bracket mappings
 Plug 'tpope/vim-surround'                      "Surround
 Plug 'tpope/vim-vinegar'                       "Simple file browser
+Plug 'tpope/vim-fugitive'                      "Git integration
 Plug 'vim-airline/vim-airline'                 "Airline
 Plug 'vim-airline/vim-airline-themes'          "Airline themes
 Plug 'vim-scripts/IndexedSearch'               "Search results counter
 Plug 'vim-scripts/YankRing.vim'                "Yank history navigation
 Plug 'vim-scripts/matchit.zip'                 "XML/HTML tags navigation
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'                        "Fuzzy finder
 if has('python')
     Plug 'pignacio/vim-yapf-format'            "YAPF formatter for Python
 endif
@@ -146,7 +148,6 @@ set colorcolumn=80    "Screen columns that are highlight
 "set showbreak=↪\
 set list listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 "set listchars=tab:>-,trail:·,eol:$
-"set list listchars=tab:»·,trail:·,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
 
 "-------------Airline-------------"
@@ -176,7 +177,7 @@ cab Tabe tab drop
 cab E e
 
 "-------------Scrolling-------------"
-set scrolloff=8 
+set scrolloff=8
 set sidescrolloff=15
 set sidescroll=1
 set mouse=a
@@ -188,13 +189,13 @@ set guioptions-=r   "Disable right-hand scroll bar
 set guioptions-=L   "Disable left-hand scroll bar
 set guioptions-=e   "Disable gui tabs
 
-"-------------Split Management-------------"
+"-------------Split settigns-------------"
 set splitbelow
 set splitright
-nmap <C-J> <C-W><C-J>
-nmap <C-K> <C-W><C-K>
-nmap <C-H> <C-W><C-H>
-nmap <C-L> <C-W><C-L>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 "-------------Mappings-------------"
 "Open all Buffer in Tab
@@ -214,6 +215,11 @@ ca w!! w !sudo tee "%"
 inoremap jk <esc>
 "kj is escape
 inoremap kj <esc>
+"Terminal
+nnoremap <leader>t :bo term<cr><C-w>:exe "resize " . (winheight(0) * 1/3)<CR>
+nnoremap <leader>tt <Esc>:close!<cr>
+" FZF Fuzzy Finder
+nnoremap <C-p> :<C-u>FZF<CR>
 
 "-------------Rename current file-------------"
 function! RenameFile()
@@ -290,52 +296,13 @@ set wildmode=list:longest
 nmap ,r :Ack<space>
 nmap ,wr :Ack <cword><CR>
 
-"-------------CtrlP-------------"
-"file finder mapping
-let g:ctrlp_map = ',e'
-"tags (symbols) in current file finder mapping
-nmap ,g :CtrlPBufTag<CR>
-"tags (symbols) in all files finder mapping
-nmap ,G :CtrlPBufTagAll<CR>
-"general code finder in all files mapping
-nmap ,f :CtrlPLine<CR>
-"recent files finder mapping
-nmap ,m :CtrlPMRUFiles<CR>
-"commands finder mapping
-nmap ,c :CtrlPCmdPalette<CR>
-"to be able to call CtrlP with default search text
-function! CtrlPWithSearchText(search_text, ctrlp_command_end)
-    execute ':CtrlP' . a:ctrlp_command_end
-    call feedkeys(a:search_text)
-endfunction
-"Open search on a new tab
-"let g:ctrlp_prompt_mappings = {
-"    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
-"    \ 'AcceptSelection("t")': ['<cr>'],
-"    \ }
-"same as previous mappings, but calling with current word as default text
-nmap ,wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
-nmap ,wG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
-nmap ,wf :call CtrlPWithSearchText(expand('<cword>'), 'Line')<CR>
-nmap ,we :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
-nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
-nmap ,wm :call CtrlPWithSearchText(expand('<cword>'), 'MRUFiles')<CR>
-nmap ,wc :call CtrlPWithSearchText(expand('<cword>'), 'CmdPalette')<CR>
-"don't change working directory
-let g:ctrlp_working_path_mode = 0
-"ignore these files and folders on file finder
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
-  \ 'file': '\.pyc$\|\.pyo$',
-  \ }
-
 "-------------Syntastic-------------"
 "show list of errors and warnings on the current file
 "nmap <leader>e :Errors<CR>
 "check also when just opened the file
 let g:syntastic_check_on_open = 1
 "don't put icons on the sign column (it hides the vcs status icons of signify)
-let g:syntastic_enable_signs = 0
+let g:syntastic_enable_signs = 1
 "custom icons (enable them if you use a patched font)
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
