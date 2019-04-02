@@ -27,7 +27,10 @@ fonts-powerline
 
 # You'll need of these to work with python scripts/programns.
 sudo pip install pep8 flake8 pyflakes isort yapf
+
+curl https://raw.githubusercontent.com/lazarocastro/vimrc/master/vimrc -o ~/.vimrc
 ```
+
 # Installation and Configuration of Oh My Zsh
 ## Oh My Zsh, Autosuggestions and Syntax-Highlighting
 Then you can install [oh my zsh](https://github.com/robbyrussell/oh-my-zsh), [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) and [syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
