@@ -17,7 +17,7 @@ ack-grep \
 ripgrep \
 python-pip \
 python-fontforge \
-terminator \ # My main terminal
+terminator \
 zsh \ 
 zsh-syntax-highlighting \
 zsh-theme-powerlevel9k \
