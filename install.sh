@@ -38,4 +38,3 @@ vim +qa
 clear
 echo "Installation Completed!"
 rm wget-log
-rm install.sh
