@@ -36,5 +36,5 @@ echo "Download vimrc..."
 curl -s https://raw.githubusercontent.com/lazarocastro/vimrc/master/vimrc -o ~/.vimrc
 vim +qa
 clear
-echo "Installation Completed!"
 rm wget-log
+echo "Installation Completed!"
