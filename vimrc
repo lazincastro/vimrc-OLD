@@ -195,6 +195,11 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+"-------------vim-vinegar-------------"
+"Vinegar will initialize with dot files hidden.
+"Press gh to toggle dot file hiding.
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+
 "-------------Mappings-------------"
 "Open all Buffer in Tab
 map <F10> :tab sball<cr>
