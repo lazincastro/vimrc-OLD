@@ -1,14 +1,14 @@
 # My personal .vimrc and some settings.
 
-## Main Installations
+## Installation
 
-Use the **install.sh** script 
+Use the **install.sh** script:
 
 ```sh
 bash <(wget -qO- https://raw.githubusercontent.com/lazarocastro/vimrc/master/install.sh)
 ```
 
-Or **copy** and **paste** these lines into your terminal for ensuring you have the requirements are provided below:
+Or **copy** and **paste** these lines into your terminal:
 
 ```sh
 sudo apt-get update
@@ -72,6 +72,6 @@ rm -rf fonts
 
 # TODO
 
--List of plugins used on Vim.
+- List of the plugins used on Vim.
 
 
