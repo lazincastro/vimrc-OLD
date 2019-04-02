@@ -70,4 +70,8 @@ rm -rf fonts
 [How can I install and use powerline plugin?](https://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin)
 
 
+# TODO
+
+-List of plugins used on Vim.
+
 
