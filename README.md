@@ -28,7 +28,7 @@ fonts-powerline
 # You'll need of these to work with python scripts/programns.
 sudo pip install pep8 flake8 pyflakes isort yapf
 ```
-# Here there are my 
+# Installation and Configuration of Oh My Zsh
 ## Oh My Zsh, Autosuggestions and Syntax-Highlighting
 Then you can install [oh my zsh](https://github.com/robbyrussell/oh-my-zsh), [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) and [syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
@@ -38,8 +38,8 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugi
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 ```
 
-Execute that command "vim +/plugins=\\( ~/.zshrc" to find "plugins=(git)" session and 
-append zsh-autosuggestions & zsh-syntax-highlighting to plugins() like this
+Execute that command "**vim +/plugins=\\( ~/.zshrc**" to find "plugins=(git)" session and 
+append **zsh-autosuggestions** & **zsh-syntax-highlighting** to plugins() like that:
 ```
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 ```
