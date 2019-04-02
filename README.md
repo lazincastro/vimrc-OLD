@@ -18,7 +18,7 @@ ripgrep \
 python-pip \
 python-fontforge \
 terminator \
-zsh \ 
+zsh \
 zsh-syntax-highlighting \
 zsh-theme-powerlevel9k \
 powerline \
