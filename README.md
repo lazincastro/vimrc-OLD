@@ -1,14 +1,35 @@
 # My personal .vimrc and some settings.
 
 ## Main Installations
-The lines to put into your terminal for ensuring you have the requirements are provided below:
+These lines to put into your terminal for ensuring you have the requirements are provided below:
 
 ```sh
 sudo apt-get update
-sudo apt-get install vim
-sudo apt-get install curl vim exuberant-ctags git ack-grep python-pip python-fontforge terminator zsh zsh-syntax-highlighting zsh-theme-powerlevel9k powerline fonts-powerline golang tree
+sudo apt-get install vim # Install if you don't have.
+
+# To work propely, I recomend to you install these programns below:
+# OBS.: The first 6 programs are required, the rest of them are cosmetic issue.
+sudo apt-get install \
+curl \
+exuberant-ctags \
+git \
+ack-grep \
+ripgrep \
+python-pip \
+python-fontforge \
+terminator \ # My main terminal
+zsh \ 
+zsh-syntax-highlighting \
+zsh-theme-powerlevel9k \
+powerline \
+fonts-powerline \
+golang \
+tree
+
+# You'll need of these to work with python scripts/programns.
 sudo pip install pep8 flake8 pyflakes isort yapf
 ```
+# Here there are my 
 ## Oh My Zsh, Autosuggestions and Syntax-Highlighting
 Then you can install [oh my zsh](https://github.com/robbyrussell/oh-my-zsh), [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) and [syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
