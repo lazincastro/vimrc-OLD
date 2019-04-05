@@ -30,14 +30,10 @@ Plug 'MarcWeber/vim-addon-mw-utils'            "SnipMate dependence
 Plug 'Shougo/neocomplcache.vim'                "Better autocompletion
 Plug 'Townk/vim-autoclose'                     "Autoclose
 Plug 'Valloric/MatchTagAlways'                 "Always highlight enclosing tags
-Plug 'arielrossanigo/dir-configs-override.vim' "Override configs by directory
-Plug 'chr4/nginx.vim'                          "Improved nginx vim plugin
 Plug 'davidhalter/jedi-vim'                    "Python autocompletion
 Plug 'ekalinin/Dockerfile.vim'                 "Dockerfile syntax & snippets
 Plug 'garbas/vim-snipmate'                     "SnipMate support snippets
 Plug 'honza/vim-snippets'                      "Snippets for many languages.
-Plug 'jeetsukumaran/vim-indentwise'            "Indentation based movements
-Plug 'kien/tabman.vim'                         "Tab list panel
 Plug 'lilydjwg/colorizer'                      "Paint css colors
 Plug 'majutsushi/tagbar'                       "Class/module browser
 Plug 'mattn/emmet-vim'                         "Zen coding
@@ -45,15 +41,11 @@ Plug 'mhinz/vim-signify'                       "Git diff icons
 Plug 'michaeljsmith/vim-indent-object'         "Indent text object
 Plug 'mileszs/ack.vim'                         "Ack code search
 Plug 'morhetz/gruvbox'                         "Gruvbox colorscheme
-Plug 'motemen/git-vim'                         "Git integration
-Plug 'rosenfeld/conque-term'                   "Consoles as buffers
 Plug 'scrooloose/nerdcommenter'                "Code commenter
 Plug 'scrooloose/nerdtree'                     "Better file browser
 Plug 'scrooloose/syntastic'                    "Languages code checker
-Plug 'thiagoalessio/rainbow_levels.vim'        "highlights indentation level
 Plug 'tomtom/tlib_vim'                         "SnipMate dependence
 Plug 'fisadev/FixedTaskList.vim'               "Pending tasks list
-Plug 'fisadev/dragvisuals.vim'                 "Drag visual blocks arround
 Plug 'fisadev/vim-isort'                       "Auto sort python imports
 Plug 'tpope/vim-unimpaired'                    "Pairs of bracket mappings
 Plug 'tpope/vim-surround'                      "Surround
@@ -62,19 +54,18 @@ Plug 'tpope/vim-fugitive'                      "Git integration
 Plug 'vim-airline/vim-airline'                 "Airline
 Plug 'vim-airline/vim-airline-themes'          "Airline themes
 Plug 'vim-scripts/IndexedSearch'               "Search results counter
-Plug 'vim-scripts/YankRing.vim'                "Yank history navigation
 Plug 'vim-scripts/matchit.zip'                 "XML/HTML tags navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'                        "Fuzzy finder
 if has('python')
-    Plug 'pignacio/vim-yapf-format'            "YAPF formatter for Python
+  Plug 'pignacio/vim-yapf-format'            "YAPF formatter for Python
 endif
 call plug#end()                                "Vim-plug finished declaring
 
 "-------------Install Plugins The First Time Vim Runs-------------"
 if vim_plug_just_installed
-    echo "Installing Bundles, please ignore key map error messages"
-    :PlugInstall
+  echo "Installing Bundles, please ignore key map error messages"
+  :PlugInstall
 endif
 
 "-------------Basic Settings-------------"
@@ -83,6 +74,8 @@ endif
 set nocompatible                "We want the latest Vim settings/options.
 syntax enable                   "Syntax Highlight On
 filetype plugin indent on       "Allow Plugins By File Type (plugins required!)
+set autoindent                  "Respect indentation when starting a new line.
+set foldmethod=indent           "Folds allow on Python files
 set backspace=indent,eol,start  "Make backspace behave like every other editor
 let mapleader = ','             "The default leader is \
 set hidden                      "Allow Vim to manage multiple buffers
@@ -95,6 +88,8 @@ set softtabstop=2               "Number of space that <TAB>
 set expandtab                   "Tabs and Spaces Handling
 set nowrap                      "Disable long line wrap
 set title                       "Let vim set the title
+"set wildmenu                    "Enable enhanced tab autocomplete
+"set wildmode=list:longest,full  "Complete longest string, then open wildmenu
 
 "-------------Search-------------"
 set incsearch           "incremental search
@@ -123,13 +118,13 @@ let g:yankring_history_dir = '~/.vim/dirs/' "store yankring history file
 
 "-------------Create Needed Directories if They Don't Exist-------------"
 if !isdirectory(&backupdir)
-    call mkdir(&backupdir, "p")
+  call mkdir(&backupdir, "p")
 endif
 if !isdirectory(&directory)
-    call mkdir(&directory, "p")
+  call mkdir(&directory, "p")
 endif
 if !isdirectory(&undodir)
-    call mkdir(&undodir, "p")
+  call mkdir(&undodir, "p")
 endif
 
 "-------------Visuals-------------"
@@ -153,7 +148,7 @@ let g:airline_powerline_fonts = 0
 let g:airline_theme = 'gruvbox'
 let g:airline#extensions#whitespace#enabled = 0
 if !exists('g:airline_symbols')
-   let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 let g:airline_left_sep = '⮀'
 let g:airline_left_alt_sep = '⮁'
@@ -218,13 +213,15 @@ ca w!! w !sudo tee "%"
 inoremap jk <esc>
 "kj is escape
 inoremap kj <esc>
-"Terminal
+"Show Terminal on bottom
 nnoremap <leader>t :bo term<cr><C-w>:exe "resize " . (winheight(0) * 1/3)<CR>
 nnoremap <leader>tt <Esc>:close!<cr>
-" FZF Fuzzy Finder
+"FZF Fuzzy Finder
 nnoremap <C-p> :<C-u>FZF<CR>
-" Silent Indent Lines, Tabs and trailing
+"Silent Indent Lines, Tabs and trailing
 nmap <silent> <leader>s :IndentLinesToggle<CR><Esc>:set nolist!<CR>
+"Close buffer without closing window.
+command! Bd :bp | :sp | :bn | :bd
 
 "-------------Rename current file-------------"
 function! RenameFile()
@@ -237,7 +234,6 @@ function! RenameFile()
   endif
 endfunction
 map <leader>n :call RenameFile()<cr>
-
 
 "-------------Auto-Commands-------------"
 "Automatically source the Vimrc file on save."
@@ -254,12 +250,12 @@ au BufNewFile,BufRead Jenkinsfile setf groovy
 "highlight enclosing tags. You can find out what the current file's filetype is
 "in Vim with :set ft?. Don't forget that question mark at the end!
 let g:mta_filetypes = {
-    \ 'html' : 1,
-    \ 'xhtml' : 1,
-    \ 'xml' : 1,
-    \ 'jinja' : 1,
-    \ 'php' : 1,
-    \}
+      \ 'html' : 1,
+      \ 'xhtml' : 1,
+      \ 'xml' : 1,
+      \ 'jinja' : 1,
+      \ 'php' : 1,
+      \}
 "Jumps to the enclosing tag if the tag is visible.
 nnoremap <leader>% :MtaJumpToOtherTag<cr>
 
@@ -337,3 +333,13 @@ highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
 highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
 highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
+
+"Copy matches
+" TODO configure a shortcut
+function! CopyMatches(reg)
+  let hits = []
+  %s//\=len(add(hits, submatch(0))) ? submatch(0) : ''/gne
+  let reg = empty(a:reg) ? '+' : a:reg
+  execute 'let @'.reg.' = join(hits, "\n") . "\n"'
+endfunction
+command! -register CopyMatches call CopyMatches(<q-reg>)
