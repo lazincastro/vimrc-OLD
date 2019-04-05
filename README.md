@@ -40,7 +40,7 @@ clear
 
 # Installation and Configuration of Oh My Zsh
 ## Oh My Zsh, Autosuggestions and Syntax-Highlighting
-Then you can install [oh my zsh](https://github.com/robbyrussell/oh-my-zsh), [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) and [syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+Then you can install (https://github.com/robbyrussell/oh-my-zsh), (https://github.com/zsh-users/zsh-autosuggestions) and (https://github.com/zsh-users/zsh-syntax-highlighting)
 
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -73,49 +73,47 @@ rm -rf fonts
 
 | Plugins | Description |
 |---|---|
-| [auto-pairs](https://github.com/jiangmiao/auto-pairs) | brackets parens quotes in pair | 
-| [indentLine](https://github.com/Yggdroot/indentLine) | Vertical lines at indentation | 
-| [vim-go](https://github.com/fatih/vim-go) | Vim Go Plugin | 
-| [vim-addon-mw-utils](https://github.com/MarcWeber/vim-addon-mw-utils) | SnipMate dependence | 
-| [neocomplcache.vim](https://github.com/Shougo/neocomplcache.vim) | Better autocompletion |
-| [vim-autoclose](https://github.com/Townk/vim-autoclose) | Autoclose |
-| [MatchTagAlways](https://github.com/Valloric/MatchTagAlways) | Always highlight enclosing tags |
-| [dir-configs-override.vim ](https://github.com/arielrossanigo/dir-configs-override.vim ) | Override configs by directory |
-| [nginx.vim](https://github.com/chr4/nginx.vim) | Improved nginx vim plugin |
-| [jedi-vim](https://github.com/davidhalter/jedi-vim) | Python autocompletion |
-| [Dockerfile.vim](https://github.com/ekalinin/Dockerfile.vim) | Dockerfile syntax & snippets |
-| [vim-snipmate](https://github.com/garbas/vim-snipmate) | SnipMate support snippets |
-| [vim-snippets](https://github.com/honza/vim-snippets) | Snippets for many languages. |
-| [vim-indentwise](https://github.com/jeetsukumaran/vim-indentwise) | Indentation based movements |
-| [tabman.vim](https://github.com/kien/tabman.vim) | Tab list panel |
-| [colorizer](https://github.com/lilydjwg/colorizer) | Paint css colors |
-| [tagbar](https://github.com/majutsushi/tagbar) | Class / module browser |
-| [emmet-vim](https://github.com/mattn/emmet-vim) | Zen coding |
-| [vim-signify](https://github.com/mhinz/vim-signify) | Git diff icons |
-| [vim-indent-object](https://github.com/michaeljsmith/vim-indent-object) | Indent text object |
-| [ack.vim](https://github.com/mileszs/ack.vim) | Ack code search |
-| [gruvbox](https://github.com/morhetz/gruvbox) | Gruvbox colorscheme |
-| [git-vim](https://github.com/motemen/git-vim) | Git integration |
-| [conque-term](https://github.com/rosenfeld/conque-term) | Consoles as buffers |
-| [nerdcommenter](https://github.com/scrooloose/nerdcommenter) | Code commenter |
-| [nerdtree](https://github.com/scrooloose/nerdtree) | Better file browser |
-| [syntastic](https://github.com/scrooloose/syntastic) | Languages code checker |
-| [rainbow_levels.vim](https://github.com/thiagoalessio/rainbow_levels.vim) | highlights indentation level |
-| [tlib_vim](https://github.com/tomtom/tlib_vim) | SnipMate dependence |
-| [FixedTaskList.vim](https://github.com/fisadev/FixedTaskList.vim) | Pending tasks list |
-| [dragvisuals.vim](https://github.com/fisadev/dragvisuals.vim) | Drag visual blocks arround |
-| [vim-isort](https://github.com/fisadev/vim-isort) | Auto sort python imports |
-| [vim-unimpaired](https://github.com/tpope/vim-unimpaired) | Pairs of bracket mappings |
-| [vim-surround](https://github.com/tpope/vim-surround) | Surround |
-| [vim-vinegar](https://github.com/tpope/vim-vinegar) | Simple file browser |
-| [vim-fugitive](https://github.com/tpope/vim-fugitive) | Git integration |
-| [vim-airline](https://github.com/vim-airline/vim-airline) | Airline |
-| [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) | Airline themes |
-| [IndexedSearch](https://github.com/vim-scripts/IndexedSearch) | Search results counter |
-| [YankRing.vim](https://github.com/vim-scripts/YankRing.vim) | Yank history navigation |
-| [matchit.zip](https://github.com/vim-scripts/matchit.zip) | XML / HTML tags navigation |
-| [fzf](https://github.com/junegunn/fzf) |command-line fuzzy finder|
-| [fzf.vim](https://github.com/junegunn/fzf.vim) | Fuzzy finder |
-| [vim-yapf-format](https://github.com/pignacio/vim-yapf-format) | YAPF formatter for Python |
-
-
+| <a href="https://github.com/jiangmiao/auto-pairs" target="_blank"> auto-pairs</a>                                  | brackets parens quotes in pair | 
+| <a href="https://github.com/Yggdroot/indentLine" target="_blank">indentLine</a>                                    | Vertical lines at indentation | 
+| <a href="https://github.com/fatih/vim-go" target="_blank"> vim-go</a>                                              | Vim Go Plugin | 
+| <a href="https://github.com/MarcWeber/vim-addon-mw-utils" target="_blank"> vim-addon-mw-utils</a>                  | SnipMate dependence | 
+| <a href="https://github.com/Shougo/neocomplcache.vim" target="_blank"> neocomplcache.vim</a>                       | Better autocompletion |
+| <a href="https://github.com/Townk/vim-autoclose" target="_blank">vim-autoclose</a>                                 | Autoclose |
+| <a href="https://github.com/Valloric/MatchTagAlways" target="_blank">MatchTagAlways</a>                            | Always highlight enclosing tags |
+| <a href="https://github.com/arielrossanigo/dir-configs-override.vim" target="_blank">dir-configs-override.vim </a> | Override configs by directory |
+| <a href="https://github.com/chr4/nginx.vim" target="_blank"> nginx.vim</a>                                         | Improved nginx vim plugin |
+| <a href="https://github.com/davidhalter/jedi-vim" target="_blank"> jedi-vim</a>                                    | Python autocompletion |
+| <a href="https://github.com/ekalinin/Dockerfile.vim" target="_blank">Dockerfile.vim</a>                            | Dockerfile syntax & snippets |
+| <a href="https://github.com/garbas/vim-snipmate" target="_blank">vim-snipmate</a>                                  | SnipMate support snippets |
+| <a href="https://github.com/honza/vim-snippets" target="_blank"> vim-snippets</a>                                  | Snippets for many languages. |
+| <a href="https://github.com/jeetsukumaran/vim-indentwise" target="_blank"> vim-indentwise</a>                      | Indentation based movements |
+| <a href="https://github.com/kien/tabman.vim" target="_blank">tabman.vim</a>                                        | Tab list panel |
+| <a href="https://github.com/lilydjwg/colorizer" target="_blank"> colorizer</a>                                     | Paint css colors |
+| <a href="https://github.com/majutsushi/tagbar" target="_blank">tagbar</a>                                          | Class / module browser |
+| <a href="https://github.com/mattn/emmet-vim" target="_blank">emmet-vim</a>                                         | Zen coding |
+| <a href="https://github.com/mhinz/vim-signify" target="_blank">vim-signify</a>                                     | Git diff icons |
+| <a href="https://github.com/michaeljsmith/vim-indent-object" target="_blank">vim-indent-object</a>                 | Indent text object |
+| <a href="https://github.com/mileszs/ack.vim" target="_blank">ack.vim</a>                                           | Ack code search |
+| <a href="https://github.com/morhetz/gruvbox" target="_blank">gruvbox</a>                                           | Gruvbox colorscheme |
+| <a href="https://github.com/motemen/git-vim" target="_blank">git-vim</a>                                           | Git integration |
+| <a href="https://github.com/rosenfeld/conque-term" target="_blank">conque-term</a>                                 | Consoles as buffers |
+| <a href="https://github.com/scrooloose/nerdcommenter" target="_blank"> nerdcommenter</a>                           | Code commenter |
+| <a href="https://github.com/scrooloose/nerdtree" target="_blank">nerdtree</a>                                      | Better file browser |
+| <a href="https://github.com/scrooloose/syntastic" target="_blank"> syntastic</a>                                   | Languages code checker |
+| <a href="https://github.com/thiagoalessio/rainbow_levels.vim" target="_blank"> rainbow_levels.vim</a>              | highlights indentation level |
+| <a href="https://github.com/tomtom/tlib_vim" target="_blank">tlib_vim</a>                                          | SnipMate dependence |
+| <a href="https://github.com/fisadev/FixedTaskList.vim" target="_blank">FixedTaskList.vim</a>                       | Pending tasks list |
+| <a href="https://github.com/fisadev/dragvisuals.vim" target="_blank">dragvisuals.vim</a>                           | Drag visual blocks arround |
+| <a href="https://github.com/fisadev/vim-isort" target="_blank">vim-isort</a>                                       | Auto sort python imports |
+| <a href="https://github.com/tpope/vim-unimpaired" target="_blank"> vim-unimpaired</a>                              | Pairs of bracket mappings |
+| <a href="https://github.com/tpope/vim-surround" target="_blank"> vim-surround</a>                                  | Surround |
+| <a href="https://github.com/tpope/vim-vinegar" target="_blank">vim-vinegar</a>                                     | Simple file browser |
+| <a href="https://github.com/tpope/vim-fugitive" target="_blank"> vim-fugitive</a>                                  | Git integration |
+| <a href="https://github.com/vim-airline/vim-airline" target="_blank">vim-airline</a>                               | Airline |
+| <a href="https://github.com/vim-airline/vim-airline-themes" target="_blank"> vim-airline-themes</a>                | Airline themes |
+| <a href="https://github.com/vim-scripts/IndexedSearch" target="_blank">IndexedSearch</a>                           | Search results counter |
+| <a href="https://github.com/vim-scripts/YankRing.vim" target="_blank"> YankRing.vim</a>                            | Yank history navigation |
+| <a href="https://github.com/vim-scripts/matchit.zip" target="_blank">matchit.zip</a>                               | XML / HTML tags navigation |
+| <a href="https://github.com/junegunn/fzf" target="_blank"> fzf</a>                                                 | Command-line fuzzy finder|
+| <a href="https://github.com/junegunn/fzf.vim" target="_blank"> fzf.vim</a>                                         | Fuzzy finder |
+| <a href="https://github.com/pignacio/vim-yapf-format" target="_blank"> vim-yapf-format</a>                         | YAPF formatter for Python |
