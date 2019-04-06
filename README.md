@@ -2,7 +2,7 @@
 
 ## Installation
 
-Use the **install.sh** script:
+Use the `install.sh` script:
 
 ```sh
 bash <(wget -qO- https://raw.githubusercontent.com/lazarocastro/vimrc/master/install.sh)
@@ -49,7 +49,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugi
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 ```
 
-Execute that command "**vim +/plugins=\\( ~/.zshrc**" to find "plugins=(git)" session and 
+Execute that command `vim +/plugins=\\( ~/.zshrc` to find "plugins=(git)" session and 
 append **zsh-autosuggestions** & **zsh-syntax-highlighting** to plugins() like that:
 ```
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
@@ -70,7 +70,7 @@ rm -rf fonts
 ## If you had a trouble to donfigure I recommend to access the link below:
 [How can I install and use powerline plugin?](https://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin)
 
-# List of Plugins used on my Vim.
+# List of Plugins used on my `.vimrc`.
 
 | Plugins | Description |
 |---|---|
