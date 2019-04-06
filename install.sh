@@ -12,7 +12,7 @@ sudo apt-get -qq update
 # Install Vim if you don't have.
 sudo apt-get install vim 
 # To work propely, I recomend to you install these programns below:
-# OBS.: The first 6 programs are required, the rest of them are cosmetic issue.
+# OBS.: The first 7 programs are required, the rest of them are cosmetic issue.
 sudo apt-get -qq install \
 curl \
 exuberant-ctags \
@@ -20,6 +20,7 @@ git \
 ack-grep \
 ripgrep \
 python-pip \
+pylint3 \
 tree \
 terminator \
 python-fontforge \

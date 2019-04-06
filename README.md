@@ -14,7 +14,7 @@ Or **copy** and **paste** these lines into your terminal:
 sudo apt-get update
 sudo apt-get install vim # Install if you don't have.
 # To work propely, I recomend to you install these programns below:
-# OBS.: The first 6 programs are required, the rest of them are cosmetic issue.
+# OBS.: The first 7 programs are required, the rest of them are cosmetic issue.
 sudo apt-get install \
 curl \
 exuberant-ctags \
@@ -22,6 +22,7 @@ git \
 ack-grep \
 ripgrep \
 python-pip \
+pylint3 \
 tree \
 terminator \
 python-fontforge \
