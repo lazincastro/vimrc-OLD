@@ -23,6 +23,7 @@ endif
 
 "-------------Plugins From Github and Vim-scripts Repos-------------"
 call plug#begin('~/.vim/plugged')              "Active Plugins
+Plug 'easymotion/vim-easymotion'               "Vim motionon speed
 Plug 'jiangmiao/auto-pairs'                    "brackets parens quotes in pair
 Plug 'Yggdroot/indentLine'                     "Vertical lines at indentation
 Plug 'fatih/vim-go'                            "Vim Go Plugin
@@ -71,31 +72,41 @@ endif
 "-------------Basic Settings-------------"
 "This makes vim act like all other editors, buffers can exist in the background
 "without being in a window. http://items.sjbach.com/319/configuring-vim-right
-set nocompatible                "We want the latest Vim settings/options.
-syntax enable                   "Syntax Highlight On
 filetype plugin indent on       "Allow Plugins By File Type (plugins required!)
 set autoindent                  "Respect indentation when starting a new line.
-set foldmethod=indent           "Folds allow on Python files
 set backspace=indent,eol,start  "Make backspace behave like every other editor
-let mapleader = ','             "The default leader is \
-set hidden                      "Allow Vim to manage multiple buffers
-set number                      "Let's activate line numbers.
-set relativenumber              "Show Relative Numbers
-set laststatus=2                "Always Show Status Bar
-set tabstop=2                   "Number of space that <TAB>
-set shiftwidth=2                "Number of space on (auto)ident
-set softtabstop=2               "Number of space that <TAB>
-set expandtab                   "Tabs and Spaces Handling
-set nowrap                      "Disable long line wrap
-set title                       "Let vim set the title
-"set wildmenu                    "Enable enhanced tab autocomplete
-"set wildmode=list:longest,full  "Complete longest string, then open wildmenu
+set nocompatible                  "We want the latest Vim settings/options.
+syntax enable                     "Syntax Highlight On
+set foldmethod=indent             "Folds allow on Python files
+let mapleader = ','               "The default leader is \
+set hidden                        "Allow Vim to manage multiple buffers
+set number                        "Let's activate line numbers.
+set relativenumber                "Show Relative Numbers
+set laststatus=2                  "Always Show Status Bar
+set tabstop=2                     "Number of space that <TAB>
+set shiftwidth=2                  "Number of space on (auto)ident
+set softtabstop=2                 "Number of space that <TAB>
+set expandtab                     "Tabs and Spaces Handling
+set nowrap                        "Disable long line wrap
+set title                         "Let vim set the title
+set clipboard=unnamed,unnamedplus "Copy into system (*, +) register.
+set tags=tags;                    "Look for a tags file in directories 
 
 "-------------Search-------------"
-set incsearch           "incremental search
-set hlsearch            "highlighted search results
-set ignorecase          "Ignore case when searching...
-set smartcase           " ...unless we type a capital
+set incsearch  "incremental search
+set hlsearch   "highlighted search results
+set ignorecase "Ignore case when searching...
+set smartcase  " ...unless we type a capital
+
+"-------------Scrolling-------------"
+set scrolloff=8
+set sidescrolloff=15
+set sidescroll=1
+set mouse=a
+
+"-------------Tabs & Trailing Spaces-------------"
+set list listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+"set listchars=tab:>-,trail:·,eol:$
 
 "-------------Tab Length Exceptions On Some File Types-------------"
 autocmd FileType python,doctest set ai ts=4 sw=4 sts=4 et
@@ -128,8 +139,8 @@ if !isdirectory(&undodir)
 endif
 
 "-------------Visuals-------------"
-colorscheme gruvbox
-set bg=dark           "background used for highlight color
+colorscheme gruvbox   "I love it that colorscheme
+set bg=dark           "Background used for highlight color
 set t_Co=256          "Enable 256 colors in Vim
 set guioptions-=l     "Disable left-hand scrollbar
 set guioptions-=L     "Disable left-hand scrollbar vertically
@@ -138,10 +149,6 @@ set guioptions-=R     "Disable right-hand scrollbar vertically
 set cursorline        "Cursor Line
 set cursorcolumn      "Cursor Column
 set colorcolumn=80    "Screen columns that are highlight
-
-"-------------Tabs & Trailing Spaces-------------"
-set list listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
-"set listchars=tab:>-,trail:·,eol:$
 
 "-------------Airline-------------"
 let g:airline_powerline_fonts = 0
@@ -156,24 +163,6 @@ let g:airline_right_sep = '⮂'
 let g:airline_symbols.branch = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
-
-"-------------Aliases-------------"
-cab W w
-cab Q q
-cab Wq wq
-cab wQ wq
-cab WQ wq
-cab t tab drop
-cab T tab drop
-cab tabe tab drop
-cab Tabe tab drop
-cab E e
-
-"-------------Scrolling-------------"
-set scrolloff=8
-set sidescrolloff=15
-set sidescroll=1
-set mouse=a
 
 "-------------GVim-------------"
 set guioptions-=m   "Disable menu bar
@@ -222,6 +211,18 @@ nnoremap <C-p> :<C-u>FZF<CR>
 nmap <silent> <leader>s :IndentLinesToggle<CR><Esc>:set nolist!<CR>
 "Close buffer without closing window.
 command! Bd :bp | :sp | :bn | :bd
+
+"-------------Aliases-------------"
+cab W w
+cab Q q
+cab Wq wq
+cab wQ wq
+cab WQ wq
+cab t tab drop
+cab T tab drop
+cab tabe tab drop
+cab Tabe tab drop
+cab E e
 
 "-------------Rename current file-------------"
 function! RenameFile()
@@ -282,6 +283,10 @@ let g:neocomplcache_same_filetype_lists._ = '_'
 "show pending tasks list
 map <F2> :TaskList<CR>
 
+"-------------Ctags-------------"
+" Regenerate tags when saving Python files.
+autocmd BufWritePost *.py silent! !ctags -R &
+
 "-------------Tagbar-------------"
 "toggle tagbar display
 map <F4> :TagbarToggle<CR>
@@ -299,9 +304,9 @@ nmap ,wr :Ack <cword><CR>
 
 "-------------Syntastic-------------"
 "show list of errors and warnings on the current file
-"nmap <leader>e :Errors<CR>
+nmap <leader>e :Errors<CR>
 "check also when just opened the file
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 "don't put icons on the sign column (it hides the vcs status icons of signify)
 let g:syntastic_enable_signs = 1
 "custom icons (enable them if you use a patched font)
@@ -309,6 +314,7 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
+let g:syntastic_python_pylint_exe = 'pylint3'
 
 "-------------Jedi-Vim-------------"
 let g:jedi#goto_command = ',d'
