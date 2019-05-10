@@ -30,7 +30,7 @@ Plug 'fatih/vim-go'                            "Vim Go Plugin
 Plug 'MarcWeber/vim-addon-mw-utils'            "SnipMate dependence
 Plug 'Shougo/neocomplcache.vim'                "Better autocompletion
 Plug 'Townk/vim-autoclose'                     "Autoclose
-Plug 'Valloric/MatchTagAlways'                 "Always highlight enclosing tags
+"Plug 'Valloric/MatchTagAlways'                 "Always highlight enclosing tags
 Plug 'davidhalter/jedi-vim'                    "Python autocompletion
 Plug 'ekalinin/Dockerfile.vim'                 "Dockerfile syntax & snippets
 Plug 'garbas/vim-snipmate'                     "SnipMate support snippets
@@ -47,7 +47,7 @@ Plug 'scrooloose/nerdtree'                     "Better file browser
 Plug 'scrooloose/syntastic'                    "Languages code checker
 Plug 'tomtom/tlib_vim'                         "SnipMate dependence
 Plug 'fisadev/FixedTaskList.vim'               "Pending tasks list
-Plug 'fisadev/vim-isort'                       "Auto sort python imports
+"Plug 'fisadev/vim-isort'                       "Auto sort python imports
 Plug 'tpope/vim-unimpaired'                    "Pairs of bracket mappings
 Plug 'tpope/vim-surround'                      "Surround
 Plug 'tpope/vim-vinegar'                       "Simple file browser
