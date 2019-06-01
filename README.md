@@ -5,7 +5,7 @@
 Use the `install.sh` script:
 
 ```sh
-bash < (wget -qO- https://raw.githubusercontent.com/lazarocastro/vimrc/master/install.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/lazarocastro/vimrc/master/install.sh)
 ```
 
 Or **copy** and **paste** these lines into your terminal:
