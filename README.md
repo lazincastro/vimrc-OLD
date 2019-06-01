@@ -70,6 +70,8 @@ rm -rf fonts
 ## If you had a trouble to donfigure I recommend to access the link below:
 [How can I install and use powerline plugin?](https://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin)
 
+[Install Powerline on Debian/Ubuntu](https://gist.github.com/leosuncin/25bad6ae66c5d513b986)
+
 # List of Plugins used on my `.vimrc`.
 
 | Plugins | Description |
