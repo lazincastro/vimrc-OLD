@@ -138,6 +138,9 @@ set guioptions-=r   " Disable right-hand scrollbar
 set guioptions-=R   " Disable right-hand scrollbar vertically
 set guioptions-=e   " Disable gui tabs
 hi vertsplit guifg=bg guibg=bg
+if has("autocmd") && has("gui")
+    au GUIEnter * set vb t_vb=
+endif
 
 " Lightline.vim
 let g:lightline = {
