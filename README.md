@@ -3,15 +3,20 @@
 ## What do you need?
 You need to install these packages below:
 
-* vim-gtk 
-* tilix 
+* vim-gtk\*
+* tilix\*\*
 * git 
 * curl 
 * silversearcher-ag 
 * exuberant-ctags 
+* agrep
 * unzip
 * [yarn](https://yarnpkg.com/)
 * [nodejs](https://nodejs.org/)
+
+> \*
+>
+> \*\*
 
 ## Install Ubuntu packages
 ```
