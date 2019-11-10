@@ -30,6 +30,7 @@ Plug 'vim-scripts/grep.vim'           " Integrates the grep, fgrep, egrep, and a
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'               " Fuzzy finder
 Plug 'itchyny/lightline.vim'          " A light and configurable statusline/tabline plugin
+Plug 'airblade/vim-gitgutter'         " A Vim plugin which shows a git diff in the gutter and stages/undoesks
 
 " " Color Schemes
 " Plug 'dikiaap/minimalist'             " A Material Color Scheme Darker
@@ -46,11 +47,9 @@ Plug 'itchyny/lightline.vim'          " A light and configurable statusline/tabl
 " Plug 'pangloss/vim-javascript'        " Vastly improved Javascript indentation and syntax support
 " Plug 'mxw/vim-jsx'                    " React JSX syntax highlight and indenting
 
-" " Ruby on Rails Section
+" " Tim Pope Section
 " Plug 'tpope/vim-rails'                " Ruby on Rails power tools
 " Plug 'tpope/vim-endwise'              " Add 'end' in ruby endfunction/endif/more
-
-" " Tim Pope Section
 " Plug 'tpope/vim-surround'             " Quoting/parenthesizing made simple
 " Plug 'tpope/vim-fugitive'             " A Git wrapper so awesome, it should be illegal
 
@@ -119,12 +118,12 @@ set mouse=a
 
 "---- ---- ---- ---- Visual Settings ---- ---- ---- ----"
 " On Terminal 
-colorscheme spacecamp   " I love it that colorscheme
-set bg=dark             " Background used for highlight color
-set t_Co=256            " Enable 256 colors in Vim
-set cursorline          " Cursor Line
-set cursorcolumn        " Cursor Column
-" set colorcolumn=80      " Screen columns that are highlight
+colorscheme spacecamp_lite   " I love it that colorscheme
+set bg=dark                  " Background used for highlight color
+set t_Co=256                 " Enable 256 colors in Vim
+set cursorline               " Cursor Line
+set cursorcolumn             " Cursor Column
+" set colorcolumn=80           " Screen columns that are highlight
 hi Comment cterm=italic
 hi vertsplit ctermfg=bg ctermbg=bg
 
@@ -240,11 +239,11 @@ cnoreabbrev Qall qall
 "" terminal emulation
 nnoremap <silent> <leader>sh :below terminal<CR>
 
+"" Open all Buffer in Vertical Split
+map <silent> <F9> :tab sball <bar> :tabdo :close <bar> :vert sball<cr>
+
 "" Open all Buffer in Tab
 map <F10> :tab sball<cr>
-
-"" Open all Buffer in Vertical Split
-map <F9> :tabdo :q <bar> :vert sball<cr>
 
 "" Make it easy to edit the Vimrc file."
 nmap <Leader>ev :tabedit ~/.vimrc<cr>
