@@ -52,6 +52,7 @@ Plug 'airblade/vim-gitgutter'         " A Vim plugin which shows a git diff in t
 " Plug 'tpope/vim-endwise'              " Add 'end' in ruby endfunction/endif/more
 " Plug 'tpope/vim-surround'             " Quoting/parenthesizing made simple
 " Plug 'tpope/vim-fugitive'             " A Git wrapper so awesome, it should be illegal
+" Plug 'tpope/vim-repeat'               " Enable repeating supported plugin
 
 " " Snippets Section
 " Plug 'MarcWeber/vim-addon-mw-utils'   " SnipMate dependence
