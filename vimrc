@@ -1,5 +1,4 @@
-" ==================================== "
-"     Lazaro's .vimrc config 2019      "
+" ==================================== " Lazaro's .vimrc config 2019      "
 " http://github.com/lazarocastro/vimrc "
 " ==================================== "
 
@@ -215,6 +214,16 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
+
+"" Git
+noremap <Leader>ga :Gwrite<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gsh :Gpush<CR>
+noremap <Leader>gll :Gpull<CR>
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gd :Gvdiff<CR>
+noremap <Leader>gr :Gremove<CR>
 
 "" Abbreviations
 cnoreabbrev W! w!
