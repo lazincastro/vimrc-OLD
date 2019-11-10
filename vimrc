@@ -51,8 +51,9 @@ Plug 'airblade/vim-gitgutter'         " A Vim plugin which shows a git diff in t
 " Plug 'tpope/vim-rails'                " Ruby on Rails power tools
 " Plug 'tpope/vim-endwise'              " Add 'end' in ruby endfunction/endif/more
 " Plug 'tpope/vim-surround'             " Quoting/parenthesizing made simple
-" Plug 'tpope/vim-fugitive'             " A Git wrapper so awesome, it should be illegal
 " Plug 'tpope/vim-repeat'               " Enable repeating supported plugin
+" Plug 'tpope/vim-fugitive'             " A Git wrapper so awesome, it should be illegal
+" Plug 'tpope/vim-rhubarb'              " GitHub extension for fugitive.vim
 
 " " Snippets Section
 " Plug 'MarcWeber/vim-addon-mw-utils'   " SnipMate dependence
@@ -224,6 +225,9 @@ noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
+
+"" Open current line on GitHub
+nnoremap <Leader>o :.Gbrowse<CR>
 
 "" Abbreviations
 cnoreabbrev W! w!
