@@ -1,4 +1,5 @@
-" ==================================== " Lazaro's .vimrc config 2019      "
+" ==================================== " 
+"     Lazaro's .vimrc config 2019      "
 " http://github.com/lazarocastro/vimrc "
 " ==================================== "
 
@@ -26,33 +27,33 @@ call plug#begin('~/.vim/plugged')     " Active Plugins
 Plug 'jaredgorski/spacecamp'          " Vim color for the final frontier
 Plug 'tpope/vim-commentary'           " Use 'gcc' to comment out a line
 Plug 'tpope/vim-vinegar'              " Simple file browser
-Plug 'vim-scripts/grep.vim'           " Integrates the grep, fgrep, egrep, and agrep
+Plug 'vim-scripts/grep.vim'           " Integrates the [a, e and f]grep
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'               " Fuzzy finder
-Plug 'itchyny/lightline.vim'          " A light and configurable statusline/tabline plugin
-Plug 'airblade/vim-gitgutter'         " A Vim plugin which shows a git diff in the gutter and stages/undoesks
+Plug 'itchyny/lightline.vim'          " A light statusline/tabline plugin
+Plug 'airblade/vim-gitgutter'         " Git diff gutter and stages/undoesks
 
 " " Color Schemes
 " Plug 'dikiaap/minimalist'             " A Material Color Scheme Darker
 " Plug 'morhetz/gruvbox'                " Gruvbox colorscheme
 
 " " HTML&CSS Section
-" Plug 'Valloric/MatchTagAlways'        " Highlights the enclosing html/xml tags
-" Plug 'mattn/emmet-vim'                " The essential toolkit for web-developers
-" Plug 'ap/vim-css-color'               " Preview colours in source code while editign
-" Plug 'jiangmiao/auto-pairs'           " Brackets, parentheses and quotes in pair
+" Plug 'Valloric/MatchTagAlways'        " Highlights the enclosing html tags
+" Plug 'mattn/emmet-vim'                " The essential web-developers toolkit
+" Plug 'ap/vim-css-color'               " Preview colours in code while editign
+" Plug 'jiangmiao/auto-pairs'           " Brackets, parentheses and quotes pair
 
 " " Javascript Section
-" Plug 'HerringtonDarkholme/yats.vim'   " The most advanced TypeScript Syntax Highlighting in Vim
-" Plug 'pangloss/vim-javascript'        " Vastly improved Javascript indentation and syntax support
-" Plug 'mxw/vim-jsx'                    " React JSX syntax highlight and indenting
+" Plug 'HerringtonDarkholme/yats.vim'   " TypeScript Syntax Highlighting in Vim
+" Plug 'pangloss/vim-javascript'        " Javascript indentation and syntax
+" Plug 'mxw/vim-jsx'                    " React JSX syntax highlight
 
 " " Tim Pope Section
 " Plug 'tpope/vim-rails'                " Ruby on Rails power tools
-" Plug 'tpope/vim-endwise'              " Add 'end' in ruby endfunction/endif/more
+" Plug 'tpope/vim-endwise'              " Add 'end' in ruby
 " Plug 'tpope/vim-surround'             " Quoting/parenthesizing made simple
 " Plug 'tpope/vim-repeat'               " Enable repeating supported plugin
-" Plug 'tpope/vim-fugitive'             " A Git wrapper so awesome, it should be illegal
+" Plug 'tpope/vim-fugitive'             " A Git wrapper illegal
 " Plug 'tpope/vim-rhubarb'              " GitHub extension for fugitive.vim
 
 " " Snippets Section
@@ -63,7 +64,7 @@ Plug 'airblade/vim-gitgutter'         " A Vim plugin which shows a git diff in t
 
 " " Syntax Section
 " Plug 'sheerun/vim-polyglot'           " A solid language pack
-" Plug 'dense-analysis/ale'             " Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP)
+" Plug 'dense-analysis/ale'             " Check syntax in Vim asynchronously
 
 " " Autocomplete section
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -80,7 +81,7 @@ Plug 'airblade/vim-gitgutter'         " A Vim plugin which shows a git diff in t
 call plug#end()                       "Vim-plug finished declaring
 "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- -----"
 
-"---- ---- ---- ---- Install Plugins The First Time Vim Runs ---- ---- ---- ----"
+"---- ---- ---- --- Install Plugins The First Time Vim Runs --- ---- ---- ----"
 if vim_plug_just_installed
   echo "Installing Bundles, please ignore key map error messages"
   :PlugInstall
@@ -100,7 +101,7 @@ set expandtab                     " Tabs and Spaces Handling
 set noerrorbells visualbell t_vb= " No damn bells
 set clipboard=unnamed,unnamedplus " Copy into system (*, +) register
 set tags=tags;                    " Look for a tags file in directories
-set noshowmode                    " INSERT is unnecessary anymore because the mode information is displayed in the statusline
+set noshowmode                    " INSERT is unnecessary
 " set foldmethod=indent
 set title
 set titleold="Terminal"
@@ -125,7 +126,7 @@ set bg=dark                  " Background used for highlight color
 set t_Co=256                 " Enable 256 colors in Vim
 set cursorline               " Cursor Line
 set cursorcolumn             " Cursor Column
-" set colorcolumn=80           " Screen columns that are highlight
+set colorcolumn=80           " Screen columns that are highlight
 hi Comment cterm=italic
 hi vertsplit ctermfg=bg ctermbg=bg
 
