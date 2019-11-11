@@ -140,6 +140,7 @@ set guioptions-=e   " Disable gui tabs
 hi vertsplit guifg=bg guibg=bg
 if has("autocmd") && has("gui")
     au GUIEnter * set vb t_vb=
+    set guifont=Monospace\ Regular\ 12
 endif
 
 " Lightline.vim
@@ -271,6 +272,8 @@ nnoremap <leader>. :lcd %:p:h<CR>
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 " Closes it vinegar buffer after opening the file
 let g:netrw_fastbrowse = 0
+" Specify user's preference for a viewer
+let g:netrw_browsex_viewer="setsid xdg-open"
 
 " grep.vim
 nnoremap <silent> <leader>f :Rgrep<CR>
