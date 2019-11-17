@@ -53,13 +53,43 @@ wget -qO $HOME"/.config/tilix/schemes/thayer-bright.json" https://git.io/v7QVZ
 curl https://raw.githubusercontent.com/lazarocastro/vimrc/master/vimrc -o vimrc
 ```
 
-## coc.nvim configuration
+## Coc.nvim Configuration
 Include "suggest.noselect": false on the CocConfig
 :CocConfig
 
 {
   "suggest.noselect": false
 }
+
+## Removin gVim right and Bottom Borders
+
+To figure out which version of GTK you're using, issue the following command:
+```
+$ gvim --version | grep GTK
+```
+
+In my case I'm making use of GTK 2.
+
+#### gVim with GTK 2
+
+Edit the file **~/.gtkrc-2.0**. Then, append the following to the bottom of the file:
+```css
+style "vimfix" {
+  bg[NORMAL] = "#1C1C1C" # theme background color
+}
+widget "vim-main-window.*GtkForm" style "vimfix"
+```
+
+#### gVim with GTK 3
+Edit the file **~/.config/gtk-3.0/gtk.css** and add the following to the bottom of the file:
+```
+#vim-main-window {
+  background-color: #1C1C1C; /*: theme background color */
+}
+```
+
+Reference: [https://thomashunter.name/](https://thomashunter.name/posts/2019-01-20-removing-gvim-border)
+
 
 # TODO
 
