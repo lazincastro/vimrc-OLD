@@ -39,7 +39,7 @@ Plug 'airblade/vim-gitgutter'         " Git diff gutter and stages/undoesks
 
 " " HTML&CSS Section
 " Plug 'Valloric/MatchTagAlways'        " Highlights the enclosing html tags
-" Plug 'mattn/emmet-vim'                " The essential web-developers toolkit
+" Plug 'mattn/emmet-vim'  (continue???)              " The essential web-developers toolkit
 " Plug 'ap/vim-css-color'               " Preview colours in code while editign
 " Plug 'jiangmiao/auto-pairs'           " Brackets, parentheses and quotes pair
 
@@ -179,12 +179,6 @@ if !isdirectory(&undodir)
 endif
 
 "---- ---- ---- ---- Mappings ---- ---- ---- ----"
-" Insert ';' to the end on line
-inoremap <leader>; <C-o>A;
-
-" Insert ',' to the end on line
-inoremap <leader>, <C-o>A,
-
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
 nnoremap n nzzzv
