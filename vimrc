@@ -23,8 +23,8 @@ endif
 
 "---- ---- ---- ---- Plugins From Github and Vim-scripts ---- ---- ----"
 call plug#begin('~/.vim/plugged')     " Active Plugins
-" Essential Starter Pack Plugins
-Plug 'jaredgorski/spacecamp'          " Vim color for the final frontier
+"" Essential Starter Pack Plugins
+Plug 'lazarocastro/spacecamp'         " Vim color for the final frontier
 Plug 'tpope/vim-commentary'           " Use 'gcc' to comment out a line
 Plug 'tpope/vim-vinegar'              " Simple file browser
 Plug 'vim-scripts/grep.vim'           " Integrates the [a, e and f]grep
@@ -33,22 +33,22 @@ Plug 'junegunn/fzf.vim'               " Fuzzy finder
 Plug 'itchyny/lightline.vim'          " A light statusline/tabline plugin
 Plug 'airblade/vim-gitgutter'         " Git diff gutter and stages/undoesks
 
-" " Color Schemes
+"" Color Schemes
 " Plug 'dikiaap/minimalist'             " A Material Color Scheme Darker
 " Plug 'morhetz/gruvbox'                " Gruvbox colorscheme
 
-" " HTML&CSS Section
+"" HTML&CSS Section
 " Plug 'Valloric/MatchTagAlways'        " Highlights the enclosing html tags
 " Plug 'mattn/emmet-vim'  (continue???)              " The essential web-developers toolkit
 " Plug 'ap/vim-css-color'               " Preview colours in code while editign
 " Plug 'jiangmiao/auto-pairs'           " Brackets, parentheses and quotes pair
 
-" " Javascript Section
+"" Javascript Section
 " Plug 'HerringtonDarkholme/yats.vim'   " TypeScript Syntax Highlighting in Vim
 " Plug 'pangloss/vim-javascript'        " Javascript indentation and syntax
 " Plug 'mxw/vim-jsx'                    " React JSX syntax highlight
 
-" " Tim Pope Section
+"" Tim Pope Section
 " Plug 'tpope/vim-rails'                " Ruby on Rails power tools
 " Plug 'tpope/vim-endwise'              " Add 'end' in ruby
 " Plug 'tpope/vim-surround'             " Quoting/parenthesizing made simple
@@ -56,17 +56,17 @@ Plug 'airblade/vim-gitgutter'         " Git diff gutter and stages/undoesks
 " Plug 'tpope/vim-fugitive'             " A Git wrapper illegal
 " Plug 'tpope/vim-rhubarb'              " GitHub extension for fugitive.vim
 
-" " Snippets Section
+"" Snippets Section
 " Plug 'MarcWeber/vim-addon-mw-utils'   " SnipMate dependence
 " Plug 'tomtom/tlib_vim'                " SnipMate dependence
 " Plug 'garbas/vim-snipmate'            " Some of TextMate's snippets
 " Plug 'honza/vim-snippets'             " Vim-snipmate default snippets 
 
-" " Syntax Section
+"" Syntax Section
 " Plug 'sheerun/vim-polyglot'           " A solid language pack
 " Plug 'dense-analysis/ale'             " Check syntax in Vim asynchronously
 
-" " Autocomplete section
+"" Autocomplete section
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " let g:coc_global_extensions = [
 "                     \ 'coc-json',
@@ -120,31 +120,31 @@ set sidescroll=1
 set mouse=a
 
 "---- ---- ---- ---- Visual Settings ---- ---- ---- ----"
-" On Terminal 
-colorscheme spacecamp_lite   " I love it that colorscheme
-set bg=dark                  " Background used for highlight color
-set t_Co=256                 " Enable 256 colors in Vim
-set cursorline               " Cursor Line
-set cursorcolumn             " Cursor Column
-set colorcolumn=80           " Screen columns that are highlight
+"" On Terminal 
+colorscheme spacecamp_lite " I love it that colorscheme
+set bg=dark                " Background used for highlight color
+set t_Co=256               " Enable 256 colors in Vim
+set cursorline             " Cursor Line
+set cursorcolumn           " Cursor Column
+set colorcolumn=80         " Screen columns that are highlight
 hi Comment cterm=italic
 hi vertsplit ctermfg=bg ctermbg=bg
 
-" GVim
-set guioptions-=m   " Disable menu bar
-set guioptions-=T   " Disable toolbar
-set guioptions-=l   " Disable left-hand scrollbar
-set guioptions-=L   " Disable left-hand scrollbar vertically
-set guioptions-=r   " Disable right-hand scrollbar
-set guioptions-=R   " Disable right-hand scrollbar vertically
-set guioptions-=e   " Disable gui tabs
+"" GVim
+set guioptions-=m " Disable menu bar
+set guioptions-=T " Disable toolbar
+set guioptions-=l " Disable left-hand scrollbar
+set guioptions-=L " Disable left-hand scrollbar vertically
+set guioptions-=r " Disable right-hand scrollbar
+set guioptions-=R " Disable right-hand scrollbar vertically
+set guioptions-=e " Disable gui tabs
 hi vertsplit guifg=bg guibg=bg
 if has("autocmd") && has("gui")
     au GUIEnter * set vb t_vb=
     set guifont=Monospace\ Regular\ 12
 endif
 
-" Lightline.vim
+"" Lightline.vim
 let g:lightline = {
       \ 'colorscheme': 'default',
       \ 'active': {
@@ -155,6 +155,7 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
+
 "---- ---- ---- ---- Tabs & Trailing Spaces ---- ---- ---- ----"
 set list listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
@@ -244,7 +245,7 @@ nnoremap <silent> <leader>sh :below terminal<CR>
 map <silent> <F9> :tab sball <bar> :tabdo :close <bar> :vert sball<cr>
 
 "" Open all Buffer in Tab
-map <F10> :tab sball<cr>
+map <silent> <F10> :tab sball<cr>
 
 "" Make it easy to edit the Vimrc file."
 nmap <Leader>ev :tabedit ~/.vimrc<cr>
@@ -262,7 +263,7 @@ nnoremap <silent> <leader><space> :noh<cr>:set nolist!<cr>
 nnoremap <leader>. :lcd %:p:h<CR>
 
 "---- ---- ---- ---- Plugins Settings ---- ---- ---- ----"
-" Vinegar
+"" Vinegar
 " Initialize with dot files hidden. Press 'gh' to toggle dot file hiding.
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 " Closes it vinegar buffer after opening the file
@@ -270,7 +271,7 @@ let g:netrw_fastbrowse = 0
 " Specify user's preference for a viewer
 let g:netrw_browsex_viewer="setsid xdg-open"
 
-" grep.vim
+"" grep.vim
 nnoremap <silent> <leader>f :Rgrep<CR>
 let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
@@ -281,13 +282,13 @@ set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 
-" The Silver Searcher
+"" The Silver Searcher
 if executable('ag')
   let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
-" ripgrep
+"" ripgrep
 if executable('rg')
   let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
   set grepprg=rg\ --vimgrep
@@ -298,11 +299,11 @@ cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
 
-"Recovery commands from history through FZF
+"" Recovery commands from history through FZF
 nmap <leader>y :History:<CR>
 
 "---- ---- ---- Auto-Commands ---- ---- ---- ----"
-""Automatically source the Vimrc file on save
+"" Automatically source the Vimrc file on save
 augroup autosourcing
   autocmd!
   autocmd BufWritePost .vimrc source %
