@@ -3,24 +3,24 @@
 ## What do you need?
 You need to install these packages below:
 
-* vim-gtk\*
-* tilix\*\*
-* git 
-* curl 
-* silversearcher-ag 
-* exuberant-ctags 
-* agrep
-* unzip
-* [yarn](https://yarnpkg.com/)
-* [nodejs](https://nodejs.org/)
+| Package | Description |
+|---|---|
+| vim-gtk                       | Vi IMproved - enhanced vi editor - with GTK2 GUI |
+| tilix                         | Tiling terminal emulator for GNOME |
+| git                           | Fast, scalable, distributed revision control system |
+| curl                          | Command line tool for transferring data with URL syntax |
+| silversearcher-ag             | Very fast grep-like program, alternative to ack-grep |
+| exuberant-ctags               | Build tag file indexes of source code definitions |
+| agrep                         | Text search tool with support for approximate patterns |
+| unzip                         | De-archiver for .zip files |
+| jq                            | Lightweight and flexible command-line JSON processor |
+| [yarn](https://yarnpkg.com/)  | Fast, reliable, and secure dependency management |
+| [nodejs](https://nodejs.org/) | JavaScript runtime built on [Chrome's V8 JavaScript engine](https://v8.dev) |
 
-> \*
->
-> \*\*
 
 ## Install Ubuntu packages
 ```
-sudo apt install vim-gtk tilix git curl silversearcher-ag exuberant-ctags unzip
+sudo apt install vim-gtk tilix git curl silversearcher-ag exuberant-ctags unzip jq
 ```
 
 ## Yarn Install
