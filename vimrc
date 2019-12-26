@@ -32,6 +32,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'               " Fuzzy finder
 Plug 'itchyny/lightline.vim'          " A light statusline/tabline plugin
 Plug 'airblade/vim-gitgutter'         " Git diff gutter and stages/undoesks
+Plug 'machakann/vim-highlightedyank'  " Make the yanked region apparent!
 
 "" Color Schemes
 " Plug 'dikiaap/minimalist'             " A Material Color Scheme Darker
@@ -316,3 +317,8 @@ augroup vimrc-remember-cursor-position
 augroup END
 
 set autoread
+
+"---- ---- ---- Shortcuts and tips ---- ---- ---- ----"
+
+" 'jq' is a lightweight and flexible command-line JSON processor.
+":%!jq .
