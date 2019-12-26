@@ -1,5 +1,7 @@
 # Installation and Configuration Guied
 
+This is my personal **vimrc** configuration, below you'll have instructions to install and configure for the correct way.
+
 ## What do you need?
 You need to install these packages below:
 
@@ -29,9 +31,9 @@ mkdir -p ~/.config/tilix/schemes
 wget -qO $HOME"/.config/tilix/schemes/thayer-bright.json" https://git.io/v7QVZ
 ```
 
-## Download [vimrc](https://raw.githubusercontent.com/lazarocastro/vimrc/master/vimrc)
+## Download [vimrc for python development](https://raw.githubusercontent.com/lazarocastro/vimrc/master/vimrc-for-python/vimrc)
 ```
-curl https://raw.githubusercontent.com/lazarocastro/vimrc/master/vimrc -o .vimrc
+curl https://raw.githubusercontent.com/lazarocastro/vimrc/master/vimrc-for-python/vimrc -o .vimrc
 ```
 
 ## Removin gVim right and Bottom Borders
