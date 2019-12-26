@@ -2,8 +2,5 @@
 
 These are my vimrc files
 
-- [<img src="https://github.com/lazarocastro/vimrc/blob/master/vimrc-for-rails/icon.png" width="80" height="80">](https://github.com/lazarocastro/vimrc/tree/master/vimrc-for-python)
-- [![Ruby][ruby]](https://github.com/lazarocastro/vimrc/tree/master/vimrc-for-rails)
-
-[ruby]: https://github.com/lazarocastro/vimrc/blob/master/vimrc-for-rails/icon.png "Ruby"
-[python]: https://github.com/lazarocastro/vimrc/blob/master/vimrc-for-python/icon.png "Python"
+- vimrc for python development [<img src="https://github.com/lazarocastro/vimrc/blob/master/vimrc-for-python/icon.png" width="80" height="80">](https://github.com/lazarocastro/vimrc/tree/master/vimrc-for-python)
+- vimrc for rails development [<img src="https://github.com/lazarocastro/vimrc/blob/master/vimrc-for-rails/icon.png" width="80" height="80">)](https://github.com/lazarocastro/vimrc/tree/master/vimrc-for-rails)
