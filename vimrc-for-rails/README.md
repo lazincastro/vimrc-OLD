@@ -48,7 +48,7 @@ mkdir -p ~/.config/tilix/schemes
 wget -qO $HOME"/.config/tilix/schemes/thayer-bright.json" https://git.io/v7QVZ
 ```
 
-## Download [vimrc](https://raw.githubusercontent.com/lazarocastro/vimrc/master/vimrc)
+## Download [vimrc](https://github.com/lazarocastro/vimrc/blob/master/vimrc-for-rails/vimrc)
 ```
 curl https://raw.githubusercontent.com/lazarocastro/vimrc/master/vimrc -o vimrc
 ```
