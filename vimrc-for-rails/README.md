@@ -50,7 +50,7 @@ wget -qO $HOME"/.config/tilix/schemes/thayer-bright.json" https://git.io/v7QVZ
 
 ## Download [vimrc](https://github.com/lazarocastro/vimrc/blob/master/vimrc-for-rails/vimrc)
 ```
-curl https://raw.githubusercontent.com/lazarocastro/vimrc/master/vimrc -o vimrc
+curl https://github.com/lazarocastro/vimrc/blob/master/vimrc-for-rails/vimrc -o vimrc
 ```
 
 ## Coc.nvim Configuration
@@ -82,7 +82,7 @@ widget "vim-main-window.*GtkForm" style "vimfix"
 
 #### gVim with GTK 3
 Edit the file **~/.config/gtk-3.0/gtk.css** and add the following to the bottom of the file:
-```
+```css
 #vim-main-window {
   background-color: #1C1C1C; /*: theme background color */
 }
