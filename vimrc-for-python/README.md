@@ -19,9 +19,10 @@ You need to install these packages below:
 | ack-grep                      | Grep-like text findes |
 | python3-pip                   | A tool for installing and managing Python packages |
 
-## Install Ubuntu packages
+## Install Ubuntu and Python packages
 ```
 sudo apt install vim-gtk tilix git curl silversearcher-ag exuberant-ctags agrep unzip jq  ack-grep python3-pip
+sudo pip3 install pynvim flake8 pylint isort
 ```
 
 ## Configure tilix theme
