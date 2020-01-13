@@ -1,4 +1,4 @@
-" ==================================== " 
+" ==================================== "
 "     Lazaro's .vimrc config 2019      "
 " http://github.com/lazarocastro/vimrc "
 " ==================================== "
@@ -23,62 +23,54 @@ endif
 
 "---- ---- ---- ---- Plugins From Github and Vim-scripts ---- ---- ----"
 call plug#begin('~/.vim/plugged')     " Active Plugins
-"" Essential Starter Pack Plugins
-Plug 'lazarocastro/spacecamp'         " Vim color for the final frontier
-Plug 'tpope/vim-commentary'           " Use 'gcc' to comment out a line
-Plug 'tpope/vim-vinegar'              " Simple file browser
-Plug 'vim-scripts/grep.vim'           " Integrates the [a, e and f]grep
+
+" Essential Starter Pack Plugins
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'               " Fuzzy finder
+Plug 'mileszs/ack.vim'                " Ack code search (requires ack installed in the system)
+Plug 'vim-scripts/grep.vim'           " Integrates the [a, e and f]grep
 Plug 'itchyny/lightline.vim'          " A light statusline/tabline plugin
 Plug 'airblade/vim-gitgutter'         " Git diff gutter and stages/undoesks
 Plug 'machakann/vim-highlightedyank'  " Make the yanked region apparent!
 
-"" Color Schemes
-" Plug 'dikiaap/minimalist'             " A Material Color Scheme Darker
-" Plug 'morhetz/gruvbox'                " Gruvbox colorscheme
+" Color Schemes
+Plug 'lazarocastro/spacecamp'         " Vim color for the final frontier
+Plug 'dikiaap/minimalist'             " A Material Color Scheme Darker
+Plug 'morhetz/gruvbox'                " Gruvbox colorscheme
 
-"" HTML&CSS Section
-" Plug 'Valloric/MatchTagAlways'        " Highlights the enclosing html tags
-" Plug 'mattn/emmet-vim'  (continue???)              " The essential web-developers toolkit
-" Plug 'ap/vim-css-color'               " Preview colours in code while editign
-" Plug 'jiangmiao/auto-pairs'           " Brackets, parentheses and quotes pair
+" HTML&CSS Section
+Plug 'Valloric/MatchTagAlways'        " Highlights the enclosing html/xml tags
+Plug 'mattn/emmet-vim'                " The essential toolkit for web-developers
+Plug 'ap/vim-css-color'               " Preview colours in source code while editign
+Plug 'jiangmiao/auto-pairs'           " Brackets, parentheses and quotes in pair
 
-"" Javascript Section
-" Plug 'HerringtonDarkholme/yats.vim'   " TypeScript Syntax Highlighting in Vim
-" Plug 'pangloss/vim-javascript'        " Javascript indentation and syntax
-" Plug 'mxw/vim-jsx'                    " React JSX syntax highlight
+" Tim Pope Section
+Plug 'tpope/vim-commentary'           " Use 'gcc' to comment out a line
+Plug 'tpope/vim-vinegar'              " Simple file browser
+Plug 'tpope/vim-surround'             " Quoting/parenthesizing made simple
+Plug 'tpope/vim-fugitive'             " A Git wrapper so awesome, it should be illegal
 
-"" Tim Pope Section
-" Plug 'tpope/vim-rails'                " Ruby on Rails power tools
-" Plug 'tpope/vim-endwise'              " Add 'end' in ruby
-" Plug 'tpope/vim-surround'             " Quoting/parenthesizing made simple
-" Plug 'tpope/vim-repeat'               " Enable repeating supported plugin
-" Plug 'tpope/vim-fugitive'             " A Git wrapper illegal
-" Plug 'tpope/vim-rhubarb'              " GitHub extension for fugitive.vim
+" Snippets Section
+Plug 'MarcWeber/vim-addon-mw-utils'   " SnipMate dependence
+Plug 'tomtom/tlib_vim'                " SnipMate dependence
+Plug 'garbas/vim-snipmate'            " Some of TextMate's snippets
+Plug 'honza/vim-snippets'             " Vim-snipmate default snippets 
 
-"" Snippets Section
-" Plug 'MarcWeber/vim-addon-mw-utils'   " SnipMate dependence
-" Plug 'tomtom/tlib_vim'                " SnipMate dependence
-" Plug 'garbas/vim-snipmate'            " Some of TextMate's snippets
-" Plug 'honza/vim-snippets'             " Vim-snipmate default snippets 
+" Async autocompletion Section
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'deoplete-plugins/deoplete-jedi'   " Python autocompletion
+Plug 'Shougo/context_filetype.vim'      " Completion from other opened files
+" Just to add the python go-to-definition and similar features, autocompletion
+" from this plugin is disabled
+Plug 'davidhalter/jedi-vim'
 
-"" Syntax Section
-" Plug 'sheerun/vim-polyglot'           " A solid language pack
-" Plug 'dense-analysis/ale'             " Check syntax in Vim asynchronously
+" Syntax Section
+Plug 'sheerun/vim-polyglot'           " A solid language pack
 
-"" Autocomplete section
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" let g:coc_global_extensions = [
-"                     \ 'coc-json',
-"                     \ 'coc-tsserver',
-"                     \ 'coc-emmet',
-"                     \ 'coc-tslint',
-"                     \ 'coc-prettier',
-"                     \ 'coc-snippets',
-"                     \ 'coc-html',
-"                     \ 'coc-css'
-"                     \ ]
+" Linters Section
+Plug 'neomake/neomake'
 call plug#end()                       "Vim-plug finished declaring
 "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- -----"
 
@@ -91,22 +83,33 @@ endif
 "---- ---- ---- ---- Basic Setup ---- ---- ---- ----"
 syntax on
 filetype plugin indent on
+set encoding=utf-8
+set nocompatible                  " no vi-compatible
 let mapleader = ','               " The default leader is \
 set nu rnu                        " Activate line number and relative number
 set nowrap                        " Disable long line wrap
-set laststatus=2                  " Always Show Status Bar
-set tabstop=2                     " Number of space that <TAB>
-set shiftwidth=2                  " Number of space on (auto)ident
-set softtabstop=2                 " Number of space that <TAB>
 set expandtab                     " Tabs and Spaces Handling
+set tabstop=4                     " Number of space that <TAB>
+set softtabstop=4                 " Number of space that <TAB>
+set shiftwidth=4                  " Number of space on (auto)ident
+set laststatus=2                  " Always Show Status Bar
 set noerrorbells visualbell t_vb= " No damn bells
 set clipboard=unnamed,unnamedplus " Copy into system (*, +) register
 set tags=tags;                    " Look for a tags file in directories
 set noshowmode                    " INSERT is unnecessary
-" set foldmethod=indent
 set title
 set titleold="Terminal"
 set titlestring=%F
+set completeopt+=noinsert         " needed so deoplete can auto select the first suggestion
+" comment this line to enable autocompletion preview window
+" (displays documentation related to the selected completion option)
+" disabled by default because preview makes the window flicker
+" set completeopt-=preview
+
+" autocompletion of files and commands behaves like shell
+" (complete only the common part, list the options that match)
+set wildmode=list:longest
+" set foldmethod=indent
 
 "---- ---- ---- ---- Searching ---- ---- ---- ----"
 set incsearch        " incremental search
@@ -128,17 +131,18 @@ set t_Co=256               " Enable 256 colors in Vim
 set cursorline             " Cursor Line
 set cursorcolumn           " Cursor Column
 set colorcolumn=80         " Screen columns that are highlight
+set fillchars+=vert:\      " remove ugly vertical lines on window division
 hi Comment cterm=italic
 hi vertsplit ctermfg=bg ctermbg=bg
 
 "" GVim
-set guioptions-=m " Disable menu bar
-set guioptions-=T " Disable toolbar
-set guioptions-=l " Disable left-hand scrollbar
-set guioptions-=L " Disable left-hand scrollbar vertically
-set guioptions-=r " Disable right-hand scrollbar
-set guioptions-=R " Disable right-hand scrollbar vertically
-set guioptions-=e " Disable gui tabs
+set guioptions-=m   " Disable menu bar
+set guioptions-=T   " Disable toolbar
+set guioptions-=l   " Disable left-hand scrollbar
+set guioptions-=L   " Disable left-hand scrollbar vertically
+set guioptions-=r   " Disable right-hand scrollbar
+set guioptions-=R   " Disable right-hand scrollbar vertically
+set guioptions-=e   " Disable gui tabs
 hi vertsplit guifg=bg guibg=bg
 if has("autocmd") && has("gui")
     au GUIEnter * set vb t_vb=
@@ -181,7 +185,7 @@ if !isdirectory(&undodir)
 endif
 
 "---- ---- ---- ---- Mappings ---- ---- ---- ----"
-" Search mappings: These will make it so that going to the next one in a
+"" Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -192,6 +196,12 @@ noremap Zo <c-w>=
 
 "" terminal emulation
 nnoremap <silent> <leader>sh :below terminal<CR>
+" Make F1 switch to Terminal-Normal mode.
+" You can use Esc, but you need to make sure
+" it won't cause other keys to break
+" tnoremap <Esc> <C-W>N
+tnoremap <F1> <C-W>N
+set notimeout ttimeout timeoutlen=100
 
 "" Move visual block
 vnoremap J :m '>+1<CR>gv=gv
@@ -238,6 +248,36 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
+
+" ," Surround a word with "quotes"
+map ," ysiw"
+vmap ," c"<C-R>""<ESC>
+
+" ,' Surround a word with 'single quotes'
+map ,' ysiw'
+vmap ,' c'<C-R>"'<ESC>
+
+" ,) or ,( Surround a word with (parens)
+" The difference is in whether a space is put in
+map ,( ysiw(
+map ,) ysiw)
+vmap ,( c( <C-R>")<ESC>
+vmap ,) c(<C-R>")<ESC>
+
+" ,[ Surround a word with [brackets]
+map ,] ysiw]
+map ,[ ysiw[
+vmap ,[ c[ <C-R>"]<ESC>
+vmap ,] c[<C-R>"]<ESC>
+
+" ,{ Surround a word with {braces}
+map ,{ ysiw{
+map ,} ysiw}
+vmap ,{ c{<C-R>"}<ESC>
+vmap ,} c{ <C-R>"}<ESC>
+
+"" save as sudo
+ca w!! w !sudo tee "%"
 
 "" terminal emulation
 nnoremap <silent> <leader>sh :below terminal<CR>
@@ -300,17 +340,60 @@ cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
 
-"" Recovery commands from history through FZF
+" Recovery commands from history through FZF
 nmap <leader>y :History:<CR>
 
+"" Ack.vim
+nmap ,r :Ack
+nmap ,wr :execute ":Ack " . expand('<cword>')<CR>
+
+"" Neomake
+" Run linter on write
+autocmd! BufWritePost * Neomake
+
+" Check code as python3 by default
+let g:neomake_python_python_maker = neomake#makers#ft#python#python()
+let g:neomake_python_flake8_maker = neomake#makers#ft#python#flake8()
+let g:neomake_python_python_maker.exe = 'python3 -m py_compile'
+let g:neomake_python_flake8_maker.exe = 'python3 -m flake8'
+
+" Disable error messages inside the buffer, next to the problematic line
+let g:neomake_virtualtext_current_error = 0
+
+"" Deoplete
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_smart_case = 1
+" complete with words from any opened file
+let g:context_filetype#same_filetypes = {}
+let g:context_filetype#same_filetypes._ = '_'
+
+"" Jedi-vim
+" Disable autocompletion (using deoplete instead)
+let g:jedi#completions_enabled = 0
+
+" All these mappings work only for python code:
+" Go to definition
+let g:jedi#goto_command = ',d'
+" Find ocurrences
+let g:jedi#usages_command = ',o'
+" Find assignments
+let g:jedi#goto_assignments_command = ',a'
+" Go to definition in new tab
+nmap ,D :tab split<CR>:call jedi#goto()<CR>
+
 "---- ---- ---- Auto-Commands ---- ---- ---- ----"
-"" Automatically source the Vimrc file on save
+" clear empty spaces at the end of lines on save of python files
+autocmd BufWritePre *.py :%s/\s\+$//e
+
+" Automatically source the Vimrc file on save
 augroup autosourcing
   autocmd!
   autocmd BufWritePost .vimrc source %
 augroup END
 
-"" Remember cursor position
+" Remember cursor position
 augroup vimrc-remember-cursor-position
   autocmd!
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -319,6 +402,5 @@ augroup END
 set autoread
 
 "---- ---- ---- Shortcuts and tips ---- ---- ---- ----"
-
 " 'jq' is a lightweight and flexible command-line JSON processor.
 ":%!jq .
