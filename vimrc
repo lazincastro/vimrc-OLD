@@ -289,7 +289,7 @@ map <silent> <F9> :tab sball <bar> :tabdo :close <bar> :vert sball<cr>
 map <silent> <F10> :tab sball<cr>
 
 "" Make it easy to edit the Vimrc file."
-nmap <Leader>ev :tabedit ~/.vimrc<cr>
+nmap <Leader>ev :tabedit ~/.vim/vimrc<cr>
 
 "" Close vimrc buffer when you quit the file
 autocmd! FileType vim :cnoreabbrev <buffer> q bw
