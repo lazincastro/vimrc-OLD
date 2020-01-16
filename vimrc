@@ -305,6 +305,10 @@ nnoremap <silent> <leader><space> :noh<cr>:set nolist!<cr>
 nnoremap <leader>. :lcd %:p:h<CR>
 
 "---- ---- ---- ---- Plugins Settings ---- ---- ---- ----"
+"Emmet
+" Enable use TAB to autocompletion
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
 "" Vinegar
 " Initialize with dot files hidden. Press 'gh' to toggle dot file hiding.
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
