@@ -65,6 +65,7 @@ Plug 'Shougo/context_filetype.vim'      " Completion from other opened files
 " Just to add the python go-to-definition and similar features, autocompletion
 " from this plugin is disabled
 Plug 'davidhalter/jedi-vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 " Syntax Section
 Plug 'sheerun/vim-polyglot'           " A solid language pack
