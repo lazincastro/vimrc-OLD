@@ -201,8 +201,8 @@ nnoremap <silent> <leader>sh :below terminal<CR>
 " You can use Esc, but you need to make sure
 " it won't cause other keys to break
 " tnoremap <Esc> <C-W>N
-tnoremap <F1> <C-W>N
-set notimeout ttimeout timeoutlen=100
+" tnoremap <F1> <C-W>N
+" set notimeout ttimeout timeoutlen=100
 
 "" Move visual block
 vnoremap J :m '>+1<CR>gv=gv
