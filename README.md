@@ -3,7 +3,7 @@ This is my personal **vimrc** configuration, below you'll have instructions to i
 
 ## Straight to The Point
 ```
-sudo apt install vim-gtk tilix git curl silversearcher-ag exuberant-ctags agrep unzip jq  ack-grep python3-pip
+sudo apt install vim-gtk tilix git curl silversearcher-ag exuberant-ctags agrep unzip jq  ack-grep python3-pip python3-neovim
 sudo pip3 install pynvim flake8 pylint isort
 git clone https://github.com/lazarocastro/vimrc.git ~/.vim
 ```
