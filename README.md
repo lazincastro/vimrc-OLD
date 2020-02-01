@@ -61,8 +61,3 @@ Edit the file **~/.config/gtk-3.0/gtk.css** and add the following to the bottom 
 ```
 
 Reference: [https://thomashunter.name/](https://thomashunter.name/posts/2019-01-20-removing-gvim-border)
-
-
-# TODO
-
-* Include images (One day I'll do that. ;-) )
