@@ -1,0 +1,6 @@
+{
+  "suggest.noselect": false,
+  "yaml.schemas": {
+    "kubernetes": "/*.yaml"
+  }
+}

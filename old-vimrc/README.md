@@ -1,26 +1,12 @@
 # Installation and Configuration Guied
 This is my personal **vimrc** configuration, below you'll have instructions to install and configure for the correct way.
 
-I have an old vimrc configuration, feel free to look at it.
-
 ## Straight to The Point
-
-```sh
-sudo apt install vim-gtk terminator git curl silversearcher-ag exuberant-ctags agrep unzip jq ack-grep 
+```
+sudo apt install vim-gtk tilix git curl silversearcher-ag exuberant-ctags agrep unzip jq  ack-grep python3-pip python3-neovim
+sudo pip3 install pynvim flake8 pylint isort
 git clone https://github.com/lazarocastro/vimrc.git ~/.vim
 ```
-
-Install [nodejs](https://nodejs.org/en/download/) >= 10.12:
-
-```sh
-curl -sL install-node.now.sh/lts | bash
-```
-
-After that execute vim, this will install all plugins.
-
-Almost there, inside the vim install coc.nvim extensions:
-
-    :CocInstall coc-json coc-yaml coc-pairs
 
 ## What did you install?
 Descriptions of packages installed:
@@ -28,7 +14,7 @@ Descriptions of packages installed:
 | Package | Description |
 |---|---|
 | vim-gtk                       | Vi IMproved - enhanced vi editor - with GTK2 GUI |
-| terminator                    | Multiple GNOME terminals in one window |
+| tilix                         | Tiling terminal emulator for GNOME |
 | git                           | Fast, scalable, distributed revision control system |
 | curl                          | Command line tool for transferring data with URL syntax |
 | silversearcher-ag             | Very fast grep-like program, alternative to ack-grep |
@@ -37,7 +23,7 @@ Descriptions of packages installed:
 | unzip                         | De-archiver for .zip files |
 | jq                            | Lightweight and flexible command-line JSON processor |
 | ack-grep                      | Grep-like text findes |
-| node                          | JavaScript runtime |
+| python3-pip                   | A tool for installing and managing Python packages |
 
 ## Below, I show you how I use my **Vim** setting on terminal, and some issues about **Gvim**.
 

@@ -1,0 +1,411 @@
+" ==================================== "
+"     Lazaro's .vimrc config 2019      "
+" http://github.com/lazarocastro/vimrc "
+" ==================================== "
+
+"---- ---- ---- ---- ---- ---- Vim-Plug Initialization ---- ---- ---- ---- ---"
+" Avoid modify this section, unless you are very sure of what you are doing
+let vim_plug_just_installed = 0
+let vim_plug_path = expand('~/.vim/autoload/plug.vim')
+if !filereadable(vim_plug_path)
+    echo "Installing Vim-plug..."
+    echo ""
+    silent !mkdir -p ~/.vim/autoload
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    let vim_plug_just_installed = 1
+endif
+" Manually Load Vim-Plug The First Time
+if vim_plug_just_installed
+    :execute 'source '.fnameescape(vim_plug_path)
+endif
+" Obscure hacks done, you can now modify the rest of the .vimrc as you wish :)
+"---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- --"
+
+"---- ---- ---- ---- Plugins From Github and Vim-scripts ---- ---- ----"
+call plug#begin('~/.vim/plugged')     " Active Plugins
+
+" Essential Starter Pack Plugins
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'               " Fuzzy finder
+Plug 'mileszs/ack.vim'                " Ack code search (requires ack installed in the system)
+Plug 'vim-scripts/grep.vim'           " Integrates the [a, e and f]grep
+Plug 'itchyny/lightline.vim'          " A light statusline/tabline plugin
+Plug 'airblade/vim-gitgutter'         " Git diff gutter and stages/undoesks
+Plug 'machakann/vim-highlightedyank'  " Make the yanked region apparent!
+
+" Color Schemes
+Plug 'lazarocastro/spacecamp'         " Vim color for the final frontier
+Plug 'dikiaap/minimalist'             " A Material Color Scheme Darker
+Plug 'morhetz/gruvbox'                " Gruvbox colorscheme
+
+" HTML&CSS Section
+Plug 'Valloric/MatchTagAlways'        " Highlights the enclosing html/xml tags
+Plug 'mattn/emmet-vim'                " The essential toolkit for web-developers
+Plug 'ap/vim-css-color'               " Preview colours in source code while editign
+Plug 'jiangmiao/auto-pairs'           " Brackets, parentheses and quotes in pair
+
+" Tim Pope Section
+Plug 'tpope/vim-commentary'           " Use 'gcc' to comment out a line
+Plug 'tpope/vim-vinegar'              " Simple file browser
+Plug 'tpope/vim-surround'             " Quoting/parenthesizing made simple
+Plug 'tpope/vim-fugitive'             " A Git wrapper so awesome, it should be illegal
+
+" Snippets Section
+Plug 'MarcWeber/vim-addon-mw-utils'   " SnipMate dependence
+Plug 'tomtom/tlib_vim'                " SnipMate dependence
+Plug 'garbas/vim-snipmate'            " Some of TextMate's snippets
+Plug 'honza/vim-snippets'             " Vim-snipmate default snippets 
+
+" Async autocompletion Section
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'deoplete-plugins/deoplete-jedi'   " Python autocompletion
+Plug 'Shougo/context_filetype.vim'      " Completion from other opened files
+" Just to add the python go-to-definition and similar features, autocompletion
+" from this plugin is disabled
+Plug 'davidhalter/jedi-vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
+
+" Syntax Section
+Plug 'sheerun/vim-polyglot'           " A solid language pack
+
+" Linters Section
+Plug 'neomake/neomake'
+call plug#end()                       "Vim-plug finished declaring
+"---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- -----"
+
+"---- ---- ---- --- Install Plugins The First Time Vim Runs --- ---- ---- ----"
+if vim_plug_just_installed
+  echo "Installing Bundles, please ignore key map error messages"
+  :PlugInstall
+endif
+
+"---- ---- ---- ---- Basic Setup ---- ---- ---- ----"
+syntax on
+filetype plugin indent on
+set encoding=utf-8
+set nocompatible                  " no vi-compatible
+let mapleader = ','               " The default leader is \
+set nu rnu                        " Activate line number and relative number
+set nowrap                        " Disable long line wrap
+set expandtab                     " Tabs and Spaces Handling
+set tabstop=4                     " Number of space that <TAB>
+set softtabstop=4                 " Number of space that <TAB>
+set shiftwidth=4                  " Number of space on (auto)ident
+set laststatus=2                  " Always Show Status Bar
+set noerrorbells visualbell t_vb= " No damn bells
+set clipboard=unnamed,unnamedplus " Copy into system (*, +) register
+set tags=tags;                    " Look for a tags file in directories
+set noshowmode                    " INSERT is unnecessary
+set title
+set titleold="Terminal"
+set titlestring=%F
+set completeopt+=noinsert         " needed so deoplete can auto select the first suggestion
+" comment this line to enable autocompletion preview window
+" (displays documentation related to the selected completion option)
+" disabled by default because preview makes the window flicker
+" set completeopt-=preview
+
+" autocompletion of files and commands behaves like shell
+" (complete only the common part, list the options that match)
+set wildmode=list:longest
+" set foldmethod=indent
+
+"---- ---- ---- ---- Searching ---- ---- ---- ----"
+set incsearch        " incremental search
+set hlsearch         " highlighted search results
+set ignorecase       " Ignore case when searching...
+set smartcase        " ...unless we type a capital
+
+"---- ---- ---- ---- Scrolling ---- ---- ---- ----"
+set scrolloff=8
+set sidescrolloff=15
+set sidescroll=1
+set mouse=a
+
+"---- ---- ---- ---- Visual Settings ---- ---- ---- ----"
+"" On Terminal 
+colorscheme spacecamp_lite " I love it that colorscheme
+set bg=dark                " Background used for highlight color
+set t_Co=256               " Enable 256 colors in Vim
+set cursorline             " Cursor Line
+set cursorcolumn           " Cursor Column
+set colorcolumn=80         " Screen columns that are highlight
+set fillchars+=vert:\      " remove ugly vertical lines on window division
+hi Comment cterm=italic
+hi vertsplit ctermfg=bg ctermbg=bg
+
+"" GVim
+set guioptions-=m   " Disable menu bar
+set guioptions-=T   " Disable toolbar
+set guioptions-=l   " Disable left-hand scrollbar
+set guioptions-=L   " Disable left-hand scrollbar vertically
+set guioptions-=r   " Disable right-hand scrollbar
+set guioptions-=R   " Disable right-hand scrollbar vertically
+set guioptions-=e   " Disable gui tabs
+hi vertsplit guifg=bg guibg=bg
+if has("autocmd") && has("gui")
+    au GUIEnter * set vb t_vb=
+    set guifont=Monospace\ Regular\ 12
+endif
+
+"" Lightline.vim
+let g:lightline = {
+      \ 'colorscheme': 'default',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
+
+"---- ---- ---- ---- Tabs & Trailing Spaces ---- ---- ---- ----"
+set list listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+
+"---- ---- ---- ---- Better Backup, Swap and Undos Storage ---- ---- ---- ----"
+set directory=~/.vim/dirs/tmp               " directory to place swap files in
+set backup                                  " make backup files
+set backupdir=~/.vim/dirs/backups           " where to put backup files
+set undofile                                " persistent undos
+set undodir=~/.vim/dirs/undos               " undo after you re-open the file
+set viminfo+=n~/.vim/dirs/viminfo
+let g:yankring_history_dir = '~/.vim/dirs/' " store yankring history file
+
+" Create Needed Directories if They Don't Exist
+if !isdirectory(&backupdir)
+  call mkdir(&backupdir, "p")
+endif
+if !isdirectory(&directory)
+  call mkdir(&directory, "p")
+endif
+if !isdirectory(&undodir)
+  call mkdir(&undodir, "p")
+endif
+
+"---- ---- ---- ---- Mappings ---- ---- ---- ----"
+"" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+"" Zoom Window
+noremap Zz <c-w>_ \| <c-w>\|
+noremap Zo <c-w>=
+
+"" terminal emulation
+nnoremap <silent> <leader>sh :below terminal<CR>
+" Make F1 switch to Terminal-Normal mode.
+" You can use Esc, but you need to make sure
+" it won't cause other keys to break
+" tnoremap <Esc> <C-W>N
+" tnoremap <F1> <C-W>N
+" set notimeout ttimeout timeoutlen=100
+
+"" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+"" Tabs
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <silent> <S-t> :tabnew<CR>
+
+"" Split
+set splitbelow
+set splitright
+noremap <Leader>h :<C-u>split<CR>
+noremap <Leader>v :<C-u>vsplit<CR>
+
+"" Switching windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+
+"" Git
+noremap <Leader>ga :Gwrite<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gsh :Gpush<CR>
+noremap <Leader>gll :Gpull<CR>
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gd :Gvdiff<CR>
+noremap <Leader>gr :Gremove<CR>
+
+"" Open current line on GitHub
+nnoremap <Leader>o :.Gbrowse<CR>
+
+"" Abbreviations
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
+
+" ," Surround a word with "quotes"
+map ," ysiw"
+vmap ," c"<C-R>""<ESC>
+
+" ,' Surround a word with 'single quotes'
+map ,' ysiw'
+vmap ,' c'<C-R>"'<ESC>
+
+" ,) or ,( Surround a word with (parens)
+" The difference is in whether a space is put in
+map ,( ysiw(
+map ,) ysiw)
+vmap ,( c( <C-R>")<ESC>
+vmap ,) c(<C-R>")<ESC>
+
+" ,[ Surround a word with [brackets]
+map ,] ysiw]
+map ,[ ysiw[
+vmap ,[ c[ <C-R>"]<ESC>
+vmap ,] c[<C-R>"]<ESC>
+
+" ,{ Surround a word with {braces}
+map ,{ ysiw{
+map ,} ysiw}
+vmap ,{ c{<C-R>"}<ESC>
+vmap ,} c{ <C-R>"}<ESC>
+
+"" save as sudo
+ca w!! w !sudo tee "%"
+
+"" terminal emulation
+nnoremap <silent> <leader>sh :below terminal<CR>
+
+"" Open all Buffer in Vertical Split
+map <silent> <F9> :tab sball <bar> :tabdo :close <bar> :vert sball<cr>
+
+"" Open all Buffer in Tab
+map <silent> <F10> :tab sball<cr>
+
+"" Make it easy to edit the Vimrc file."
+nmap <Leader>ev :tabedit ~/.vim/vimrc<cr>
+
+"" Close vimrc buffer when you quit the file
+autocmd! FileType vim :cnoreabbrev <buffer> q bw
+
+"" Escape to the NORMAL mode
+inoremap jj <esc>
+
+"" Clean search (highlight), tabs and traling spaces
+nnoremap <silent> <leader><space> :noh<cr>:set nolist!<cr>
+
+"" Set working directory
+nnoremap <leader>. :lcd %:p:h<CR>
+
+"---- ---- ---- ---- Plugins Settings ---- ---- ---- ----"
+"Emmet
+" Enable use TAB to autocompletion
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+"" Vinegar
+" Initialize with dot files hidden. Press 'gh' to toggle dot file hiding.
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+" Closes it vinegar buffer after opening the file
+let g:netrw_fastbrowse = 0
+" Specify user's preference for a viewer
+let g:netrw_browsex_viewer="setsid xdg-open"
+
+"" grep.vim
+nnoremap <silent> <leader>f :Rgrep<CR>
+let Grep_Default_Options = '-IR'
+let Grep_Skip_Files = '*.log *.db'
+let Grep_Skip_Dirs = '.git node_modules'
+
+"" fzf.vim
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
+
+"" The Silver Searcher
+if executable('ag')
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+"" ripgrep
+if executable('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+  set grepprg=rg\ --vimgrep
+  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+endif
+
+cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>e :FZF -m<CR>
+
+" Recovery commands from history through FZF
+nmap <leader>y :History:<CR>
+
+"" Ack.vim
+nmap ,r :Ack
+nmap ,wr :execute ":Ack " . expand('<cword>')<CR>
+
+"" Neomake
+" Run linter on write
+autocmd! BufWritePost * Neomake
+
+" Check code as python3 by default
+let g:neomake_python_python_maker = neomake#makers#ft#python#python()
+let g:neomake_python_flake8_maker = neomake#makers#ft#python#flake8()
+let g:neomake_python_python_maker.exe = 'python3 -m py_compile'
+let g:neomake_python_flake8_maker.exe = 'python3 -m flake8'
+
+" Disable error messages inside the buffer, next to the problematic line
+let g:neomake_virtualtext_current_error = 0
+
+"" Deoplete
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_smart_case = 1
+" complete with words from any opened file
+let g:context_filetype#same_filetypes = {}
+let g:context_filetype#same_filetypes._ = '_'
+
+"" Jedi-vim
+" Disable autocompletion (using deoplete instead)
+let g:jedi#completions_enabled = 0
+
+" All these mappings work only for python code:
+" Go to definition
+let g:jedi#goto_command = ',d'
+" Find ocurrences
+let g:jedi#usages_command = ',o'
+" Find assignments
+let g:jedi#goto_assignments_command = ',a'
+" Go to definition in new tab
+nmap ,D :tab split<CR>:call jedi#goto()<CR>
+
+"---- ---- ---- Auto-Commands ---- ---- ---- ----"
+" clear empty spaces at the end of lines on save of python files
+autocmd BufWritePre *.py :%s/\s\+$//e
+
+" Automatically source the Vimrc file on save
+augroup autosourcing
+  autocmd!
+  autocmd BufWritePost .vimrc source %
+augroup END
+
+" Remember cursor position
+augroup vimrc-remember-cursor-position
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
+
+set autoread
+
+"---- ---- ---- Shortcuts and tips ---- ---- ---- ----"
+" 'jq' is a lightweight and flexible command-line JSON processor.
+":%!jq .
