@@ -4,7 +4,7 @@
 [keybindings]
 [profiles]
   [[default]]
-    background_color = "#282828"
+    background_color = "#1c1c1c"
     cursor_shape = ibeam
     cursor_color = "#aaaaaa"
     foreground_color = "#ebdbb2"
