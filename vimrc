@@ -132,9 +132,25 @@ set t_Co=256               " Enable 256 colors in Vim
 set cursorline             " Cursor Line
 set cursorcolumn           " Cursor Column
 set fillchars+=vert:\      " remove ugly vertical lines on window division
-set colorcolumn=80         " Screen columns that are highlight
+"set colorcolumn=80         " Screen columns that are highlight
 hi Comment cterm=italic
-hi vertsplit ctermfg=bg ctermbg=bg
+if !has("gui_running")
+  hi vertsplit ctermfg=bg ctermbg=bg
+endif
+
+"" GVim
+set guioptions-=m   " Disable menu bar
+set guioptions-=T   " Disable toolbar
+set guioptions-=l   " Disable left-hand scrollbar
+set guioptions-=L   " Disable left-hand scrollbar vertically
+set guioptions-=r   " Disable right-hand scrollbar
+set guioptions-=R   " Disable right-hand scrollbar vertically
+set guioptions-=e   " Disable gui tabs
+hi vertsplit guifg=bg guibg=bg
+if has("autocmd") && has("gui")
+    au GUIEnter * set vb t_vb=
+    set guifont=Monospace\ Regular\ 12
+endif
 
 "---- ---- ---- ---- Mappings ---- ---- ---- ----"
 "" Make it easy to edit the Vimrc file."
@@ -257,7 +273,6 @@ nmap <leader>y :History:<CR>
 "" Ack.vim
 nmap ,r :Ack<space>
 nmap ,wr :execute ":Ack " . expand('<cword>')<CR>
-
 
 "-------------------------------------------------------------------------------
 "" coc
