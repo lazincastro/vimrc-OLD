@@ -32,7 +32,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for Vim8 &
 
 " Color Schemes
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'morhetz/gruvbox'                " Gruvbox colorscheme
+Plug 'morhetz/gruvbox'                  " Gruvbox colorscheme
+Plug 'rakr/vim-one'                     " Light and dark vim colorscheme, shamelessly stolen from atom 
 " Plug 'lazarocastro/spacecamp'         " Vim color for the final frontier
 " Plug 'dikiaap/minimalist'             " A Material Color Scheme Darker
 " Plug 'dracula/vim', {'as': 'dracula'} " 🧛 Dark theme for Vim
@@ -42,6 +43,9 @@ Plug 'tpope/vim-commentary'           " Use 'gcc' to comment out a line
 Plug 'tpope/vim-vinegar'              " Simple file browser
 Plug 'tpope/vim-surround'             " Quoting/parenthesizing made simple
 Plug 'tpope/vim-fugitive'             " A Git wrapper so awesome, it should be illegal
+
+" Languages
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()                       "Vim-plug finished declaring
 "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- -----"
@@ -53,9 +57,10 @@ if vim_plug_just_installed
 endif
 
 "---- ---- ---- ---- Basic Setup ---- ---- ---- ----"
-syntax on
+syntax enable
 filetype plugin indent on
 set encoding=utf-8
+set backspace=indent,eol,start    " Make backspace behave like every other editor
 set nocompatible                  " no vi-compatible
 let mapleader = ','               " The default leader is \
 " set nu rnu                        " Activate line number and relative number
@@ -133,6 +138,7 @@ set cursorline             " Cursor Line
 set cursorcolumn           " Cursor Column
 set fillchars+=vert:\      " remove ugly vertical lines on window division
 "set colorcolumn=80         " Screen columns that are highlight
+set foldcolumn=1
 hi Comment cterm=italic
 if !has("gui_running")
   hi vertsplit ctermfg=bg ctermbg=bg
@@ -205,16 +211,21 @@ map <silent> <F10> :tab sball<cr>
 ca w!! w !sudo tee "%"
 
 "---- ---- ---- ---- Plugins Settings ---- ---- ---- ----"
+"" vim-go
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_def_mapping_enabled = 0
 
 "" lightline
 let g:lightline = {
       \ 'colorscheme': 'default',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'cocstatus': 'coc#status'
+      \   'cocstatus': 'coc#status',
+      \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
 
@@ -265,14 +276,17 @@ endif
 
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>e :FZF -m<CR>
+" nnoremap <silent> <leader>e :FZF -m<CR>
+nnoremap <silent> <C-p> :FZF -m<CR>
 
 " Recovery commands from history through FZF
 nmap <leader>y :History:<CR>
 
 "" Ack.vim
-nmap ,r :Ack<space>
-nmap ,wr :execute ":Ack " . expand('<cword>')<CR>
+nmap ,r :Ack!<space>
+nmap ,wr :execute ":Ack! " . expand('<cword>')<CR>
+let g:ackpreview = 1
+let g:ackhighlight = 1
 
 "-------------------------------------------------------------------------------
 "" coc
