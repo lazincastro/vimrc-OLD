@@ -20,18 +20,18 @@ call plug#begin('~/.vim/plugged')     " Active Plugins
 
 " Essential Starter Pack Plugins
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'               " Fuzzy finder
-Plug 'mileszs/ack.vim'                " Ack code search (requires ack installed in the system)
-Plug 'vim-scripts/grep.vim'           " Integrates the [a, e and f]grep
-Plug 'itchyny/lightline.vim'          " A light statusline/tabline plugin
-Plug 'airblade/vim-gitgutter'         " Git diff gutter and stages/undoesks
-Plug 'machakann/vim-highlightedyank'  " Make the yanked region apparent!
-Plug 'SirVer/ultisnips'               " The ultimate snippet solution for Vim
-Plug 'honza/vim-snippets'             " Snipets
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode 
+Plug 'junegunn/fzf.vim'              " Fuzzy finder
+Plug 'mileszs/ack.vim'               " Ack code search (requires ack installed in the system)
+Plug 'vim-scripts/grep.vim'          " Integrates the [a, e and f]grep
+Plug 'itchyny/lightline.vim'         " A light statusline/tabline plugin
+Plug 'airblade/vim-gitgutter'        " Git diff gutter and stages/undoesks
+Plug 'machakann/vim-highlightedyank' " Make the yanked region apparent!
+Plug 'SirVer/ultisnips'              " The ultimate snippet solution for Vim
+Plug 'honza/vim-snippets'            " Vim-snipmate default snippets
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Make your Vima as smart as VSCode 
 
 " Color Schemes
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'NLKNguyen/papercolor-theme'       " Light & Dark Vim color schemes inspired by Google's Material Design
 Plug 'morhetz/gruvbox'                  " Gruvbox colorscheme
 Plug 'rakr/vim-one'                     " Light and dark vim colorscheme, shamelessly stolen from atom 
 " Plug 'lazarocastro/spacecamp'         " Vim color for the final frontier
@@ -39,15 +39,15 @@ Plug 'rakr/vim-one'                     " Light and dark vim colorscheme, shamel
 " Plug 'dracula/vim', {'as': 'dracula'} " 🧛 Dark theme for Vim
 
 " Tim Pope Section
-Plug 'tpope/vim-commentary'           " Use 'gcc' to comment out a line
-Plug 'tpope/vim-vinegar'              " Simple file browser
-Plug 'tpope/vim-surround'             " Quoting/parenthesizing made simple
-Plug 'tpope/vim-fugitive'             " A Git wrapper so awesome, it should be illegal
+Plug 'tpope/vim-commentary' " Use 'gcc' to comment out a line
+Plug 'tpope/vim-vinegar'    " Simple file browser
+Plug 'tpope/vim-surround'   " Quoting/parenthesizing made simple
+Plug 'tpope/vim-fugitive'   " A Git wrapper so awesome, it should be illegal
 
 " Languages
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-call plug#end()                       "Vim-plug finished declaring
+call plug#end() "Vim-plug finished declaring
 "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- -----"
 
 "---- ---- ---- --- Install Plugins The First Time Vim Runs --- ---- ---- ----"
@@ -76,10 +76,10 @@ set noshowmode                    " INSERT is unnecessary (see lightline.vim doc
 " set nu rnu                        " Activate line number and relative number
 
 "---- ---- ---- ---- Searching ---- ---- ---- ----"
-set incsearch        " incremental search
-set hlsearch         " highlighted search results
-set ignorecase       " Ignore case when searching...
-set smartcase        " ...unless we type a capital
+set incsearch  " incremental search
+set hlsearch   " highlighted search results
+set ignorecase " Ignore case when searching...
+set smartcase  " ...unless we type a capital
 
 "---- ---- ---- ---- Scrolling ---- ---- ---- ----"
 set scrolloff=8
@@ -145,13 +145,13 @@ if !has("gui_running")
 endif
 
 "" GVim
-set guioptions-=m   " Disable menu bar
-set guioptions-=T   " Disable toolbar
-set guioptions-=l   " Disable left-hand scrollbar
-set guioptions-=L   " Disable left-hand scrollbar vertically
-set guioptions-=r   " Disable right-hand scrollbar
-set guioptions-=R   " Disable right-hand scrollbar vertically
-set guioptions-=e   " Disable gui tabs
+set guioptions-=m " Disable menu bar
+set guioptions-=T " Disable toolbar
+set guioptions-=l " Disable left-hand scrollbar
+set guioptions-=L " Disable left-hand scrollbar vertically
+set guioptions-=r " Disable right-hand scrollbar
+set guioptions-=R " Disable right-hand scrollbar vertically
+set guioptions-=e " Disable gui tabs
 hi vertsplit guifg=bg guibg=bg
 if has("autocmd") && has("gui")
     au GUIEnter * set vb t_vb=
@@ -410,8 +410,8 @@ omap ac <Plug>(coc-classobj-a)
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
