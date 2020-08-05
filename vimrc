@@ -26,9 +26,9 @@ Plug 'vim-scripts/grep.vim'           " Integrates the [a, e and f]grep
 Plug 'itchyny/lightline.vim'          " A light statusline/tabline plugin
 Plug 'airblade/vim-gitgutter'         " Git diff gutter and stages/undoesks
 Plug 'machakann/vim-highlightedyank'  " Make the yanked region apparent!
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'               " The ultimate snippet solution for Vim
+Plug 'honza/vim-snippets'             " Snipets
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode 
-" Plug 'vim-scripts/AutoComplPop'       " Automatically opens popup menu for completions
 
 " Color Schemes
 Plug 'NLKNguyen/papercolor-theme'
@@ -63,7 +63,6 @@ set encoding=utf-8
 set backspace=indent,eol,start    " Make backspace behave like every other editor
 set nocompatible                  " no vi-compatible
 let mapleader = ','               " The default leader is \
-" set nu rnu                        " Activate line number and relative number
 set nowrap                        " Disable long line wrap
 set expandtab                     " Tabs and Spaces Handling
 set tabstop=2                     " Number of space that <TAB>
@@ -74,6 +73,7 @@ set noerrorbells visualbell t_vb= " No damn bells
 set clipboard=unnamed,unnamedplus " Copy into system (*, +) register
 set tags=tags;                    " Look for a tags file in directories
 set noshowmode                    " INSERT is unnecessary (see lightline.vim docs)
+" set nu rnu                        " Activate line number and relative number
 
 "---- ---- ---- ---- Searching ---- ---- ---- ----"
 set incsearch        " incremental search
@@ -89,16 +89,16 @@ set sidescroll=1
 
 "---- ---- ---- ---- Tabs & Trailing Spaces ---- ---- ---- ----"
 " Toggle listchars
-fun! ToggleLC() 
+fun! ToggleLC()
     if &listchars == ''
         set listchars=''
     else
         set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
     endif
-endfun  
- 
+endfun
+
 " Toggle colorcolumn
-fun! ToggleCC() 
+fun! ToggleCC()
     if &cc == ''
         set cc=80
     else
@@ -106,8 +106,8 @@ fun! ToggleCC()
     endif
 endfun
 
-" Use ',' + Space to toggle relative number, colorcolumn, listchars and search highlight
-nnoremap <silent> <leader><space> :noh<cr>:call ToggleLC()<cr>:call ToggleCC()<cr>:set nu! rnu!<cr>:set nolist!<cr>:GitGutterToggle<cr>
+" Use  ",-<space>" to toggle relative number, colorcolumn, listchars and search highlight
+nnoremap <silent> <leader><space> :noh<cr>:call ToggleLC()<cr>:call ToggleCC()<cr>:set nu! rnu!<cr>:set nolist!<cr>
 
 "---- ---- ---- ---- Better Backup, Swap and Undos Storage ---- ---- ---- ----"
 set directory=~/.vim/dirs/tmp               " directory to place swap files in
@@ -136,9 +136,9 @@ set bg=dark                " Background used for highlight color
 set t_Co=256               " Enable 256 colors in Vim
 set cursorline             " Cursor Line
 set cursorcolumn           " Cursor Column
+set foldcolumn=1           " Width between text and border
 set fillchars+=vert:\      " remove ugly vertical lines on window division
 "set colorcolumn=80         " Screen columns that are highlight
-set foldcolumn=1
 hi Comment cterm=italic
 if !has("gui_running")
   hi vertsplit ctermfg=bg ctermbg=bg
@@ -231,6 +231,7 @@ let g:lightline = {
 
 
 "" vim-gitgutter
+nmap <silent><F8> :GitGutterToggle<cr>
 let g:gitgutter_enabled = 0
 let g:gitgutter_highlight_lines = 1
 
@@ -375,8 +376,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -443,9 +444,9 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-"---------------------coc-Settings-end------------------------------------------
+"---- ---- ---- ---- End-coc-settigns ---- ---- ---- ----"
 
-"---- ---- ---- Auto-Commands ---- ---- ---- ----"
+"---- ---- ---- ---- Auto-Commands ---- ---- ---- ----"
 " clear empty spaces at the end of lines on save of python files
 autocmd BufWritePre *.py :%s/\s\+$//e
 
@@ -460,3 +461,29 @@ augroup vimrc-remember-cursor-position
   autocmd!
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
+
+"---- ---- ---- ---- LIST OF COMMANDS AND TIPS ---- ---- ---- ----"
+" F8      - Toggle gitgutter
+" F9      - Open all Buffer in Vertical Split
+" F10     - Open all Buffer in Tab
+" CTRL-p  - Search with fzf.vim
+" ,f      - Search with grep.vim
+" ,r      - Search a word on directory
+" ,wr     - Search a cursor word in many files
+" ,y      - List commands from history
+" ,b      - List buffer
+" ,space  - Toggle line numbe and trailing spaces
+" ,ev     - Open vimrc file
+" ,.      - Set current work directory
+" ,sh     - Open terminal
+" ,h      - Split horizontal
+" ,v      - Split vertical
+" Zz      - Zoom split window
+" Zo      - Zoom out split window
+
+" GLUE THE OUTPUT COMMAND INSIDE VIM
+" :.!<BASH-COMMAND>
+
+" COPY AND REPLACE WORD
+" yanking a word, then go to replace :%s/ and press CTRL-r, then press " (quotation marks)
+
