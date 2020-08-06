@@ -22,17 +22,13 @@
 ```
 
 ## GLUE THE OUTPUT COMMAND INSIDE VIM
-```
-  :.!<BASH-COMMAND>
-```
+    :.!<BASH-COMMAND>
+
 ## COPY AND REPLACE WORD
-```
-  yanking a word, then go to replace :%s/
-  and press CTRL-r, then press " 
-```
+    yanking a word, then go to replace :%s/
+    and press CTRL-r, then press " 
 
 ## CLOSE WINDOW
-```
-  CTRL-w q
-```
+    CTRL-w q
+
 
