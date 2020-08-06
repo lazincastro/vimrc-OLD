@@ -163,7 +163,7 @@ endif
 nmap <Leader>ev :tabedit ~/.vim/vimrc<cr>
 
 ""Open notes file"
-nmap <silent><Leader>en :vsplit ~/.vim/notes<cr>:vertical resize 50<cr>:let &statusline='%#Normal# '<cr>
+nmap <silent><Leader>en :vsplit ~/.vim/NOTES.md<cr>:vertical resize 50<cr>:let &statusline='%#Normal# '<cr>
 
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>

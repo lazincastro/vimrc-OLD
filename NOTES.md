@@ -1,11 +1,7 @@
- _   _       _            
-| \ | | ___ | |_ ___  ___ 
-|  \| |/ _ \| __/ _ \/ __|
-| |\  | (_) | ||  __/\__ \
-|_| \_|\___/ \__\___||___/
-                          
+# NOTES                          
 
- LIST OF COMMANDS
+## LIST OF COMMANDS
+```
   F8      - Toggle gitgutter
   F9      - Open all Buffer in Vertical Split
   F10     - Open all Buffer in Tab
@@ -23,14 +19,20 @@
   ,v      - Split vertical
   Zz      - Zoom split window
   Zo      - Zoom out split window
+```
 
-/* GLUE THE OUTPUT COMMAND INSIDE VIM */
+## GLUE THE OUTPUT COMMAND INSIDE VIM
+```
   :.!<BASH-COMMAND>
-
-/* COPY AND REPLACE WORD */
+```
+## COPY AND REPLACE WORD
+```
   yanking a word, then go to replace :%s/
   and press CTRL-r, then press " 
+```
 
-/* CLOSE WINDOW */
+## CLOSE WINDOW
+```
   CTRL-w q
+```
 
