@@ -1,0 +1,42 @@
+#vim-main-window {
+  background-color: #1C1C1C; /*: theme background color */
+}
+
+.terminator-terminal-window notebook tab {
+    background-color: #222;
+    padding: 0;
+    border: 0;
+    border-color: #444;
+    border-style: solid;
+    border-width: -5px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.terminator-terminal-window notebook tab:checked {
+    background-color: #1C1C1C;
+    background-image: none;
+}
+
+.terminator-terminal-window notebook tab label {
+    color: #494949;
+}
+
+.terminator-terminal-window notebook tab:checked label {
+    color: #BDBFBF;
+    font-weight: 500;
+}
+
+.terminator-terminal-window notebook tab button {
+    padding: 0;
+    background-color: transparent;
+    color: #ccc;
+}
+
+.terminator-terminal-window notebook header {
+    background-color: #222;
+    border: 0;
+    padding: 1px 0px 0px 0px;
+
+}
+

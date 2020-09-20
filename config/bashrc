@@ -1,0 +1,82 @@
+# vim: ft=sh
+END='\e[0m'
+BOLD='\e[1m'
+COLOR_WHITE='\e[39m'
+COLOR_BLACK='\e[30m'
+COLOR_BLUE='\e[34m'
+COLOR_LIGHT_BLUE='\e[94m'
+COLOR_GREEN='\e[32m'
+COLOR_LIGHT_GREEN='\e[92m'
+COLOR_CYAN='\e[36m'
+COLOR_LIGHT_CYAN='\e[96m'
+COLOR_RED='\e[31m'
+COLOR_LIGHT_RED='\e[91m'
+COLOR_MAGENTA='\e[35m'
+COLOR_LIGHT_MAGENTA='\e[95m'
+COLOR_YELLOW='\e[33m'
+COLOR_LIGHT_YELLOW='\e[93m'
+COLOR_DARK_GRAY='\e[90m'
+COLOR_LIGHT_GRAY='\e[37m'
+
+# No brainer, default to Vim
+export EDITOR="vim"
+
+# Color LS output to differentiate between directories and files
+export LS_OPTIONS="--color=auto"
+export CLICOLOR="Yes"
+export LSCOLOR=""
+
+# Customize Path
+export PATH=$HOME/bin:$PATH
+
+# get current branch in git repo
+function parse_git_branch() {
+  BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+  if [ ! "${BRANCH}" == "" ]
+  then
+    STAT=`parse_git_dirty`
+    echo -e "${COLOR_BLUE}${BOLD}git:(${COLOR_RED}${BOLD}${BRANCH}${COLOR_BLUE}${BOLD})${END}${STAT} "
+  else
+    echo ""
+  fi
+}
+
+# get current status of git repo
+function parse_git_dirty {
+  status=`git status 2>&1 | tee`
+  dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
+  untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
+  ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
+  newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
+  renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
+  deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
+  bits=''
+  if [ "${renamed}" == "0" ]; then
+    bits=">${bits}"
+  fi
+  if [ "${ahead}" == "0" ]; then
+    bits="*${bits}"
+  fi
+  if [ "${newfile}" == "0" ]; then
+    bits="+${bits}"
+  fi
+  if [ "${untracked}" == "0" ]; then
+    bits="?${bits}"
+  fi
+  if [ "${deleted}" == "0" ]; then
+    bits="${COLOR_RED}X${bits}"
+  fi
+  if [ "${dirty}" == "0" ]; then
+    bits="${COLOR_YELLOW}!${bits}"
+  fi
+  if [ ! "${bits}" == "" ]; then
+    echo -e " ${bits}"
+  else
+    echo ""
+  fi
+}
+
+export PS1="${COLOR_GREEN}${BOLD}➜  ${COLOR_CYAN}\w \`parse_git_branch\`${END}"
+# source <(kubectl completion bash)
+# alias k=kubectl
+# complete -F __start_kubectl k
