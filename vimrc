@@ -26,9 +26,7 @@ Plug 'itchyny/lightline.vim'         " A light statusline/tabline plugin
 Plug 'airblade/vim-gitgutter'        " Git diff gutter and stages/undoesks
 Plug 'machakann/vim-highlightedyank' " Make the yanked region apparent!
 Plug 'jiangmiao/auto-pairs'          " Vim plugin, insert or delete brackets, parens, quotes in pair 
-Plug 'frazrepo/vim-rainbow'          " Rainbow brackets for Vim
 Plug 'majutsushi/tagbar'
-" Plug 'mhinz/vim-startify'
 
 " Tim Pope Section
 Plug 'tpope/vim-commentary'          " Use 'gcc' to comment out a line
@@ -43,21 +41,37 @@ Plug 'tpope/vim-fugitive'            " A Git wrapper so awesome, it should be il
 " Plug 'honza/vim-snippets'            " Vim-snipmate default snippets
 
 " Color Schemes
-Plug 'NLKNguyen/papercolor-theme' " Light & Dark Vim color schemes inspired by Google's Material Design
+Plug 'ayu-theme/ayu-vim'          " Modern theme for modern VIMs
 Plug 'morhetz/gruvbox'            " Gruvbox colorscheme
-Plug 'sickill/vim-monokai'        " Monokai color scheme for Vim converted from Textmate theme
+Plug 'NLKNguyen/papercolor-theme' " Light & Dark Vim color schemes inspired by Google's Material Design
+" Plug 'sickill/vim-monokai'        " Monokai color scheme for Vim converted from Textmate theme
+Plug 'phanviet/vim-monokai-pro'
+Plug 'patstockwell/vim-monokai-tasty'
+Plug 'crusoexia/vim-monokai'
 Plug 'jnurmine/Zenburn'           " Zenburn is a low-contrast color scheme for Vim
 Plug 'joshdick/onedark.vim'       " A dark Vim/Neovim color scheme inspired by Atom's One Dark syntax theme
+Plug 'sjl/badwolf'                " A color scheme for Vim, pieced together by Steve Losh
+Plug 'jonathanfilip/vim-lucius'   " Lucius color scheme for vim
+Plug 'arcticicestudio/nord-vim'   " An arctic, north-bluish clean and elegant Vim theme
+Plug 'cocopon/iceberg.vim'        " Bluish color scheme for Vim and Neovim
+Plug 'junegunn/seoul256.vim'      " Low-contrast Vim color scheme based on Seoul Colors
+Plug 'liuchengxu/space-vim-dark'  " A dark colorscheme for space-vim, see space-vim-theme for light background support!
 
 " Autocomplete
 " Plug 'vim-scripts/AutoComplPop'      " Automatically opens popup menu for completions
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for Vim8
+Plug 'sheerun/vim-polyglot'                     " A solid language pack for Vim
 
 " Languages
 " Plug 'rust-lang/rust.vim'   " Vim configuration for Rust
 " Plug 'mattn/webapi-vim'     " vim interface to Web API (:RustPlay dependence)
 Plug 'ap/vim-css-color'       " Preview colours in source code while editing
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " Go development
+Plug 'jmcantrell/vim-virtualenv'                   " Vim plugin for working with python virtualenvs
+Plug 'davidhalter/jedi-vim' " Using the jedi autocompletion library for VIM
+Plug 'lepture/vim-jinja'    " jinja plugins for vim (syntax and indent)
+" Plug 'mitsuhiko/vim-jinja'  " Jinja support in vim
+" Plug 'dense-analysis/ale', { 'do': 'pip3 install flake8 isort yapf' } " Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
 
 call plug#end()                      " Vim-plug finished declaring
 "---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- -----"
@@ -69,8 +83,8 @@ if vim_plug_just_installed
 endif
 
 "---- ---- ---- ---- Basic Setup ---- ---- ---- ----"
-syntax enable
-filetype plugin indent on
+filetype plugin indent on         " Activates filetype detection
+syntax on                         " Activates syntax highlighting among other things
 set encoding=utf-8
 set backspace=indent,eol,start    " Make backspace behave like every other editor
 set nocompatible                  " no vi-compatible
@@ -144,8 +158,10 @@ endfun
 nnoremap <silent> <leader><space> :noh<cr>:call ToggleLC()<cr>:call ToggleCC()<cr>:set nu! rnu!<cr>:set nolist!<cr>
 
 "---- ---- ---- ---- Visual Settings ---- ---- ---- ----"
-"" On Terminal 
-colorscheme onedark        " I love it that colorscheme
+" colorscheme gruvbox        " I love it that colorscheme
+" let g:gruvbox_contrast_dark = 'hard'
+let g:space_vim_dark_background = 233
+colorscheme space-vim-dark
 set bg=dark                " Background used for highlight color
 set t_Co=256               " Enable 256 colors in Vim
 set cursorline             " Cursor Line
@@ -153,7 +169,7 @@ set cursorcolumn           " Cursor Column
 set fillchars+=vert:\      " remove ugly vertical lines on window division
 " set foldcolumn=1           " Width between text and border
 " set colorcolumn=80         " Screen columns that are highlight
-" hi Comment cterm=italic
+hi Comment cterm=italic
 if !has("gui_running")
   hi vertsplit ctermfg=bg ctermbg=bg
 endif
@@ -214,6 +230,20 @@ map <silent> <F10> :tab sball<cr>
 ca w!! w !sudo tee "%"
 
 "---- ---- ---- ---- Plugins Settings ---- ---- ---- ----"
+"" vim-virtualenv
+let g:virtualenv_directory = $VIRTUAL_ENV
+
+"" Ale
+" let g:ale_fix_on_save = 1
+" let g:ale_fixers = {
+" \   'python': [
+" \       'isort',
+" \       'yapf',
+" \       'remove_trailing_lines',
+" \       'trim_whitespace'
+" \   ]
+" \}
+
 "" vim-rainbow
 let g:rainbow_active = 1
 
@@ -231,7 +261,7 @@ au FileType go nmap <leader>gc <Plug>(go-coverage)
 
 "" lightline
 let g:lightline = {
-      \ 'colorscheme': 'onedark',
+      \ 'colorscheme': 'default',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified' ] ]

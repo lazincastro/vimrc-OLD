@@ -9,5 +9,7 @@
   "suggest.noselect": false,
   "yaml.schemas": {
     "kubernetes": "/*.yaml"
-  }
+  },
+  "python.jediEnabled": false,
+  "python.linting.pydocstyleEnabled": false
 }

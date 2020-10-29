@@ -13,7 +13,7 @@ git clone https://github.com/lazarocastro/vimrc.git ~/.vim
 Install [nodejs](https://nodejs.org/en/download/) >= 10.12:
 
 ```sh
-curl -sL install-node.now.sh/lts | sudo bash
+curl -sL install-node.now.sh/lts | bash
 ```
 
 After that execute vim, this will install all plugins.
